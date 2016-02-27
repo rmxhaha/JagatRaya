@@ -5,12 +5,12 @@ class MahklupHidup {
 public:
 	MahklupHidup(Board&, int x, int y);
 
-	bool isDead();
-	bool isAlive();
+	bool isDead() const;
+	bool isAlive() const;
 
-	virtual char ch() = 0;
-	virtual int umur() = 0;
-	virtual int power() = 0;
+	virtual char ch() const = 0;
+	virtual int umur() const = 0;
+	virtual int power() const = 0;
 	virtual void update() = 0;
 
 	void updateMap();
