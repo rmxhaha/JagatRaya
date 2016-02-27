@@ -6,7 +6,7 @@
 
 
 
-class Animal {
+class Animal : public MahklupHidup {
 public:
 	Animal();
 	virtual float speed() const = 0;
