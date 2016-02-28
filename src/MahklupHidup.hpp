@@ -1,9 +1,11 @@
 #ifndef MAHKLUP_HIDUP
 #define MAHKLUP_HIDUP
 
+#include "board.hpp"
+
 class MahklupHidup {
 public:
-	MahklupHidup(Board&, int x, int y);
+	MahklupHidup(Board&, int x, int y, int t_lahir);
 
 	bool isDead() const;
 	bool isAlive() const;
@@ -12,11 +14,12 @@ public:
 	virtual int umur() const = 0;
 	virtual int power() const = 0;
 	virtual void update() = 0;
-
-	void updateMap();
 protected:
+
+    void forceKill();
+
 	int tlahir;
-	bool isDead;
+	bool is_dead;
 	int x,y;
 	Board& board;
 };
