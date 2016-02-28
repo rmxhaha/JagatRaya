@@ -65,19 +65,19 @@ void Animal::goTo( int tx, int ty ){
     }
 }
 
-Animal::move(){
+void Animal::move(){
     int dx = 0, dy = 0;
 
     switch( direction ){
-	case NO_WHERE:      break;
-	case UP:        dy = 1; break;
-	case DOWN:      dy = -1; break;
-	case LEFT:      dx = -1; break;
-	case RIGHT:     dx = 1; break;
-	case UP_LEFT:   dy = 1; dx = -1; break;
-	case DOWN_LEFT: dy = -1; dx = -1; break;
-	case UP_RIGHT:  dy = 1; dx = 1; break;
-	case DOWN_RIGHT: dy = -1; dx = 1; break;
+	case direction_t::NO_WHERE:      break;
+	case direction_t::UP:        dy = 1; break;
+	case direction_t::DOWN:      dy = -1; break;
+	case direction_t::LEFT:      dx = -1; break;
+	case direction_t::RIGHT:     dx = 1; break;
+	case direction_t::UP_LEFT:   dy = 1; dx = -1; break;
+	case direction_t::DOWN_LEFT: dy = -1; dx = -1; break;
+	case direction_t::UP_RIGHT:  dy = 1; dx = 1; break;
+	case direction_t::DOWN_RIGHT: dy = -1; dx = 1; break;
     }
 
     int tx = x + dx;
