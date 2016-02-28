@@ -3,61 +3,61 @@
 
 
 
-Animal::Animal(Board& b, int x, int y, int t_lahir) : MahklupHidup(b,x,y,t_lahir), direction(direction_t::NO_WHERE) {
+Animal::Animal(Board& b, int x, int y, int t_lahir) : MahklupHidup(b,x,y,t_lahir) {
 }
 
-void Animal::avoid( int tx, int ty )
+direction_t Animal::avoid( int tx, int ty )
 {
     if( tx < x ){ // run right
         if( ty < y ) // run up
-            direction = direction_t::UP_RIGHT;
+            return direction_t::UP_RIGHT;
         else if( ty > y ) // run down
-            direction = direction_t::DOWN_RIGHT;
+            return direction_t::DOWN_RIGHT;
         else
-            direction = direction_t::RIGHT;
+            return direction_t::RIGHT;
     }
     else if( x < tx ){ // run left
         if( ty < y ) // run up
-            direction = direction_t::UP_LEFT;
+            return direction_t::UP_LEFT;
         else if( ty > y ) // run down
-            direction = direction_t::DOWN_LEFT;
+            return direction_t::DOWN_LEFT;
         else
-            direction = direction_t::LEFT;
+            return direction_t::LEFT;
     }
     else {
         if( ty < y ) // run up
-            direction = direction_t::UP;
+            return direction_t::UP;
         else if( ty > y ) // run down
-            direction = direction_t::DOWN;
+            return direction_t::DOWN;
         else{
             // on the same coor
-            direction = direction_t::UP_LEFT;
+            return direction_t::UP_LEFT;
         }
     }
 }
 
-void Animal::goTo( int tx, int ty ){
+direction_t Animal::goTo( int tx, int ty ){
     if( tx > x ){ // run right
         if( ty > y ) // run up
-            direction = direction_t::UP_RIGHT;
+            return direction_t::UP_RIGHT;
         else if( ty < y ) // run down
-            direction = direction_t::DOWN_RIGHT;
+            return direction_t::DOWN_RIGHT;
         else
-            direction = direction_t::RIGHT;
+            return direction_t::RIGHT;
     }
     else if( x > tx ){ // run left
         if( ty > y ) // run up
-            direction = direction_t::UP_LEFT;
+            return direction_t::UP_LEFT;
         else if( ty < y ) // run down
-            direction = direction_t::DOWN_LEFT;
+            return direction_t::DOWN_LEFT;
         else
-            direction = direction_t::LEFT;
+            return direction_t::LEFT;
     }
     else {
         if( ty > y ) // run up
-            direction = direction_t::UP;
+            return direction_t::UP;
         else if( ty < y ) // run down
-            direction = direction_t::DOWN;
+            return direction_t::DOWN;
         else{
             // on the same coor
             // just stop
@@ -65,7 +65,7 @@ void Animal::goTo( int tx, int ty ){
     }
 }
 
-void Animal::move(){
+void Animal::move(direction_t direction){
     int dx = 0, dy = 0;
 
     switch( direction ){
