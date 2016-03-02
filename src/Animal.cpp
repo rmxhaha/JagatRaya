@@ -14,6 +14,7 @@ void Animal::update(float dt)
         timebuffer -= speed();
     }
 }
+void Animal::update_logic(){}
 
 direction_t Animal::avoid( int tx, int ty )
 {
