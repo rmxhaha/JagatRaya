@@ -103,10 +103,19 @@ void Animal::move(direction_t direction){
 	case direction_t::DOWN_RIGHT: dy = -1; dx = 1; break;
     }
 
-    int tx = x + dx;
-    int ty = y + dy;
+
+    // plus GetW getH is for negative number mod
+    int tx = x + dx + universe.board.GetW();
+    int ty = y + dy + universe.board.GetH();
 
     // update The board here
+    tx %= universe.board.GetW();
+    ty %= universe.board.GetH();
 
 
+    universe.board.DelEl(ch(),x,y);
+
+    universe.board.SetEl(ch(),tx,ty);
+    x=  tx;
+    y = ty;
 }
