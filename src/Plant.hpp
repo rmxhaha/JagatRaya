@@ -5,7 +5,7 @@
 
 class Plant : public Organism {
 public:
-	Plant();
+	Plant(Board& b, int x, int y, int t_lahir);
 protected:
 	void grow();
 	virtual float tgrow() const = 0;
