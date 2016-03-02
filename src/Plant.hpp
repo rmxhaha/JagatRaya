@@ -1,9 +1,9 @@
-#include "MahklupHidup.hpp"
+#include "Organism.hpp"
 
 #ifndef PLANT_H
 #define PLANT_H
 
-class Plant : public MahklupHidup {
+class Plant : public Organism {
 public:
 	Plant();
 protected:

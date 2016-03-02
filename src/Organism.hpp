@@ -3,9 +3,9 @@
 
 #include "board.hpp"
 
-class MahklupHidup {
+class Organism {
 public:
-	MahklupHidup(Board&, int x, int y, int t_lahir);
+	Organism(Board&, int x, int y, int t_lahir);
 
 	bool isDead() const;
 	bool isAlive() const;
