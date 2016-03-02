@@ -1,6 +1,7 @@
 #include "Plant.hpp"
+#include <ctime>
 
-Plant::Plant(Board& b, int x, int y, int t_lahir):Organism(b,x,y,t_lahir){}
+Plant::Plant(Universe& b, int x, int y, int t_lahir):Organism(b,x,y,t_lahir){}
 
 void Plant::grow(){
 	bool place=false;
@@ -17,6 +18,6 @@ void Plant::grow(){
 			place=true;
 		}
 	}
-	int nt=t_lahir+tgrow;
-	Plant NewP(b,nj,ni,nt);
+	int nt=tlahir+tgrow();
+//	Plant NewP(universe,nj,ni,nt);
 }
