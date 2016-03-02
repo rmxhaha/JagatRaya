@@ -12,7 +12,7 @@ int main(){
     u.add(h);
     while(true){
         u.board.PrintBoard();
-        h->update(1);
+        u.update(1);
         Sleep(1000);
     }
     return 0;

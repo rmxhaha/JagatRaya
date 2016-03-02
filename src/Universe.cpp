@@ -31,3 +31,9 @@ void Universe::interact(Organism* m){
         //m.interact(it);
     }
 }
+
+void Universe::update( float dt ){
+    for( auto&it: MList ){
+        it->update(dt);
+    }
+}

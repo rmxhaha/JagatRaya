@@ -25,6 +25,7 @@ public:
 
     void add(Organism* m);
     void listen(Event evt, CallbackFunction callback);
+    void update(float dt);
 
     Board board; // expose ?
 private:
