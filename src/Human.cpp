@@ -6,7 +6,7 @@ Human::Human(Universe& universe, int x, int y, int t_lahir) : Carnivore(universe
 }
 
 void Human::update_logic(){
-
+    move(goRandom());
 }
 
 char Human::ch() const { return 'H'; }
