@@ -14,6 +14,7 @@ public:
 protected:
 	direction_t avoid(int x, int y);
 	direction_t goTo(int x, int y);
+	direction_t goRandom();
 	void move(direction_t direction);
 
 };
