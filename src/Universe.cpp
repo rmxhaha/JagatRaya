@@ -5,7 +5,8 @@ using namespace std;
 
 Universe::Universe(int w, int h) : board(w,h){
 }
-
+Universe::~Universe(){
+}
 void Universe::add(Organism* m){
     MList.push_back(m);
 }
