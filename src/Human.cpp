@@ -2,6 +2,7 @@
 
 
 Human::Human(Universe& universe, int x, int y, int t_lahir) : Carnivore(universe,x,y,t_lahir) {
+    universe.board.SetEl(ch(),x,y);
 }
 
 void Human::update_logic(){

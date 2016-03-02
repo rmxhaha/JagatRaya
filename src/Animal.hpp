@@ -11,8 +11,8 @@ public:
 	Animal(Universe& u, int x, int y, int t_lahir);
 	virtual float speed() const = 0;
 
-protected:
     void update(float dt);
+protected:
 	direction_t avoid(int x, int y);
 	direction_t goTo(int x, int y);
 	direction_t goRandom();
