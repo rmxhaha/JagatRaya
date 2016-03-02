@@ -17,6 +17,6 @@ void Plant::grow(){
 			place=true;
 		}
 	}
-	int nt=t_lahir+tgrow;
-	Plant NewP(b,nj,ni,nt);
+	int nt=tlahir+tgrow;
+	Plant newP(board,nj,ni,nt);
 }

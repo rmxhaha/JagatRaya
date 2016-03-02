@@ -24,4 +24,4 @@ protected:
 	Board& board;
 };
 
-#endif MAHKLUP_HIDUP
+#endif 

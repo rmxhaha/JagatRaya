@@ -6,10 +6,9 @@
 class Poison_Ivy : public Plant 
 {
 	public:
-	Poison_Ivy(Board&, int x, int y, int t_lahir);
-	protected:
-	void power();
-	void tgrow();
-	void ch();
+	Poison_Ivy(Board& b, int x, int y, int t_lahir);
+	int power();
+	float tgrow();
+	char ch();
 };
 #endif
