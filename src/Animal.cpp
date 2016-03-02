@@ -3,7 +3,16 @@
 
 
 
-Animal::Animal(Universe& u, int x, int y, int t_lahir) : Organism(u,x,y,t_lahir) {
+Animal::Animal(Universe& u, int x, int y, int t_lahir) : Organism(u,x,y,t_lahir), timebuffer(0) {
+}
+
+void Animal::update(float dt)
+{
+    timebuffer += dt;
+    while( timebuffer > speed() ){
+        update_logic();
+        timebuffer -= speed();
+    }
 }
 
 direction_t Animal::avoid( int tx, int ty )
@@ -75,7 +84,7 @@ direction_t Animal::goRandom(){
     case 5: return direction_t::UP_RIGHT;
     case 6: return direction_t::DOWN_LEFT;
     case 7: return direction_t::DOWN_RIGHT;
-    default : return return direction_t::UP;
+    default : return direction_t::UP;
     }
 }
 void Animal::move(direction_t direction){

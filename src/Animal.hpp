@@ -12,11 +12,14 @@ public:
 	virtual float speed() const = 0;
 
 protected:
+    void update(float dt);
 	direction_t avoid(int x, int y);
 	direction_t goTo(int x, int y);
 	direction_t goRandom();
 	void move(direction_t direction);
+    virtual void update_logic();
 
+    float timebuffer;
 };
 
 
