@@ -1,3 +1,6 @@
+#ifndef UNIVERSE_H
+#define UNIVERSE_H
+
 #include <functional>
 #include <vector>
 #include <map>
@@ -22,11 +25,14 @@ public:
 
     void add(Organism* m);
     void listen(Event evt, CallbackFunction callback);
+
+    Board board; // expose ?
 private:
     void publish(Event evt, Organism* x);
     void interact(Organism* m);
 
     vector<Organism*> MList;
     map<Event, vector<CallbackFunction>> subscriber;
-    Board board;
 };
+
+#endif // UNIVERSE_H

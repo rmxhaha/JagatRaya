@@ -1,7 +1,7 @@
 #include "Organism.hpp"
 
 
-Organism::Organism(Board& b, int _x, int _y, int _tlahir) : board(b), x(_x), y(_y), tlahir(_tlahir), is_dead(false) {
+Organism::Organism(Universe& u, int _x, int _y, int _tlahir) : universe(u), x(_x), y(_y), tlahir(_tlahir), is_dead(false) {
 }
 
 bool Organism::isDead() const { return is_dead; }

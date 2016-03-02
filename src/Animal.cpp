@@ -3,7 +3,7 @@
 
 
 
-Animal::Animal(Board& b, int x, int y, int t_lahir) : Organism(b,x,y,t_lahir) {
+Animal::Animal(Universe& u, int x, int y, int t_lahir) : Organism(u,x,y,t_lahir) {
 }
 
 direction_t Animal::avoid( int tx, int ty )
