@@ -31,6 +31,18 @@
 		<Compiler>
 			<Add option="-Wall" />
 		</Compiler>
+		<Unit filename="src/Animal.cpp" />
+		<Unit filename="src/Animal.hpp" />
+		<Unit filename="src/Direction.hpp" />
+		<Unit filename="src/IsA.hpp" />
+		<Unit filename="src/MahklupHidup.cpp" />
+		<Unit filename="src/MahklupHidup.hpp" />
+		<Unit filename="src/Plant.cpp" />
+		<Unit filename="src/Plant.hpp" />
+		<Unit filename="src/Universe.hpp" />
+		<Unit filename="src/board.cpp" />
+		<Unit filename="src/board.hpp" />
+		<Unit filename="src/main.cpp" />
 		<Extensions>
 			<code_completion />
 			<envvars />
