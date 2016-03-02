@@ -4,10 +4,10 @@ Board::Board()
 {
 	w=defaultsize;
 	h=defaultsize;
-	data = new char*[h];
+	data = new string*[h];
 	for(int i=0;i<h;i++)
 	{
-		data[i]=new char[w];
+		data[i]=new string[w];
 	}
 	for(int i=0;i<h;i++)
 	{
@@ -16,19 +16,19 @@ Board::Board()
 			data[i][j]=' ';
 		}
 	}
-		
+
 }
 
 Board::Board(int _w, int _h)
 {
 	w=_w;
 	h=_h;
-	data= new char*[h];
+	data= new string*[h];
 	for(int i=0;i<h;i++)
 	{
-		data[i]=new char[w];
+		data[i]=new string[w];
 	}
-	
+
 	for(int i=0;i<h;i++)
 	{
 		for(int j=0;j<w;j++)
@@ -36,19 +36,19 @@ Board::Board(int _w, int _h)
 			data[i][j]=' ';
 		}
 	}
-		
+
 }
 
 Board::Board(const Board& B)
 {
 	w=B.w;
 	h=B.h;
-	data = new char*[h];
+	data = new string*[h];
 	for(int i=0;i<h;i++)
 	{
-		data[i]=new char[w];
+		data[i]=new string[w];
 	}
-	
+
 	for(int i=0;i<h;i++)
 	{
 		for(int j=0;j<w;j++)
@@ -56,7 +56,7 @@ Board::Board(const Board& B)
 			data[i][j]=B.data[i][j];
 		}
 	}
-		
+
 }
 
 Board::~Board()
@@ -70,10 +70,10 @@ Board& Board::operator=(const Board& B)
 	delete data;
 	w=B.w;
 	h=B.h;
-	data = new char*[h];
+	data = new string*[h];
 	for(int i=0;i<h;i++)
 	{
-		data[i]=new char[w];
+		data[i]=new string[w];
 	}
 	for(int i=0;i<h;i++)
 	{
@@ -82,7 +82,7 @@ Board& Board::operator=(const Board& B)
 			data[i][j]=B.data[i][j];
 		}
 	}
-		
+
 	return *this;
 }
 
