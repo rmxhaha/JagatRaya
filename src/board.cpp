@@ -96,21 +96,26 @@ int Board::GetH()
 	return h;
 }
 
-char Board::GetEl(int _h,int _w)
+string Board::GetEl(int _h,int _w)
 {
 	return data[_h][_w];
 }
-void Board::SetH(int _h)
-{
-	h=_h;
-}
-void Board::SetW(int _w)
-{
-	w=_w;
-}
+
 void Board::SetEl(char c,int _h,int _w)
 {
-	data[_h][_w]=c;
+	data[_h][_w]+=c;
+}
+void Board::DelEl(char c,int _h,int _w)
+{
+	string s=data[_h][_w];
+	for(int i=0;i<s.length();i++)
+	{
+		if(s[i]==c)
+		{
+			data[_h][_w].erase(i,1);
+			break;
+		}
+	}
 }
 void Board::PrintBoard()
 {

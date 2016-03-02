@@ -1,6 +1,7 @@
 #ifndef _BOARD_H
 #define _BOARD_H
 #include <iostream>
+#include <string>
 using namespace std;
 class Board
 {
@@ -12,13 +13,12 @@ public:
 	Board& operator=(const Board& B);
 	int GetW();
 	int GetH();
-	char GetEl(int _h,int _w);
-	void SetW(int _w);
-	void SetH(int _h);
+	string GetEl(int _h,int _w);
 	void SetEl(char c,int _h,int _w);
+	void DelEl(char c,int _h,int _w);
 	void PrintBoard();
 private:
-	char **data;
+	string **data;
 	static const int defaultsize = 10;
 	int w;
 	int h;
