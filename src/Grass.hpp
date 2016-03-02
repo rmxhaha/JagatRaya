@@ -5,7 +5,7 @@
 
 class Grass : public Plant {
 	public:
-		Grass(Board&, int x, int y, int t_lahir);
+		Grass(Universe&, int x, int y, int t_lahir);
 		int power();
 		float tgrow();
 		char ch();

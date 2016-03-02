@@ -5,7 +5,7 @@
 
 class Tiger:public Carnivore{
 	public:
-	Tiger(Board& b,int x,int y,int t_lahir);
+	Tiger(Universe& u,int x,int y,int t_lahir);
 	void update();
 	char ch();
 	float speed();

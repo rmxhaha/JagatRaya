@@ -5,7 +5,7 @@
 
 class Eagle : public Carnivore {
 	public:
-	Eagle(Board& b, int x, int y, int t_lahir);
+	Eagle(Universe& u,int x, int y, int t_lahir);
 	void update();
 	char ch();
 	float speed();

@@ -3,8 +3,18 @@
 
 
 
-Animal::Animal(Board& b, int x, int y, int t_lahir) : Organism(b,x,y,t_lahir) {
+Animal::Animal(Universe& u, int x, int y, int t_lahir) : Organism(u,x,y,t_lahir), timebuffer(0) {
 }
+
+void Animal::update(float dt)
+{
+    timebuffer += dt;
+    while( timebuffer > speed() ){
+        update_logic();
+        timebuffer -= speed();
+    }
+}
+void Animal::update_logic(){}
 
 direction_t Animal::avoid( int tx, int ty )
 {
@@ -64,7 +74,20 @@ direction_t Animal::goTo( int tx, int ty ){
         }
     }
 }
-
+direction_t Animal::goRandom(){
+    int d = rand() % 8;
+    switch(d){
+    case 0: return direction_t::UP;
+    case 1: return direction_t::DOWN;
+    case 2: return direction_t::LEFT;
+    case 3: return direction_t::RIGHT;
+    case 4: return direction_t::UP_LEFT;
+    case 5: return direction_t::UP_RIGHT;
+    case 6: return direction_t::DOWN_LEFT;
+    case 7: return direction_t::DOWN_RIGHT;
+    default : return direction_t::UP;
+    }
+}
 void Animal::move(direction_t direction){
     int dx = 0, dy = 0;
 

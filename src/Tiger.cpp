@@ -1,7 +1,7 @@
 #include "Tiger.hpp"
 
-Tiger::Tiger(Board& b, int x, int y, int t_lahir):Carnivore(b,x,y,t_lahir){}
-
+Tiger::Tiger(Universe& u, int x, int y, int t_lahir):Carnivore(u,x,y,t_lahir){}
+,
 void Tiger::update(){
 	//Update Tiger move
 }

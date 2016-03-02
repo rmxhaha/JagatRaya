@@ -6,7 +6,7 @@
 class Poison_Ivy : public Plant 
 {
 	public:
-	Poison_Ivy(Board& b, int x, int y, int t_lahir);
+	Poison_Ivy(Universe& b, int x, int y, int t_lahir);
 	int power();
 	float tgrow();
 	char ch();

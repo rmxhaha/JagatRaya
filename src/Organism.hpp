@@ -1,11 +1,13 @@
 #ifndef MAHKLUP_HIDUP
 #define MAHKLUP_HIDUP
 
-#include "board.hpp"
 
+#include "Universe.hpp"
+
+class Universe;
 class Organism {
 public:
-	Organism(Board&, int x, int y, int t_lahir);
+	Organism(Universe& u, int x, int y, int t_lahir);
 
 	bool isDead() const;
 	bool isAlive() const;
@@ -13,7 +15,7 @@ public:
 	virtual char ch() const = 0;
 	virtual int umur() const = 0;
 	virtual int power() const = 0;
-	virtual void update() = 0;
+	virtual void update(float dt) = 0; // delta time in milliseconds
 protected:
 
     void forceKill();
@@ -21,7 +23,7 @@ protected:
 	int tlahir;
 	bool is_dead;
 	int x,y;
-	Board& board;
+	Universe& universe;
 };
 
 #endif 

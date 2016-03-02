@@ -5,7 +5,7 @@
 
 class Alien:public Carnivore{
 	public:
-	Alien(Board& b, int x, int y, int t_lahir);
+	Alien(Universe& u,int x, int y, int t_lahir);
 	void update();
 	char ch();
 	float speed();

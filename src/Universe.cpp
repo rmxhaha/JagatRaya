@@ -5,7 +5,8 @@ using namespace std;
 
 Universe::Universe(int w, int h) : board(w,h){
 }
-
+Universe::~Universe(){
+}
 void Universe::add(Organism* m){
     MList.push_back(m);
 }
@@ -28,5 +29,11 @@ void Universe::interact(Organism* m){
     // interact
     for( auto& it: MList ){
         //m.interact(it);
+    }
+}
+
+void Universe::update( float dt ){
+    for( auto&it: MList ){
+        it->update(dt);
     }
 }

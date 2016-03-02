@@ -1,6 +1,6 @@
 #include "Alien.hpp"
 
-Alien::Alien(Board& b, int x, int y, int t_lahir):Carnivore(b,x,y,t_lahir){}
+Alien::Alien(Universe& u, int x, int y, int t_lahir):Carnivore(u,x,y,t_lahir){}
 
 void Alien::update(){
 	//Update Alien move
