@@ -5,13 +5,14 @@
 #include "Tiger.hpp"
 
 #include "../Test/board_unittest.hpp"
-
+#include "../Test/human_unittest.hpp"
 
 #include <iostream>
 using namespace std;
 
 void test(){
     Test::BoardTest::DimensionTest();
+    Test::HumanTest::HumanCharTest();
 }
 
 int main()
