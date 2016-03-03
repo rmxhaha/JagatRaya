@@ -8,10 +8,11 @@ Animal::Animal(Universe& u, int x, int y, int t_lahir) : Organism(u,x,y,t_lahir)
 
 void Animal::update(float dt)
 {
+    float d = 1000/speed();
     timebuffer += dt;
-    while( timebuffer > speed() ){
+    while( timebuffer > d ){
         update_logic();
-        timebuffer -= speed();
+        timebuffer -= d;
     }
 }
 void Animal::update_logic(){}
