@@ -6,10 +6,11 @@
 class Tiger:public Carnivore{
 	public:
 	Tiger(Universe& u,int x,int y,int t_lahir);
-	void update();
-	char ch();
-	float speed();
-	int power();
-	int umur();
+protected:
+	void update_logic();
+	char ch() const;
+	float speed() const;
+	int power() const;
+	int umur() const;
 };
 #endif

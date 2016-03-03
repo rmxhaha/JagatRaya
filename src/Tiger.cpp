@@ -1,19 +1,19 @@
 #include "Tiger.hpp"
 
 Tiger::Tiger(Universe& u, int x, int y, int t_lahir):Carnivore(u,x,y,t_lahir){}
-,
-void Tiger::update(){
+
+void Tiger::update_logic(){
 	//Update Tiger move
 }
-char Tiger::ch(){
+char Tiger::ch() const {
 	return 'T';
 }
-float Tiger::speed(){
+float Tiger::speed() const {
 	return 5;
 }
-int Tiger::power(){
+int Tiger::power() const {
 	return 25;
 }
-int Tiger::umur(){
+int Tiger::umur() const {
 	return 70;
 }
