@@ -1,7 +1,7 @@
-#include "Plant.cpp"
-
 #ifndef GRASS_H
 #define GRASS_H
+
+#include "Plant.hpp"
 
 class Grass : public Plant {
 	public:
