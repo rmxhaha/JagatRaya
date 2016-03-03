@@ -31,18 +31,35 @@
 		<Compiler>
 			<Add option="-Wall" />
 		</Compiler>
+		<Unit filename="src/Alien.cpp" />
+		<Unit filename="src/Alien.hpp" />
 		<Unit filename="src/Animal.cpp" />
 		<Unit filename="src/Animal.hpp" />
+		<Unit filename="src/Carnivore.cpp" />
+		<Unit filename="src/Carnivore.hpp" />
 		<Unit filename="src/Direction.hpp" />
+		<Unit filename="src/Eagle.cpp" />
+		<Unit filename="src/Eagle.hpp" />
+		<Unit filename="src/Grass.cpp" />
+		<Unit filename="src/Grass.hpp" />
+		<Unit filename="src/Human.cpp" />
+		<Unit filename="src/Human.hpp" />
 		<Unit filename="src/IsA.hpp" />
-		<Unit filename="src/MahklupHidup.cpp" />
-		<Unit filename="src/MahklupHidup.hpp" />
+		<Unit filename="src/Organism.cpp" />
+		<Unit filename="src/Organism.hpp" />
 		<Unit filename="src/Plant.cpp" />
 		<Unit filename="src/Plant.hpp" />
+		<Unit filename="src/Poison_Ivy.cpp" />
+		<Unit filename="src/Poison_Ivy.hpp" />
+		<Unit filename="src/Tiger.cpp" />
+		<Unit filename="src/Tiger.hpp" />
+		<Unit filename="src/Universe.cpp" />
 		<Unit filename="src/Universe.hpp" />
 		<Unit filename="src/board.cpp" />
 		<Unit filename="src/board.hpp" />
 		<Unit filename="src/main.cpp" />
+		<Unit filename="test/board_unittest.cpp" />
+		<Unit filename="test/board_unittest.hpp" />
 		<Extensions>
 			<code_completion />
 			<envvars />
