@@ -2,18 +2,10 @@
 
 Alien::Alien(Universe& u, int x, int y, int t_lahir):Carnivore(u,x,y,t_lahir){}
 
-void Alien::update(){
-	//Update Alien move
+void Alien::update(){//Update Alien move
 }
-char Alien::ch(){
-	return '@';
-}
-float Alien::speed(){
-	return 1;
-}
-int Alien::power(){
-	return 50;
-}
-int Alien::umur(){
-	return 100;
-}
+
+char Alien::ch() const{return '@';}
+float Alien::speed() const{return 1;}
+int Alien::power() const{return 50;}
+int Alien::umur() const{return 100;}
