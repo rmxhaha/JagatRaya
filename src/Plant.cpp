@@ -18,11 +18,6 @@ void Plant::grow(){
 			place=true;
 		}
 	}
-<<<<<<< HEAD
-	int nt=tlahir+tgrow;
-	Plant newP(board,nj,ni,nt);
-=======
 	int nt=tlahir+tgrow();
 //	Plant NewP(universe,nj,ni,nt);
->>>>>>> f1d561af023cb39d83276e0aeb15fdefcb793892
 }

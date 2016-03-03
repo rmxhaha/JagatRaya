@@ -9,4 +9,6 @@ public:
 
 protected:
 
-};#endif
+};
+
+#endif
