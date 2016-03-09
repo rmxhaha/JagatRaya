@@ -9,6 +9,15 @@ class Organism {
 public:
 	Organism(Universe& u, int x, int y, int t_lahir);
 
+	int getTLahir();
+	int getX();
+	int getY();
+
+	void setTLahir(int tlahir);
+    void setX(int x);
+    void setY(int y);
+    void setXY(int x, int y);
+
 	bool isDead() const;
 	bool isAlive() const;
 
