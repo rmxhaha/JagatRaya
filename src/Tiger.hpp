@@ -12,5 +12,6 @@ protected:
 	float speed() const;
 	int power() const;
 	int umur() const;
+	void interact(Organism*);
 };
 #endif

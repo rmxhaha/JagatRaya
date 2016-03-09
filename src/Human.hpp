@@ -10,6 +10,7 @@ public:
 	virtual int umur() const;
 	virtual int power() const;
     virtual float speed() const;
+    void interact(Organism*);
 
 protected:
     void update_logic();

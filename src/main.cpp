@@ -17,8 +17,6 @@ void test(){
 
 int main()
 {
-    test();
-    return 0;
 
 	Universe u(10,10);
 	Human* h = new Human(u,0,0,10);
