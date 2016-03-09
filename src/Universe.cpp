@@ -11,25 +11,15 @@ void Universe::add(Organism* m){
     MList.push_back(m);
 }
 
-
-void Universe::listen(Event evt, CallbackFunction callback){
-    subscriber[evt].push_back(callback);
-}
-
-
-void Universe::publish(Event evt, Organism* x){
-    for( auto& it: subscriber[evt] ){
-        it(x);
+void Universe::publish(Event evt, Organism* o){
+    for( auto& it : MList ){
+        if( it == o ) continue;
+        if( o->getX() == it->getX() && o->getY() == it->getY() ){
+            it->interact(o);
+            o->interact(it);
+        }
     }
-}
 
-void Universe::interact(Organism* m){
-    // eliminate weakest
-
-    // interact
-    for( auto& it: MList ){
-        //m.interact(it);
-    }
 }
 
 void Universe::update( float dt ){

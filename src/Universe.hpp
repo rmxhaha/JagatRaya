@@ -21,8 +21,6 @@ public:
         MOVEMENT
     };
 
-    typedef function<void (Organism*)> CallbackFunction;
-
     /** \brief Universe Constructor
      *
      * \param w int width of map
@@ -39,16 +37,13 @@ public:
      *
      */
     void add(Organism* m);
-    void listen(Event evt, CallbackFunction callback);
+    void publish(Event evt, Organism* x);
     void update(float dt);
 
     Board board; // expose ?
 private:
-    void publish(Event evt, Organism* x);
-    void interact(Organism* m);
 
     vector<Organism*> MList;
-    map<Event, vector<CallbackFunction>> subscriber;
 };
 
 #endif // UNIVERSE_H
