@@ -11,18 +11,33 @@
 using namespace std;
 
 
+
 class Organism;
 class Universe {
 public:
+    /** \brief Event types for Observer pattern
+    */
     enum class Event {
         MOVEMENT
     };
 
     typedef function<void (Organism*)> CallbackFunction;
 
+    /** \brief Universe Constructor
+     *
+     * \param w int width of map
+     * \param h int height of map
+     *
+     */
     Universe(int w, int h);
     ~Universe();
 
+    /** \brief
+     *
+     * \param m Organism* organism inside Universe
+     * \return void
+     *
+     */
     void add(Organism* m);
     void listen(Event evt, CallbackFunction callback);
     void update(float dt);
