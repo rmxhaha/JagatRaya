@@ -27,7 +27,7 @@ public:
      * \param h int height of map
      *
      */
-    Universe(int w, int h);
+    Universe(int w, int h, int maxOrganismPerCell);
     ~Universe();
 
     /** \brief
@@ -42,7 +42,7 @@ public:
 
     Board board; // expose ?
 private:
-
+    int MaxOrganismPerCell;
     vector<Organism*> MList;
 };
 
