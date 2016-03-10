@@ -26,9 +26,9 @@ public:
 	virtual int power() const = 0;
 	virtual void update(float dt) = 0; // delta time in milliseconds
 	virtual void interact(Organism*) = 0;
-protected:
 
     void forceKill();
+protected:
 
 	int tlahir;
 	bool is_dead;
