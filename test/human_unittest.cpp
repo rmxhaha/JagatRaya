@@ -3,7 +3,7 @@
 #include <iostream>
 
 void Test::HumanTest::HumanCharTest(){
-    Universe u(10,10);
+    Universe u(10,10,1);
     Human h(u,0,0,0);
     u.add(&h);
     assert( h.ch() == 'H' );
