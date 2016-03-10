@@ -1,4 +1,7 @@
 #include "board.hpp"
+#include <conio.h>
+#include <windows.h>
+
 
 Board::Board()
 {
@@ -27,14 +30,6 @@ Board::Board(int _w, int _h)
 	for(int i=0;i<h;i++)
 	{
 		data[i]=new string[w];
-	}
-
-	for(int i=0;i<h;i++)
-	{
-		for(int j=0;j<w;j++)
-		{
-			data[i][j]=' ';
-		}
 	}
 
 }
@@ -117,14 +112,29 @@ void Board::DelEl(char c,int _h,int _w)
 		}
 	}
 }
+
+void gotoxy( int column, int line )
+  {
+  COORD coord;
+  coord.X = column;
+  coord.Y = line;
+  SetConsoleCursorPosition(
+    GetStdHandle( STD_OUTPUT_HANDLE ),
+    coord
+    );
+  }
+
 void Board::PrintBoard()
 {
 	for(int i=0;i<h;i++)
 	{
 		for(int j=0;j<w;j++)
 		{
-			cout << data[i][j];
+		    gotoxy(i,j);
+		    if( data[i][j].length() > 0 )
+                cout << data[i][j][0];
+            else
+                cout << " ";
 		}
-		cout<<endl;
 	}
 }
