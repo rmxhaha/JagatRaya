@@ -7,9 +7,12 @@
 class Plant : public Organism {
 public:
 	Plant(Universe& u, int x, int y, int t_lahir);
+	void update(float dt);
 protected:
-	void grow();
+	virtual void update_grow();
+	virtual void grow() const =0;
 	virtual float tgrow() const = 0;
+	float timebuffer;
 };
 
 

@@ -1,23 +1,16 @@
 #include "Plant.hpp"
 #include <ctime>
 
-Plant::Plant(Universe& b, int x, int y, int t_lahir):Organism(b,x,y,t_lahir){}
+Plant::Plant(Universe& b, int x, int y, int t_lahir):Organism(b,x,y,t_lahir), timebuffer(0.0){}
 
-void Plant::grow(){
-	bool place=false;
-	int ni,nj;
-	srand((unsigned)time(NULL));
-	while(!place)
-	{
-		int i1=rand()%3-1;
-		int j1=rand()%3-1;
-		if(i1!=0||j1!=0)
-		{
-			ni=y+i1;
-			nj=x+j1;
-			place=true;
-		}
-	}
-	int nt=tlahir+tgrow();
-//	Plant NewP(universe,nj,ni,nt);
+void Plant::update(float dt)
+{
+	float d = 1000/tgrow();
+    timebuffer += dt;
+    while( timebuffer > d ){
+        update_grow();
+        timebuffer -= d;
+    }
 }
+
+void Plant::update_grow(){}
