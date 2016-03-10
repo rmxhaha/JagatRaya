@@ -16,7 +16,7 @@ int Tiger::power() const {
 	return 25;
 }
 int Tiger::umur() const {
-	return 70;
+	return 7000;
 }
 
 void Tiger::interact(Organism*){

@@ -18,7 +18,7 @@ void test(){
 
 int main()
 {
-    srand(512321);
+    srand(444);
 	Universe u(10,10,1);
 	Human* h = new Human(u,0,0,10);
 	Tiger* t = new Tiger(u,5,5,10);
