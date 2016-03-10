@@ -33,3 +33,4 @@ void Grass::update_grow()
 	grow();
 }
 
+void Grass::interact(Organism*){}

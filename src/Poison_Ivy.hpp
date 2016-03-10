@@ -3,7 +3,7 @@
 #ifndef POISON_IVY_H
 #define POISON_IVY_H
 
-class Poison_Ivy : public Plant 
+class Poison_Ivy : public Plant
 {
 	public:
 	Poison_Ivy(Universe& b, int x, int y, int t_lahir);
@@ -14,5 +14,6 @@ class Poison_Ivy : public Plant
 	void grow()const;
 	int umur()const;
 	void update_grow();
+	void interact(Organism*);
 };
 #endif

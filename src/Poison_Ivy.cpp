@@ -24,6 +24,9 @@ void Poison_Ivy::grow() const {
 	int nt=tlahir+tgrow();
 	Poison_Ivy NewP(universe,nj,ni,nt);
 }
+
+void Poison_Ivy::interact(Organism*){}
+
 void Poison_Ivy::update_grow()
 {
 	grow();

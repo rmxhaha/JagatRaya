@@ -12,5 +12,6 @@ class Grass : public Plant {
 		char ch() const ;
 		int umur() const;
 		void update_grow() ;
+		void interact(Organism*);
 };
 #endif
