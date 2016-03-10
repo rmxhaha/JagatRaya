@@ -15,5 +15,8 @@ void Organism::setXY(int x, int y) { this -> x = x, this -> y = y; }
 bool Organism::isDead() const { return is_dead; }
 bool Organism::isAlive() const { return !is_dead; }
 
-void Organism::forceKill(){ is_dead = true; }
+void Organism::forceKill(){
+    is_dead = true;
+    universe.board.DelEl(ch(),x,y);
+}
 
