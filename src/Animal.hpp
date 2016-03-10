@@ -19,6 +19,7 @@ protected:
 	void move(direction_t direction);
     virtual void update_logic();
 
+    float cAge;
     float timebuffer;
 };
 

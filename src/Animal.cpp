@@ -3,13 +3,19 @@
 
 
 
-Animal::Animal(Universe& u, int x, int y, int t_lahir) : Organism(u,x,y,t_lahir), timebuffer(0.0) {
+Animal::Animal(Universe& u, int x, int y, int t_lahir) : Organism(u,x,y,t_lahir), timebuffer(0.0), cAge(0.0) {
 }
 
 void Animal::update(float dt)
 {
     float d = 1000/speed();
     timebuffer += dt;
+    cAge += dt;
+    if( cAge > umur() ){
+        forceKill();
+        return;
+    }
+
     while( timebuffer > d ){
         update_logic();
         timebuffer -= d;
@@ -22,58 +28,45 @@ direction_t Animal::avoid( int tx, int ty )
     if( tx < x ){ // run right
         if( ty < y ) // run up
             return direction_t::UP_RIGHT;
-        else if( ty > y ) // run down
+        if( ty > y ) // run down
             return direction_t::DOWN_RIGHT;
-        else
-            return direction_t::RIGHT;
+        return direction_t::RIGHT;
     }
-    else if( x < tx ){ // run left
+    if( x < tx ){ // run left
         if( ty < y ) // run up
             return direction_t::UP_LEFT;
-        else if( ty > y ) // run down
+        if( ty > y ) // run down
             return direction_t::DOWN_LEFT;
-        else
-            return direction_t::LEFT;
+        return direction_t::LEFT;
     }
-    else {
-        if( ty < y ) // run up
-            return direction_t::UP;
-        else if( ty > y ) // run down
-            return direction_t::DOWN;
-        else{
-            // on the same coor
-            return direction_t::UP_LEFT;
-        }
-    }
+    if( ty < y ) // run up
+        return direction_t::UP;
+    if( ty > y ) // run down
+        return direction_t::DOWN;
+    // on the same coor
+    return direction_t::UP_LEFT;
 }
 
 direction_t Animal::goTo( int tx, int ty ){
     if( tx > x ){ // run right
         if( ty > y ) // run up
             return direction_t::UP_RIGHT;
-        else if( ty < y ) // run down
+        if( ty < y ) // run down
             return direction_t::DOWN_RIGHT;
-        else
-            return direction_t::RIGHT;
+        return direction_t::RIGHT;
     }
-    else if( x > tx ){ // run left
+    if( x > tx ){ // run left
         if( ty > y ) // run up
             return direction_t::UP_LEFT;
-        else if( ty < y ) // run down
+        if( ty < y ) // run down
             return direction_t::DOWN_LEFT;
-        else
-            return direction_t::LEFT;
+        return direction_t::LEFT;
     }
-    else {
-        if( ty > y ) // run up
-            return direction_t::UP;
-        else if( ty < y ) // run down
-            return direction_t::DOWN;
-        else{
-            // on the same coor
-            // just stop
-        }
-    }
+    if( ty > y ) // run up
+        return direction_t::UP;
+    if( ty < y ) // run down
+        return direction_t::DOWN;
+    return direction_t::NO_WHERE;
 }
 direction_t Animal::goRandom(){
     int d = rand() % 8;
@@ -115,8 +108,8 @@ void Animal::move(direction_t direction){
 
 
     universe.board.DelEl(ch(),x,y);
-
     universe.board.SetEl(ch(),tx,ty);
+    universe.publish(Universe::Event::MOVEMENT,this);
     x=  tx;
     y = ty;
 }

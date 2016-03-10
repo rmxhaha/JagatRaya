@@ -9,6 +9,15 @@ class Organism {
 public:
 	Organism(Universe& u, int x, int y, int t_lahir);
 
+	int getTLahir();
+	int getX();
+	int getY();
+
+	void setTLahir(int tlahir);
+    void setX(int x);
+    void setY(int y);
+    void setXY(int x, int y);
+
 	bool isDead() const;
 	bool isAlive() const;
 
@@ -16,9 +25,10 @@ public:
 	virtual int umur() const = 0;
 	virtual int power() const = 0;
 	virtual void update(float dt) = 0; // delta time in milliseconds
-protected:
+	virtual void interact(Organism*) = 0;
 
     void forceKill();
+protected:
 
 	int tlahir;
 	bool is_dead;
@@ -26,4 +36,4 @@ protected:
 	Universe& universe;
 };
 
-#endif 
+#endif

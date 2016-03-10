@@ -8,6 +8,7 @@ int Grass::power()const{return 10;}
 float Grass::tgrow()const{return 2;}
 char Grass::ch()const{return 'G';}
 int Grass::umur() const {return 40;}
+
 void Grass::grow() const {
 	bool place=false;
 	int ni,nj;
@@ -31,3 +32,4 @@ void Grass::update_grow()
 {
 	grow();
 }
+

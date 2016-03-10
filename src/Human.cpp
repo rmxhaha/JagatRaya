@@ -8,8 +8,10 @@ Human::Human(Universe& universe, int x, int y, int t_lahir) : Carnivore(universe
 void Human::update_logic(){
     move(goRandom());
 }
-
 char Human::ch() const { return 'H'; }
+
 int Human::power() const{ return 1; }
-int Human::umur() const { return 1; }
+int Human::umur() const { return 5000; }
 float Human::speed() const { return 3; }
+void Human::interact(Organism*){
+}
