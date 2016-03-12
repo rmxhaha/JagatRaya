@@ -10,6 +10,6 @@ class Alien:public Carnivore{
 	char ch() const ;
 	float speed() const ;
 	int power() const ;
-	int umur() const ;
+	int age() const ;
 };
 #endif

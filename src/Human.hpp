@@ -7,7 +7,7 @@ class Human : public Carnivore {
 public:
     Human(Universe& universe, int x, int y, int t_lahir);
     virtual char ch() const ;
-	virtual int umur() const;
+	virtual int age() const;
 	virtual int power() const;
     virtual float speed() const;
     void interact(Organism*);

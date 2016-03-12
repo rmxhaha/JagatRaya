@@ -11,7 +11,7 @@ void Animal::update(float dt)
     float d = 1000/speed();
     timebuffer += dt;
     cAge += dt;
-    if( cAge > umur() ){
+    if( cAge > age() ){
         forceKill();
         return;
     }

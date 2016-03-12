@@ -12,7 +12,7 @@ class Poison_Ivy : public Plant
 	float tgrow() const;
 	char ch() const;
 	void grow()const;
-	int umur()const;
+	int age()const;
 	void update_grow();
 	void interact(Organism*);
 };

@@ -9,4 +9,4 @@ void Eagle::update(){
 char Eagle::ch() const{return 'E';}
 float Eagle::speed() const{return 3;}
 int Eagle::power() const {return 20;}
-int Eagle::umur() const{return 60;}
+int Eagle::age() const{return 60;}

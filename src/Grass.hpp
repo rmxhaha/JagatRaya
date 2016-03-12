@@ -10,7 +10,7 @@ class Grass : public Plant {
 		int power() const;
 		float tgrow() const ;
 		char ch() const ;
-		int umur() const;
+		int age() const;
 		void update_grow() ;
 		void interact(Organism*);
 };

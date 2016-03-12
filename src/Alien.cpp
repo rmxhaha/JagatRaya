@@ -8,4 +8,4 @@ void Alien::update(){//Update Alien move
 char Alien::ch() const{return '@';}
 float Alien::speed() const{return 1;}
 int Alien::power() const{return 50;}
-int Alien::umur() const{return 100;}
+int Alien::age() const{return 100;}

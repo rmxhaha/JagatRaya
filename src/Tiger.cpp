@@ -17,7 +17,7 @@ float Tiger::speed() const {
 int Tiger::power() const {
 	return 25;
 }
-int Tiger::umur() const {
+int Tiger::age() const {
 	return 7000;
 }
 

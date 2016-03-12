@@ -22,7 +22,7 @@ public:
 	bool isAlive() const;
 
 	virtual char ch() const = 0;
-	virtual int umur() const = 0;
+	virtual int age() const = 0;
 	virtual int power() const = 0;
 	virtual void update(float dt) = 0; // delta time in milliseconds
 	virtual void interact(Organism*) = 0;
