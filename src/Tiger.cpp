@@ -1,6 +1,6 @@
 #include "Tiger.hpp"
 
-Tiger::Tiger(Universe& u, int x, int y, int t_lahir):Carnivore(u,x,y,t_lahir){}
+Tiger::Tiger(Universe& u, int x, int y,float currentAge):Carnivore(u,x,y,currentAge){}
 
 
 void Tiger::update_logic(){
@@ -17,7 +17,7 @@ float Tiger::speed() const {
 int Tiger::power() const {
 	return 25;
 }
-int Tiger::umur() const {
+int Tiger::age() const {
 	return 7000;
 }
 

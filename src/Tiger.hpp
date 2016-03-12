@@ -5,13 +5,13 @@
 
 class Tiger:public Carnivore{
 	public:
-	Tiger(Universe& u,int x,int y,int t_lahir);
+	Tiger(Universe& u,int x,int y,float currentAge);
 protected:
 	void update_logic();
 	char ch() const;
 	float speed() const;
 	int power() const;
-	int umur() const;
+	int age() const;
 	void interact(Organism*);
 };
 #endif
