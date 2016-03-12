@@ -1,7 +1,7 @@
 #include "Grass.hpp"
 
 Grass::Grass(Universe& b, int x, int y, int t_lahir):Plant(b,x,y,t_lahir) {
-	 universe.board.SetEl(ch(),x,y);
+	 universe->board.SetEl(ch(),x,y);
 }
 
 int Grass::power()const{return 10;}
@@ -25,7 +25,7 @@ void Grass::grow() const {
 		}
 	}
 	int nt=tlahir+tgrow();
-	Grass NewG(universe,nj,ni,nt);
+	Grass NewG(*universe,nj,ni,nt);
 }
 
 void Grass::update_grow()

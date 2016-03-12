@@ -33,7 +33,7 @@ protected:
 	int tlahir;
 	bool is_dead;
 	int x,y;
-	Universe& universe;
+	Universe* universe;
 };
 
 #endif
