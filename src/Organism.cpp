@@ -1,7 +1,7 @@
 #include "Organism.hpp"
 
 
-Organism::Organism(Universe& u, int _x, int _y, int _tlahir) : universe(&u), x(_x), y(_y), tlahir(_tlahir), is_dead(false) {
+Organism::Organism(Universe& u, int _x, int _y, int _tlahir) : universe(&u), x(_x), y(_y), tlahir(_tlahir), is_dead(false), cAge(0.0) {
 }
 
 int Organism::getTLahir() { return tlahir; }
@@ -20,3 +20,9 @@ void Organism::forceKill(){
     universe->board.DelEl(ch(),x,y);
 }
 
+void Organism::update(float dt){
+    cAge += dt;
+
+    if( cAge > age() )
+        forceKill();
+}

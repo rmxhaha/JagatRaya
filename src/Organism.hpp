@@ -24,12 +24,13 @@ public:
 	virtual char ch() const = 0;
 	virtual int age() const = 0;
 	virtual int power() const = 0;
-	virtual void update(float dt) = 0; // delta time in milliseconds
+	virtual void update(float dt); // delta time in milliseconds
 	virtual void interact(Organism*) = 0;
 
     void forceKill();
 protected:
 
+    float cAge; // current age
 	int tlahir;
 	bool is_dead;
 	int x,y;
