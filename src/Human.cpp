@@ -1,7 +1,7 @@
 #include "Human.hpp"
 
 
-Human::Human(Universe& universe, int x, int y, int t_lahir) : Carnivore(universe,x,y,t_lahir) {
+Human::Human(Universe& universe, int x, int y,float currentAge) : Carnivore(universe,x,y,currentAge) {
     universe.board.SetEl(ch(),x,y);
 }
 

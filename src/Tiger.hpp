@@ -5,7 +5,7 @@
 
 class Tiger:public Carnivore{
 	public:
-	Tiger(Universe& u,int x,int y,int t_lahir);
+	Tiger(Universe& u,int x,int y,float currentAge);
 protected:
 	void update_logic();
 	char ch() const;

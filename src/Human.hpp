@@ -5,7 +5,7 @@
 
 class Human : public Carnivore {
 public:
-    Human(Universe& universe, int x, int y, int t_lahir);
+    Human(Universe& universe, int x, int y,float currentAge);
     virtual char ch() const ;
 	virtual int age() const;
 	virtual int power() const;

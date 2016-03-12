@@ -1,6 +1,6 @@
 #include "Eagle.hpp"
 
-Eagle::Eagle(Universe& u, int x, int y, int t_lahir):Carnivore(u,x,y,t_lahir){}
+Eagle::Eagle(Universe& u, int x, int y,float currentAge):Carnivore(u,x,y,currentAge){}
 
 void Eagle::update(){
 	//Update Eagle move

@@ -1,6 +1,6 @@
 #include "Poison_Ivy.hpp"
 
-Poison_Ivy::Poison_Ivy(Universe& b, int x, int y, int t_lahir):Plant(b,x,y,t_lahir) {}
+Poison_Ivy::Poison_Ivy(Universe& b, int x, int y,float currentAge):Plant(b,x,y,currentAge) {}
 
 int Poison_Ivy::power()const{return 13;}
 float Poison_Ivy::tgrow()const{return 8;}
@@ -21,8 +21,7 @@ void Poison_Ivy::grow() const {
 			place=true;
 		}
 	}
-	int nt=tlahir+tgrow();
-	Poison_Ivy NewP(*universe,nj,ni,nt);
+	Poison_Ivy NewP(*universe,nj,ni,0);
 }
 
 void Poison_Ivy::interact(Organism*){}

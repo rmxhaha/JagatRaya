@@ -8,7 +8,7 @@
 
 class Animal : public Organism {
 public:
-	Animal(Universe& u, int x, int y, int t_lahir);
+	Animal(Universe& u, int x, int y,float currentAge);
 	virtual float speed() const = 0;
 
     void update(float dt);

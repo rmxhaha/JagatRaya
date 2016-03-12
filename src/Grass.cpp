@@ -1,6 +1,6 @@
 #include "Grass.hpp"
 
-Grass::Grass(Universe& b, int x, int y, int t_lahir):Plant(b,x,y,t_lahir) {
+Grass::Grass(Universe& b, int x, int y,float currentAge):Plant(b,x,y,currentAge) {
 	 universe->board.SetEl(ch(),x,y);
 }
 
@@ -24,8 +24,7 @@ void Grass::grow() const {
 			place=true;
 		}
 	}
-	int nt=tlahir+tgrow();
-	Grass NewG(*universe,nj,ni,nt);
+	Grass NewG(*universe,nj,ni,0);
 }
 
 void Grass::update_grow()

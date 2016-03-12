@@ -7,13 +7,11 @@
 class Universe;
 class Organism {
 public:
-	Organism(Universe& u, int x, int y, int t_lahir);
+	Organism(Universe& u, int x, int y, float currentAge);
 
-	int getTLahir();
 	int getX();
 	int getY();
 
-	void setTLahir(int tlahir);
     void setX(int x);
     void setY(int y);
     void setXY(int x, int y);
@@ -29,9 +27,7 @@ public:
 
     void forceKill();
 protected:
-
     float cAge; // current age
-	int tlahir;
 	bool is_dead;
 	int x,y;
 	Universe* universe;

@@ -3,7 +3,7 @@
 
 
 
-Animal::Animal(Universe& u, int x, int y, int t_lahir) : Organism(u,x,y,t_lahir), timebuffer(0.0), cAge(0.0) {
+Animal::Animal(Universe& u, int x, int y, float currentAge) : Organism(u,x,y,currentAge), timebuffer(0.0) {
 }
 
 void Animal::update(float dt)
