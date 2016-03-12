@@ -1,5 +1,5 @@
 #include "IsA.hpp"
-#include "universe.hpp"
+#include "UniverseList.hpp"
 #include "Human.hpp"
 #include "windows.h"
 #include "Tiger.hpp"
@@ -20,13 +20,15 @@ void test(){
 int main()
 {
     srand(444);
-	Universe u(10,10,1);
+    Board b(10,10);
+	UniverseList u(b,1);
 	Human* h = new Human(u,0,0,10);
 	Tiger* t = new Tiger(u,5,5,10);
-	Grass* g = new Grass(u,3,5,10);
+    Grass* g = new Grass(u,3,5,10);
     u.add(h);
     u.add(t);
     u.add(g);
+
     while(true){
         u.board.PrintBoard();
         u.update(100);

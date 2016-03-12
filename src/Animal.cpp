@@ -109,7 +109,7 @@ void Animal::move(direction_t direction){
 
     universe->board.DelEl(ch(),x,y);
     universe->board.SetEl(ch(),tx,ty);
-    universe->publish(Universe::Event::MOVEMENT,this);
+    universe->notifyMovement(this);
     x=  tx;
     y = ty;
 }

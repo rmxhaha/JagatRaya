@@ -1,9 +1,11 @@
 #include "human_unittest.hpp"
+#include "../src/UniverseSTL.hpp"
 #include <cassert>
 #include <iostream>
 
 void Test::HumanTest::HumanCharTest(){
-    Universe u(10,10,1);
+    Board b(10,10);
+    UniverseSTL u(b,1);
     Human h(u,0,0,0);
     u.add(&h);
     assert( h.ch() == 'H' );
