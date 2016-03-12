@@ -13,6 +13,7 @@ public:
     void interact(Organism*);
 
 protected:
+    void copulate();
     void update_logic();
 };
 
