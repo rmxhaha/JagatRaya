@@ -12,7 +12,8 @@ struct node
     int value;
     struct node *next;
 };
- 
+typedef struct node snode;
+
 snode* create_node(int);
 void insert_node_first();
 void insert_node_last();
@@ -23,20 +24,19 @@ void search();
 void update_val();
 void display();
 void rev_display(snode *);
- 
-typedef struct node snode;
+
 snode *newnode, *ptr, *prev, *temp;
 snode *first = NULL, *last = NULL;
- 
+
 /*
- * Main :contains menu 
+ * Main :contains menu
  */
- 
+/*
  int main()
  {
     int ch;
     char ans = 'Y';
- 
+
     while (ans == 'Y'||ans == 'y')
     {
         printf("\n---------------------------------\n");
@@ -55,50 +55,50 @@ snode *first = NULL, *last = NULL;
         printf("\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n");
         printf("\nEnter your choice");
         scanf("%d", &ch);
- 
+
         switch (ch)
         {
-        case 1: 
+        case 1:
             printf("\n...Inserting node at first...\n");
             insert_node_first();
             break;
-        case 2: 
+        case 2:
             printf("\n...Inserting node at last...\n");
             insert_node_last();
             break;
-        case 3: 
+        case 3:
             printf("\n...Inserting node at position...\n");
             insert_node_pos();
             break;
-        case 4: 
+        case 4:
             printf("\n...Sorted Linked List in Ascending Order...\n");
             sorted_ascend();
             break;
-        case 5: 
+        case 5:
             printf("\n...Deleting Node from any Position...\n");
             delete_pos();
             break;
-        case 6: 
+        case 6:
             printf("\n...Updating Node Value...\n");
             update_val();
             break;
-        case 7: 
+        case 7:
             printf("\n...Searching Element in the List...\n");
             search();
             break;
-        case 8: 
+        case 8:
             printf("\n...Displaying List From Beginning to End...\n");
             display();
             break;
-        case 9: 
+        case 9:
             printf("\n...Displaying List From End using Recursion...\n");
             rev_display(first);
             break;
-        case 10: 
+        case 10:
             printf("\n...Exiting...\n");
             return 0;
             break;
-        default: 
+        default:
             printf("\n...Invalid Choice...\n");
             break;
         }
@@ -107,7 +107,7 @@ snode *first = NULL, *last = NULL;
     }
     return 0;
  }
- 
+*/
 /*
  * Creating Node
  */
@@ -126,14 +126,14 @@ snode* create_node(int val)
         return newnode;
     }
 }
- 
+
 /*
  * Inserting Node at First
  */
 void insert_node_first()
 {
     int val;
- 
+
     printf("\nEnter the value for the node:");
     scanf("%d", &val);
     newnode = create_node(val);
@@ -149,17 +149,17 @@ void insert_node_first()
         first = newnode;
         first->next = temp;
     }
-    printf("\n----INSERTED----");    
+    printf("\n----INSERTED----");
 }
- 
+
 /*
  * Inserting Node at Last
  */
 void insert_node_last()
 {
     int val;
- 
-    printf("\nEnter the value for the Node:");    
+
+    printf("\nEnter the value for the Node:");
     scanf("%d", &val);
     newnode = create_node(val);
     if (first == last && last == NULL)
@@ -175,15 +175,15 @@ void insert_node_last()
         last->next = NULL;
     }
  printf("\n----INSERTED----");
-}    
- 
+}
+
 /*
  * Inserting Node at position
  */
 void insert_node_pos()
 {
     int pos, val, cnt = 0, i;
- 
+
     printf("\nEnter the value for the Node:");
     scanf("%d", &val);
     newnode = create_node(val);
@@ -228,7 +228,7 @@ void insert_node_pos()
         printf("Position is out of range");
     }
 }
- 
+
 /*
  * Sorted Linked List
  */
@@ -236,7 +236,7 @@ void sorted_ascend()
 {
     snode *nxt;
     int t;
- 
+
     if (first == NULL)
     {
         ISEMPTY;
@@ -249,7 +249,7 @@ void sorted_ascend()
             for (nxt = ptr->next;nxt != NULL;nxt = nxt->next)
             {
                 if (ptr->value > nxt->value)
-                {    
+                {
                     t = ptr->value;
                     ptr->value = nxt->value;
                     nxt->value = t;
@@ -263,14 +263,14 @@ void sorted_ascend()
         }
     }
 }
- 
+
 /*
  * Delete Node from specified position in a non-empty list
  */
 void delete_pos()
 {
     int pos, cnt = 0, i;
- 
+
     if (first == NULL)
     {
         ISEMPTY;
@@ -284,16 +284,16 @@ void delete_pos()
         if (pos == 1)
         {
             first = ptr->next;
-            printf("\nElement deleted");    
+            printf("\nElement deleted");
         }
-        else 
+        else
         {
             while (ptr != NULL)
             {
                 ptr = ptr->next;
                 cnt = cnt + 1;
             }
-            if (pos > 0 && pos <= cnt)    
+            if (pos > 0 && pos <= cnt)
             {
                 ptr = first;
                 for (i = 1;i < pos;i++)
@@ -318,7 +318,7 @@ void delete_pos()
 void update_val()
 {
     int oldval, newval, flag = 0;
- 
+
     if (first == NULL)
     {
         ISEMPTY;
@@ -328,7 +328,7 @@ void update_val()
     {
         printf("\nEnter the value to be updated:");
         scanf("%d", &oldval);
-        printf("\nEnter the newvalue:");    
+        printf("\nEnter the newvalue:");
         scanf("%d", &newval);
         for (ptr = first;ptr != NULL;ptr = ptr->next)
         {
@@ -347,16 +347,16 @@ void update_val()
         {
             printf("\nValue not found in List");
         }
-    }    
+    }
 }
- 
+
 /*
  * searching an element in a non-empty list
  */
 void search()
 {
     int flag = 0, key, pos = 0;
- 
+
     if (first == NULL)
     {
         ISEMPTY;
@@ -383,7 +383,7 @@ void search()
         {
             printf("\nElement %d not found in list\n", key);
         }
-    }    
+    }
 }
 /*
  * Displays non-empty List from Beginning to End
@@ -398,19 +398,19 @@ void display()
     else
     {
         for (ptr = first;ptr != NULL;ptr = ptr->next)
-        {    
+        {
             printf("%d\t", ptr->value);
         }
     }
 }
- 
+
 /*
  * Display non-empty list in Reverse Order
  */
 void rev_display(snode *ptr)
 {
     int val;
- 
+
     if (ptr == NULL)
     {
         ISEMPTY;
@@ -422,8 +422,8 @@ void rev_display(snode *ptr)
         {
             val = ptr->value;
             rev_display(ptr->next);
-            printf("%d\t", val);        
+            printf("%d\t", val);
         }
- 
+
     }
 }
