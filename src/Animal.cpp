@@ -111,3 +111,47 @@ void Animal::move(direction_t direction){
     x=  tx;
     y = ty;
 }
+
+
+class Target {
+    public:
+	Target(){
+    	x = 0;
+    	y = 0;
+    	distance = 0;
+	}
+	int x,y,distance;
+};
+
+void Animal::findPrey(char prey_ch,int & prey_x,int & prey_y,int predator_x,int predator_y){
+	vector<Target> vec;
+	Board& board = universe->board;
+	int i = 0;
+	int j;
+	Target T;
+	
+	while(i<board.GetH()){
+		j=0;
+		while(j<board.GetW()){
+			if(board.GetEl(i,j).find(prey_ch)<board.GetEl(i,j).length()){
+				T.x = i;
+				T.y = j;
+				T.distance = (predator_x-T.x)*(predator_x-T.x) + (predator_y-T.y)*(predator_y-T.y);
+				vec.push_back(T);
+			}
+			j++;
+		}
+		i++;
+	}
+	i=1;
+	int min = vec[0].distance;
+	prey_x=vec[0].x;
+	prey_y=vec[0].y;
+	while(i<vec.size()){
+		if(vec[i].distance<min){
+			prey_x=vec[i].x;
+			prey_y=vec[i].y;
+		}
+		i++;
+	}
+}

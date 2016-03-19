@@ -16,6 +16,7 @@ protected:
 	direction_t avoid(int x, int y);
 	direction_t goTo(int x, int y);
 	direction_t goRandom();
+	void findPrey(char prey_ch,int & prey_x,int & prey_y,int predator_x,int predator_y);
 	void move(direction_t direction);
     virtual void update_logic();
 
@@ -25,3 +26,4 @@ protected:
 
 
 #endif
+
