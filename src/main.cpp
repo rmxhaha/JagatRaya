@@ -16,10 +16,12 @@ int main()
     srand(444);
     Board b(10,10);
 	UniverseList u(b,2);
-	Human* h = new Human(u,0,0,10);
-	Tiger* t = new Tiger(u,5,5,10);
-    u.add(h);
-    u.add(t);
+//	Human* h = new Human(u,0,0,10);
+//	Tiger* t = new Tiger(u,5,5,10);
+	Eagle *e = new Eagle(u,5,4,10);
+ //   u.add(h);
+   // u.add(t);
+    u.add(e);
     while(true){
 		if(GetAsyncKeyState(VK_ESCAPE)){
 			break;
