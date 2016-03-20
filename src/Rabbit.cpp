@@ -3,15 +3,11 @@
 Rabbit::Rabbit(Universe& u, int x, int y, int t_lahir):Herbivore(u,x,y,t_lahir){}
 
 void Rabbit::update_logic(){
-	bool race_event=false;
-	if(!race_event)
+	if(x!=5||x!=5)
 	{
-		if(x!=5||x!=5)
 	    move(goTo(5,5));
-	    else
-		race_event=true;
 	}
-	else
+	    else
 	{
 		move(direction_t::RIGHT);
 	}
