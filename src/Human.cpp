@@ -6,17 +6,17 @@ Human::Human(Universe& universe, int x, int y,float currentAge) : Carnivore(univ
 }
 
 void Human::update_logic(){
-//    move(goRandom());
-    move(direction_t::UP);
+    move(goRandom());
+   // move(direction_t::UP);
 }
 char Human::ch() const { return 'H'; }
 
 int Human::power() const{ return 1; }
-int Human::age() const { return 5000; }
+int Human::age() const { return 500000; }
 float Human::speed() const { return 3; }
 void Human::interact(Organism* o){
     if( isA<Human>(o)){
-        copulate();
+        //copulate();
     }
 }
 
