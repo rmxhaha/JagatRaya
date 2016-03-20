@@ -6,7 +6,8 @@ Human::Human(Universe& universe, int x, int y,float currentAge) : Carnivore(univ
 }
 
 void Human::update_logic(){
-    move(goRandom());
+//    move(goRandom());
+    move(direction_t::UP);
 }
 char Human::ch() const { return 'H'; }
 
