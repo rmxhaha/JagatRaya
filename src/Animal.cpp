@@ -123,7 +123,7 @@ class Target {
 	int x,y,distance;
 };
 
-void Animal::findPrey(char prey_ch,int & prey_x,int & prey_y,int predator_x,int predator_y){
+bool Animal::findPrey(char prey_ch,int & prey_x,int & prey_y,int predator_x,int predator_y){
 	vector<Target> vec;
 	Board& board = universe->board;
 	int i = 0;
@@ -144,14 +144,20 @@ void Animal::findPrey(char prey_ch,int & prey_x,int & prey_y,int predator_x,int 
 		i++;
 	}
 	i=1;
-	int min = vec[0].distance;
-	prey_x=vec[0].x;
-	prey_y=vec[0].y;
-	while(i<vec.size()){
-		if(vec[i].distance<min){
-			prey_x=vec[i].x;
-			prey_y=vec[i].y;
-		}
-		i++;
+	if(vec.size()>0){
+		int min = vec[0].distance;
+		prey_x=vec[0].x;
+		prey_y=vec[0].y;
+		while(i<vec.size()){
+			if(vec[i].distance<min){
+				prey_x=vec[i].x;
+				prey_y=vec[i].y;
+			}
+			i++;
+		}	
+		return true;
+	}
+	else{
+		return false;
 	}
 }
