@@ -7,12 +7,9 @@ Grass::Grass(Universe& b, int x, int y,float currentAge):Plant(b,x,y,currentAge)
 int Grass::power()const{return 10;}
 float Grass::tgrow()const{return 2;}
 char Grass::ch()const{return 'G';}
-<<<<<<< HEAD
 int Grass::umur() const {return 40;}
-=======
 int Grass::age() const {return 40;}
 
->>>>>>> 35503fc53455a59eab8c64bb50a3d0df40d6ee36
 void Grass::grow() const {
 	bool place=false;
 	int ni,nj;
