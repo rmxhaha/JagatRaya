@@ -6,7 +6,7 @@
 
 class Plant : public Organism {
 public:
-	Plant(Universe& u, int x, int y, int t_lahir);
+	Plant(Universe& u, int x, int y,float currentAge);
 	void update(float dt);
 protected:
 	virtual void update_grow();

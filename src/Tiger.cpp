@@ -1,11 +1,27 @@
 #include "Tiger.hpp"
+#include "Human.hpp"
 
-Tiger::Tiger(Universe& u, int x, int y, int t_lahir):Carnivore(u,x,y,t_lahir){}
+Tiger::Tiger(Universe& u, int x, int y,float currentAge):Carnivore(u,x,y,currentAge){}
 
 
 void Tiger::update_logic(){
 	//Update Tiger move
-	move(goRandom());
+	int prey_x;
+	int prey_y;
+	if(!findPrey('H',prey_x,prey_y,x,y)){
+		move(goRandom());
+	}
+	else{
+		move(goTo(prey_x,prey_y));
+	}
+}
+
+//bikin interact
+//ganti interact tiger punya class buruan nya
+void Tiger::interact(Organism * O){
+	if(isA<Human,Organism>(O)){
+		O->forceKill();
+	}
 }
 
 char Tiger::ch() const {
@@ -17,10 +33,6 @@ float Tiger::speed() const {
 int Tiger::power() const {
 	return 25;
 }
-int Tiger::umur() const {
+int Tiger::age() const {
 	return 7000;
 }
-
-void Tiger::interact(Organism*){
-}
-

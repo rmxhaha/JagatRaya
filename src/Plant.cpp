@@ -1,7 +1,7 @@
 #include "Plant.hpp"
 #include <ctime>
 
-Plant::Plant(Universe& b, int x, int y, int t_lahir):Organism(b,x,y,t_lahir), timebuffer(0.0){}
+Plant::Plant(Universe& b, int x, int y,float currentAge):Organism(b,x,y,currentAge), timebuffer(0.0){}
 
 void Plant::update(float dt)
 {

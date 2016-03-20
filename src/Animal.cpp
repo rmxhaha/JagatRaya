@@ -3,18 +3,16 @@
 
 
 
-Animal::Animal(Universe& u, int x, int y, int t_lahir) : Organism(u,x,y,t_lahir), timebuffer(0.0), cAge(0.0) {
+Animal::Animal(Universe& u, int x, int y, float currentAge) : Organism(u,x,y,currentAge), timebuffer(0.0) {
 }
 
 void Animal::update(float dt)
 {
+    Organism::update(dt);
+    if( isDead() ) return;
+
     float d = 1000/speed();
     timebuffer += dt;
-    cAge += dt;
-    if( cAge > umur() ){
-        forceKill();
-        return;
-    }
 
     while( timebuffer > d ){
         update_logic();
@@ -99,17 +97,67 @@ void Animal::move(direction_t direction){
 
 
     // plus GetW getH is for negative number mod
-    int tx = x + dx + universe.board.GetW();
-    int ty = y + dy + universe.board.GetH();
+    int tx = x + dx + universe->board.GetW();
+    int ty = y + dy + universe->board.GetH();
 
     // update The board here
-    tx %= universe.board.GetW();
-    ty %= universe.board.GetH();
+    tx %= universe->board.GetW();
+    ty %= universe->board.GetH();
 
 
-    universe.board.DelEl(ch(),x,y);
-    universe.board.SetEl(ch(),tx,ty);
-    universe.publish(Universe::Event::MOVEMENT,this);
+    universe->board.DelEl(ch(),x,y);
+    universe->board.SetEl(ch(),tx,ty);
+    universe->notifyMovement(this);
     x=  tx;
     y = ty;
+}
+
+
+class Target {
+    public:
+	Target(){
+    	x = 0;
+    	y = 0;
+    	distance = 0;
+	}
+	int x,y,distance;
+};
+
+bool Animal::findPrey(char prey_ch,int & prey_x,int & prey_y,int predator_x,int predator_y){
+	vector<Target> vec;
+	Board& board = universe->board;
+	int i = 0;
+	int j;
+	Target T;
+	
+	while(i<board.GetH()){
+		j=0;
+		while(j<board.GetW()){
+			if(board.GetEl(i,j).find(prey_ch)<board.GetEl(i,j).length()){
+				T.x = i;
+				T.y = j;
+				T.distance = (predator_x-T.x)*(predator_x-T.x) + (predator_y-T.y)*(predator_y-T.y);
+				vec.push_back(T);
+			}
+			j++;
+		}
+		i++;
+	}
+	i=1;
+	if(vec.size()>0){
+		int min = vec[0].distance;
+		prey_x=vec[0].x;
+		prey_y=vec[0].y;
+		while(i<vec.size()){
+			if(vec[i].distance<min){
+				prey_x=vec[i].x;
+				prey_y=vec[i].y;
+			}
+			i++;
+		}	
+		return true;
+	}
+	else{
+		return false;
+	}
 }
