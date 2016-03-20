@@ -1,4 +1,5 @@
 #include "Carnivore.hpp"
+#include "IsA.hpp"
 
 #ifndef TIGER_H
 #define TIGER_H
