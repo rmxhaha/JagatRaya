@@ -131,8 +131,8 @@ void Board::PrintBoard()
         gotoxy(0,i);
 		for(int j=0;j<w;j++)
 		{
-		    if( data[i][j].length() > 0 )
-                cout << data[i][j][0];
+		    if( data[j][i].length() > 0 )
+                cout << data[j][i][0];
             else
                 cout << " ";
 		}
