@@ -3,7 +3,7 @@
 Rabbit::Rabbit(Universe& u, int x, int y, int t_lahir):Herbivore(u,x,y,t_lahir){}
 
 void Rabbit::update_logic(){
-	if(x!=5||x!=5)
+	if(x!=5||y!=5)
 	{
 	    move(goTo(5,5));
 	}

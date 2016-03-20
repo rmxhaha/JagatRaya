@@ -4,7 +4,7 @@ Turtle::Turtle(Universe& u, int x, int y, int t_lahir):Herbivore(u,x,y,t_lahir){
 
 void Turtle::update_logic(){
 	
-	if(x!=6||x!=5)
+	if(x!=6||y!=5)
 	{
 	    move(goTo(6,5));
 	}
