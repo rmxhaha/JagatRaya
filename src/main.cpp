@@ -2,37 +2,40 @@
 #include "UniverseList.hpp"
 #include "Human.hpp"
 #include "windows.h"
+#include "Eagle.hpp"
 #include "Tiger.hpp"
 #include "Grass.hpp"
 #include "Poison_Ivy.hpp"
-#include "../Test/board_unittest.hpp"
-#include "../Test/human_unittest.hpp"
+
 
 #include <iostream>
 using namespace std;
-
-void test(){
-    Test::BoardTest::DimensionTest();
-    Test::HumanTest::HumanCharTest();
-}
-
 
 int main()
 {
     srand(444);
     Board b(10,10);
-	UniverseList u(b,1);
+	UniverseList u(b,2);
 	Human* h = new Human(u,0,0,10);
 	Tiger* t = new Tiger(u,5,5,10);
-    Grass* g = new Grass(u,3,5,10);
     u.add(h);
     u.add(t);
-    u.add(g);
-
     while(true){
-        u.board.PrintBoard();
-        u.update(100);
-        Sleep(200);
+		if(GetAsyncKeyState(VK_ESCAPE)){
+			break;
+		}
+		else if(GetAsyncKeyState(VK_SPACE)){
+            Sleep(100);
+			while(true){
+				if(GetAsyncKeyState(VK_SPACE)){
+					break;
+				}
+                Sleep(1);
+			}
+		}
+	    u.update(100);
+		u.board.PrintBoard();
+	    Sleep(200);
     }
     return 0;
 }
