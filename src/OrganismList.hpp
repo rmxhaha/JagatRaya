@@ -13,30 +13,14 @@ public:
 class OrganismList
 {
 public:
-    OrganismList() {
-        beginNode = NULL;
-        endNode = NULL;
-        nSize = 0;
-    }
-    ~OrganismList(){};
+    OrganismList();
+    ~OrganismList();
 
-    void push_back(Organism* val) {
-        nSize++;
-        if (endNode == NULL)
-        {
-            beginNode = new OrganismNode(val);
-            endNode = beginNode;
-            return;
-        }
-        OrganismNode* tmp = new OrganismNode(val);
-        endNode -> next = tmp;
-        endNode = tmp;
-        endNode -> next = NULL;
-    }
+    void push_back(Organism* val);
 
-    OrganismNode* begin() { return beginNode; }
-    OrganismNode* end() { return NULL; }
-    size_t size() {return nSize; }
+    OrganismNode* begin();
+    OrganismNode* end();
+    size_t size();
 private:
     OrganismNode* beginNode;
     OrganismNode* endNode;
