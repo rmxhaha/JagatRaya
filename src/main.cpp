@@ -15,9 +15,16 @@ using namespace std;
 
 int main()
 {
+	int sleep_multiplier = 1;
     srand(444);
     Board b(10,10);
 	UniverseList u(b,2);
+	Deer *d = new Deer(u,5,4,10);
+	Deer *d2 = new Deer(u,2,2,10);
+	Tiger* t = new Tiger(u,8,7,10);
+	u.add(d);
+	u.add(d2);
+	u.add(t);
 	Sleep(100);
 	while(true){
 		if(GetAsyncKeyState(VK_ESCAPE)){
@@ -74,7 +81,7 @@ int main()
 		}
 	    u.update(100);
 		u.board.PrintBoard();
-	    Sleep(200);
+	    Sleep(200*sleep_multiplier);
 	}
     return 0;
 }
