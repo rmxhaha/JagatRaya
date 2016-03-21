@@ -104,12 +104,13 @@ void Animal::move(direction_t direction){
     tx %= universe->board.GetW();
     ty %= universe->board.GetH();
 
+    if( x == tx && y == ty ) return;
 
     universe->board.DelEl(ch(),x,y);
     universe->board.SetEl(ch(),tx,ty);
-    universe->notifyMovement(this);
-    x=  tx;
+    x = tx;
     y = ty;
+    universe->notifyMovement(this);
 }
 
 
@@ -129,7 +130,7 @@ bool Animal::findPrey(char prey_ch,int & prey_x,int & prey_y,int predator_x,int 
 	int i = 0;
 	int j;
 	Target T;
-	
+
 	while(i<board.GetH()){
 		j=0;
 		while(j<board.GetW()){
@@ -154,7 +155,7 @@ bool Animal::findPrey(char prey_ch,int & prey_x,int & prey_y,int predator_x,int 
 				prey_y=vec[i].y;
 			}
 			i++;
-		}	
+		}
 		return true;
 	}
 	else{
