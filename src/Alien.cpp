@@ -5,7 +5,6 @@ Alien::Alien(Universe& u, int x, int y,float currentAge):Carnivore(u,x,y,current
 void Alien::update_logic(){//Update Alien move
 	int prey_x;
 	int prey_y;
-	move(goRandom());
 	if(!find(prey_x,prey_y,x,y)){
 		move(goRandom());
 	}

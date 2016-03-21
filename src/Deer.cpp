@@ -15,7 +15,7 @@ float Deer::speed() const {
 int Deer::power() const {
 	return 5;
 }
-int Deer::umur() const {
+int Deer::age() const {
 	return 60;
 }
 

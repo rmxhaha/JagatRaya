@@ -41,7 +41,8 @@ void UniverseSTL::notifyMovement(Organism* o){
     for( auto& it: pool ){
         if( it == o ) continue;
         it->interact(o);
-        o->interact(it);
+        if( o->isAlive())
+            o->interact(it);
     }
 
 }
