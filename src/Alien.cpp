@@ -10,6 +10,8 @@ void Alien::update_logic(){//Update Alien move
 		move(goRandom());
 	}
 	else{
+		cout << "------------------------------------------" << prey_x << prey_y;
+		cout << universe->board.GetEl(prey_x,prey_y);
 		move(goTo(prey_x,prey_y));
 	}
 }
@@ -52,13 +54,22 @@ bool Alien::find(int & prey_x,int & prey_y,int predator_x,int predator_y){
 		}
 		i++;
 	}
-	i=1;
 	if(vec.size()>0){
-		int min = vec[0].distance;
-		prey_x=vec[0].x;
-		prey_y=vec[0].y;
+		int min;
+		if(vec[0].x!=x && vec[0].y){
+			min = vec[0].distance;
+			prey_x=vec[0].x;
+			prey_y=vec[0].y;	
+			i=1;
+		}
+		else{
+			min = vec[1].distance;
+			prey_x=vec[1].x;
+			prey_y=vec[1].y;
+			i=2;
+		}	
 		while(i<vec.size()){
-			if(vec[i].distance<min){
+			if(vec[i].distance<min && vec[i].x!=x && vec[i].y!=y){
 				prey_x=vec[i].x;
 				prey_y=vec[i].y;
 			}
