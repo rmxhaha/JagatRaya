@@ -12,6 +12,7 @@ class UniverseList : public Universe
         void add(Organism* m);
         void notifyMovement(Organism* x);
         void update(float dt);
+        void killWeakestOrganismAt(int x, int y);
     private:
         OrganismList MList;
 };
