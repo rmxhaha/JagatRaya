@@ -15,7 +15,7 @@ float Horse::speed() const {
 int Horse::power() const {
 	return 5;
 }
-int Horse::umur() const {
+int Horse::age() const {
 	return 60;
 }
 
