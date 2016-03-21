@@ -136,5 +136,6 @@ void Board::PrintBoard()
             else
                 cout << " ";
 		}
+		cout << endl;
 	}
 }

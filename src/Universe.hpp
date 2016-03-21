@@ -15,10 +15,8 @@ using namespace std;
 class Organism;
 class Universe {
 public:
+    Universe();
     /** \brief Universe Constructor
-     *
-     * \param w int width of map
-     * \param h int height of map
      *
      */
 
@@ -30,16 +28,14 @@ public:
      * \return void
      *
      */
-    virtual void add(Organism* m) = 0;
-    virtual void notifyMovement(Organism* x) = 0;
-    virtual void update(float dt) = 0;
-    virtual void killWeakestOrganismAt(int x, int y) = 0;
+    virtual void add(Organism* m) {}
+    virtual void notifyMovement(Organism* x) {}
+    virtual void update(float dt) {}
+    virtual void killWeakestOrganismAt(int x, int y) {}
 
     Board board; // expose ?
 protected:
     int maxOrganismPerCell;
-    Universe();
-
 
 };
 

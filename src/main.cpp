@@ -10,12 +10,14 @@
 #include "Grass.hpp"
 #include "Deer.hpp"
 #include "Poison_Ivy.hpp"
+#include "OrganismFactory.hpp"
 
 #if TESTING_STATE
 #include "gtest/gtest.h"
 #endif // TESTING_STATE
 
 #include <iostream>
+#include <fstream>
 using namespace std;
 
 int main(int argc, char **argv)
@@ -29,18 +31,23 @@ int main(int argc, char **argv)
     srand(444);
     Board b(10,10);
 	UniverseList u(b,2);
-	Deer *d = new Deer(u,5,4,10);
-	Deer *d2 = new Deer(u,2,2,10);
-	Tiger* t = new Tiger(u,8,7,10);
-	u.add(d);
-	u.add(d2);
-	u.add(t);
+	OrganismFactory organismFactory(u);
+	organismFactory.CreateDeer(5, 4);
+	organismFactory.CreateDeer(2, 2);
+	organismFactory.CreateTiger(8, 7);
 	Sleep(100);
 	while(true){
 		if(GetAsyncKeyState(VK_ESCAPE)){
 			break;
 		}
 		else if(GetAsyncKeyState(VK_SPACE)){
+            // Save Board to out.txt
+            ofstream out("out.txt");
+            streambuf *coutbuf = cout.rdbuf(); //save old buf
+            cout.rdbuf(out.rdbuf()); //redirect std::cout to out.txt!
+            u.board.PrintBoard();
+            cout.rdbuf(coutbuf);
+
             Sleep(100);
 			while(true){
 				if(GetAsyncKeyState(VK_SPACE)){
@@ -58,36 +65,7 @@ int main(int argc, char **argv)
 		else if(GetAsyncKeyState(0x41)){
 		//press A to spawn
 			Sleep(100);
-			int i = rand() % 7 + 1;
-			int xx = rand() % 10;
-			int yy = rand() % 10;
-			Organism* ox;
-			switch (i){
-				case 1 :
-					ox = new Deer(u,xx,yy,10);
-					break;
-				case 2 :
-					ox = new Alien(u,xx,yy,10);
-					break;
-				case 3 :
-					ox = new Eagle(u,xx,yy,10);
-					break;
-				case 4 :
-					ox = new Grass(u,xx,yy,10);
-					break;
-				case 5 :
-					ox = new Human(u,xx,yy,10);
-					break;
-                case 6 :
-					ox = new Poison_Ivy(u,xx,yy,10);
-					break;
-				case 7 :
-					ox = new Tiger(u,xx,yy,10);
-					break;
-				default :
-					break;
-			}
-			u.add(ox);
+			organismFactory.CreateRandom();
 		}
 	    u.update(100);
 		u.board.PrintBoard();
