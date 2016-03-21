@@ -1,5 +1,6 @@
 #include "universe.hpp"
 #include <algorithm>
+#include <stdexcept>
 
 using namespace std;
 
