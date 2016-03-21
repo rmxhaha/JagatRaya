@@ -16,7 +16,7 @@ int Horse::power() const {
 	return 5;
 }
 int Horse::age() const {
-	return 60;
+	return 60000;
 }
 
 void Horse::interact(Organism*){

@@ -18,7 +18,7 @@ int Rabbit::power() const {
 	return 3;
 }
 int Rabbit::umur() const {
-	return 60;
+	return 60000;
 }
 
 void Rabbit::interact(Organism*){
