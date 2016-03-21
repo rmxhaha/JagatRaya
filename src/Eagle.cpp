@@ -16,7 +16,7 @@ void Eagle::update_logic(){
 		}
 		else if(x==universe->board.GetW()-1){
 			move(direction_t::UP);
-		}	
+		}
 		else{
 			move(direction_t::LEFT);
 		}
@@ -24,7 +24,7 @@ void Eagle::update_logic(){
 }
 
 void Eagle::interact(Organism * O){
-	
+
 }
 char Eagle::ch() const{return 'E';}
 float Eagle::speed() const{return 3;}
