@@ -1,4 +1,5 @@
 #define TESTING_STATE FALSE
+#define USE_THREAD TRUE
 
 #include "IsA.hpp"
 #include "UniverseList.hpp"

@@ -2,6 +2,10 @@
 #include "board.hpp"
 #include <cstdio>
 #include <stdexcept>
+#if USE_THREAD
+#include <thread>
+#endif // USE_THREAD
+
 UniverseList::UniverseList(Board b, int m){
     board = b;
     maxOrganismPerCell = m;
@@ -67,7 +71,11 @@ void UniverseList::update( float dt ){
     for( auto its = MList.begin(); its != MList.end(); its = its->next) {
         Organism* it = its->val;
         if( it->isAlive() ){
+            #if USE_THREAD
+            thread t(it->update, dt);
+            #else
             it->update(dt);
+            #endif // USE_THREAD
             ++ count;
         }
     }

@@ -1,6 +1,10 @@
 #include "UniverseSTL.hpp"
 #include "board.hpp"
 #include <stdexcept>
+#if USE_THREAD
+#include <thread>
+#endif // USE_THREAD
+
 using namespace std;
 UniverseSTL::UniverseSTL(Board b, int m){
     board = b;
@@ -61,6 +65,10 @@ void UniverseSTL::killWeakestOrganismAt(int x, int y) {
 void UniverseSTL::update( float dt ){
     for( auto&it: MList ){
         if( it->isAlive() )
+            #if USE_THREAD
+            thread t(it->update, dt);
+            #else
             it->update(dt);
+            #endif // USE_THREAD
     }
 }
