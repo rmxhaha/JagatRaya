@@ -6,10 +6,7 @@
 #endif // USE_THREAD
 
 using namespace std;
-UniverseSTL::UniverseSTL(Board b, int m){
-    board = b;
-    maxOrganismPerCell = m;
-    if( maxOrganismPerCell < 1 ) throw range_error("MaxOrganismPerCell must be more than 0");
+UniverseSTL::UniverseSTL(Board b, int m) : Universe(b, m){
 }
 
 UniverseSTL::~UniverseSTL()

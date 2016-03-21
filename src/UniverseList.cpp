@@ -6,10 +6,8 @@
 #include <thread>
 #endif // USE_THREAD
 
-UniverseList::UniverseList(Board b, int m){
-    board = b;
-    maxOrganismPerCell = m;
-    if( maxOrganismPerCell < 1 ) throw range_error("MaxOrganismPerCell must be more than 0");
+UniverseList::UniverseList(Board b, int m) : Universe(b, m){
+
 }
 
 UniverseList::~UniverseList()
@@ -23,6 +21,9 @@ void UniverseList::add(Organism* m){
 }
 
 void UniverseList::notifyMovement(Organism* o){
+    #if USE_THREAD
+    mu[o -> getX()][o -> getY()].lock();
+    #endif // USE_THREAD
     killWeakestOrganismAt(o -> getX(), o -> getY());
     OrganismList pool;
     for( auto its = MList.begin(); its != MList.end(); its = its->next ){
@@ -39,6 +40,9 @@ void UniverseList::notifyMovement(Organism* o){
         if( o->isAlive() )
             o->interact(it);
     }
+    #if USE_THREAD
+    mu[o -> getX()][o -> getY()].unlock();
+    #endif // USE_THREAD
 }
 
 void UniverseList::killWeakestOrganismAt(int x, int y) {
