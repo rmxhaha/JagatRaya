@@ -1,5 +1,5 @@
 #include "Tiger.hpp"
-#include "Human.hpp"
+#include "Deer.hpp"
 
 Tiger::Tiger(Universe& u, int x, int y,float currentAge):Carnivore(u,x,y,currentAge){}
 
