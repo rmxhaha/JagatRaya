@@ -1,3 +1,5 @@
+#define TESTING_STATE FALSE
+
 #include "IsA.hpp"
 #include "UniverseList.hpp"
 #include "Human.hpp"
@@ -9,12 +11,20 @@
 #include "Deer.hpp"
 #include "Poison_Ivy.hpp"
 
+#if TESTING_STATE
+#include "gtest/gtest.h"
+#endif // TESTING_STATE
 
 #include <iostream>
 using namespace std;
 
-int main()
+int main(int argc, char **argv)
 {
+    #if TESTING_STATE
+    ::testing::InitGoogleTest(&argc, argv);
+    return RUN_ALL_TESTS();
+    #endif // TESTING_STATE
+
 	int sleep_multiplier = 1;
     srand(444);
     Board b(10,10);
