@@ -61,7 +61,7 @@ int main()
 				case 5 :
 					ox = new Human(u,xx,yy,10);
 					break;
-				case 6 :
+                case 6 :
 					ox = new Poison_Ivy(u,xx,yy,10);
 					break;
 				case 7 :
