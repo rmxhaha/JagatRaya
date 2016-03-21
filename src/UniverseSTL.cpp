@@ -64,3 +64,7 @@ void UniverseSTL::update( float dt ){
             it->update(dt);
     }
 }
+
+void UniverseSTL::triggerRace(int sx, int sy, int ex, int ey){
+    // init race here
+}
