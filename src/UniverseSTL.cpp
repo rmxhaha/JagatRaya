@@ -20,6 +20,9 @@ void UniverseSTL::add(Organism* m){
 }
 
 void UniverseSTL::notifyMovement(Organism* o){
+    #if USE_THREAD
+    mu[o -> getX()][o -> getY()].lock();
+    #endif // USE_THREAD
     killWeakestOrganismAt(o -> getX(), o -> getY());
     vector<Organism*> pool;
     for( auto& it : MList ){
@@ -34,6 +37,9 @@ void UniverseSTL::notifyMovement(Organism* o){
         if( o->isAlive())
             o->interact(it);
     }
+    #if USE_THREAD
+    mu[o -> getX()][o -> getY()].unlock();
+    #endif // USE_THREAD
 
 }
 
