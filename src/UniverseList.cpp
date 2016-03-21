@@ -1,7 +1,7 @@
 #include "UniverseList.hpp"
 #include "board.hpp"
 #include <cstdio>
-
+#include <stdexcept>
 UniverseList::UniverseList(Board b, int m){
     board = b;
     maxOrganismPerCell = m;

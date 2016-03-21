@@ -1,6 +1,6 @@
 #include "Horse.hpp"
 
-Horse::Horse(Universe& u, int x, int y, int t_lahir):Herbivore(u,x,y,t_lahir){}
+Horse::Horse(Universe& u, int x, int y,float currentAge):Herbivore(u,x,y,currentAge){}
 
 void Horse::update_logic(){
 	//Update Tiger move
