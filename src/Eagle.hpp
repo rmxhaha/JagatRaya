@@ -4,9 +4,8 @@
 #define EAGLE_H
 
 class Eagle : public Carnivore {
-	public:
+public:
 	Eagle(Universe& u,int x, int y,float currentAge);
-	void update_logic();
     /** \brief see Organism::ch
      */
     char ch() const ;
@@ -22,5 +21,7 @@ class Eagle : public Carnivore {
     /** \brief see Organism::interact
      */
     void interact(Organism*);
-;
+protected:
+	void update_logic();
+};
 #endif
