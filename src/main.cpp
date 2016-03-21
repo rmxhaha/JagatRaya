@@ -6,6 +6,7 @@
 #include "Alien.hpp"
 #include "Tiger.hpp"
 #include "Grass.hpp"
+#include "Deer.hpp"
 #include "Poison_Ivy.hpp"
 
 
@@ -17,22 +18,8 @@ int main()
     srand(444);
     Board b(10,10);
 	UniverseList u(b,2);
-	Alien* h = new Alien(u,0,0,10);
-	Human* h2 = new Human(u,5,5,10);
-	Human* h3 = new Human(u,3,3,10);
-	Human* h4 = new Human(u,2,8,10);
-	Human* h5 = new Human(u,7,6,10);
-	//Tiger* t = new Tiger(u,5,5,10);
-	Eagle *e = new Eagle(u,5,4,10);
-    u.add(h);
-    //u.add(t);
-    u.add(h2);
-    u.add(h3);
-    u.add(h4);
-    u.add(h5);
-    u.add(e);
-
-    while(true){
+	Sleep(100);
+	while(true){
 		if(GetAsyncKeyState(VK_ESCAPE)){
 			break;
 		}
@@ -42,13 +29,53 @@ int main()
 				if(GetAsyncKeyState(VK_SPACE)){
 					break;
 				}
+				else if(GetAsyncKeyState(0x4E)){
+				//press N to continue
+					u.update(100);
+					u.board.PrintBoard();
+				    Sleep(200);
+				}
                 Sleep(1);
 			}
+		}
+		else if(GetAsyncKeyState(0x41)){
+		//press A to spawn
+			Sleep(100);
+			int i = rand() % 7 + 1;
+			int xx = rand() % 10;
+			int yy = rand() % 10;
+			Organism* ox;
+			switch (i){
+				case 1 :
+					ox = new Deer(u,xx,yy,10);
+					break;
+				case 2 :
+					ox = new Alien(u,xx,yy,10);
+					break;
+				case 3 :
+					ox = new Eagle(u,xx,yy,10);
+					break;
+				case 4 :
+					ox = new Grass(u,xx,yy,10);
+					break;
+				case 5 :
+					ox = new Human(u,xx,yy,10);
+					break;
+				case 6 :
+					ox = new Poison_Ivy(u,xx,yy,10);
+					break;
+				case 7 :
+					ox = new Tiger(u,xx,yy,10);
+					break;
+				default :
+					break;
+			}
+			u.add(ox);
 		}
 	    u.update(100);
 		u.board.PrintBoard();
 	    Sleep(200);
-    }
+	}
     return 0;
 }
 

@@ -5,7 +5,7 @@
 
 class Horse:public Herbivore{
 	public:
-	Horse(Universe& u,int x,int y,int t_lahir);
+	Horse(Universe& u,int x,int y,float currentAge);
 protected:
 	void update_logic();
 	char ch() const;

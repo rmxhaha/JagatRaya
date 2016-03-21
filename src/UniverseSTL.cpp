@@ -1,6 +1,7 @@
 #include "UniverseSTL.hpp"
 #include "board.hpp"
-
+#include <stdexcept>
+using namespace std;
 UniverseSTL::UniverseSTL(Board b, int m){
     board = b;
     maxOrganismPerCell = m;

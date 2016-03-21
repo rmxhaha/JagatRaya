@@ -1,5 +1,5 @@
 #include "Tiger.hpp"
-#include "Human.hpp"
+#include "Deer.hpp"
 
 Tiger::Tiger(Universe& u, int x, int y,float currentAge):Carnivore(u,x,y,currentAge){}
 
@@ -8,7 +8,7 @@ void Tiger::update_logic(){
 	//Update Tiger move
 	int prey_x;
 	int prey_y;
-	if(!findPrey('H',prey_x,prey_y,x,y)){
+	if(!findPrey('D',prey_x,prey_y,x,y)){
 		move(goRandom());
 	}
 	else{
@@ -19,7 +19,7 @@ void Tiger::update_logic(){
 //bikin interact
 //ganti interact tiger punya class buruan nya
 void Tiger::interact(Organism * O){
-	if(isA<Human,Organism>(O)){
+	if(isA<Deer,Organism>(O)){
 		O->forceKill();
 	}
 }
