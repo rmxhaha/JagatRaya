@@ -7,10 +7,20 @@ class Eagle : public Carnivore {
 	public:
 	Eagle(Universe& u,int x, int y,float currentAge);
 	void update_logic();
-	void interact(Organism * O);
-	char ch() const ;
-	float speed() const ;
-	int power() const ;
-	int age() const ;
-};
+    /** \brief see Organism::ch
+     */
+    char ch() const ;
+    /** \brief see Organism::age
+     */
+	int age() const;
+    /** \brief see Organism::power
+     */
+	int power() const;
+    /** \brief see Animal::speed
+     */
+    float speed() const;
+    /** \brief see Organism::interact
+     */
+    void interact(Organism*);
+;
 #endif

@@ -8,10 +8,20 @@ class Horse:public Herbivore{
 	Horse(Universe& u,int x,int y,float currentAge);
 protected:
 	void update_logic();
-	char ch() const;
-	float speed() const;
+    /** \brief see Organism::ch
+     */
+    char ch() const ;
+    /** \brief see Organism::age
+     */
+	int age() const;
+    /** \brief see Organism::power
+     */
 	int power() const;
-	int umur() const;
-	void interact(Organism*);
+    /** \brief see Animal::speed
+     */
+    float speed() const;
+    /** \brief see Organism::interact
+     */
+    void interact(Organism*);
 };
 #endif
