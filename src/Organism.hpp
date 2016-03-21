@@ -15,6 +15,9 @@ public:
 	bool isDead() const;
 	bool isAlive() const;
 
+    /** \brief ch is a character of the organism it represents
+     * \return char of the organism it represent
+     */
 	virtual char ch() const = 0;
 	virtual int age() const = 0;
 	virtual int power() const = 0;

@@ -2,7 +2,9 @@
 
 #include "Turtle.hpp"
 
-Turtle::Turtle(Universe& u, int x, int y,float currentAge):Herbivore(u,x,y,currentAge){}
+Turtle::Turtle(Universe& u, int x, int y,float currentAge):Herbivore(u,x,y,currentAge){
+    universe->board.SetEl(ch(),x,y);
+}
 
 void Turtle::update_logic(){
 	//Update Tiger move
@@ -17,7 +19,7 @@ float Turtle::speed() const {
 int Turtle::power() const {
 	return 3;
 }
-int Turtle::umur() const {
+int Turtle::age() const {
 	return 10;
 }
 

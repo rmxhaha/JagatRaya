@@ -8,10 +8,20 @@ class Deer:public Herbivore{
 	Deer(Universe& u,int x,int y,int t_lahir);
 protected:
 	void update_logic();
-	char ch() const;
-	float speed() const;
-	int power() const;
+    /** \brief see Organism::ch
+     */
+    char ch() const ;
+    /** \brief see Organism::age
+     */
 	int age() const;
-	void interact(Organism*);
+    /** \brief see Organism::power
+     */
+	int power() const;
+    /** \brief see Animal::speed
+     */
+    float speed() const;
+    /** \brief see Organism::interact
+     */
+    void interact(Organism*);
 };
 #endif

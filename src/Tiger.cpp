@@ -1,7 +1,9 @@
 #include "Tiger.hpp"
 #include "Deer.hpp"
 
-Tiger::Tiger(Universe& u, int x, int y,float currentAge):Carnivore(u,x,y,currentAge){}
+Tiger::Tiger(Universe& u, int x, int y,float currentAge):Carnivore(u,x,y,currentAge){
+    universe->board.SetEl(ch(),x,y);
+}
 
 
 void Tiger::update_logic(){
