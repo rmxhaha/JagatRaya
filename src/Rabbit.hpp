@@ -1,18 +1,16 @@
 #include "Herbivore.hpp"
+#ifndef _RABBIT_H
+#define _RABBIT_H
+class Rabbit: public Herbivore {
+    public:
+    	Rabbit(Universe& u,int x,int y,float currentAge);
+    protected:
+        void update_logic();
+        char ch() const;
+        float speed() const;
+        int power() const;
+        int umur() const;
+        void interact(Organism*);
 
-#ifndef RABBIT_h
-#define RABBIT_h
-
-class Rabbit : public class Herbivore {
-	
-	public:
-		Rabbit(Universe& u,int x,int y,int t_lahir);
-	protected:
-		void update_logic();
-		char ch() const;
-		float speed() const;
-		int power() const;
-		int umur() const;
-		void interact(Organism*);
 };
-#endif
+#endif // _RABBIT_H
