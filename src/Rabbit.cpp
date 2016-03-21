@@ -1,6 +1,8 @@
 #include "Rabbit.hpp"
 
-Rabbit::Rabbit(Universe& u, int x, int y,float currentAge):Herbivore(u,x,y,currentAge){}
+Rabbit::Rabbit(Universe& u, int x, int y,float currentAge):Herbivore(u,x,y,currentAge){
+    universe->board.SetEl(ch(),x,y);
+}
 
 void Rabbit::update_logic(){
 	//Update Tiger move

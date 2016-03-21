@@ -1,6 +1,8 @@
 #include "Poison_Ivy.hpp"
 
-Poison_Ivy::Poison_Ivy(Universe& b, int x, int y,float currentAge):Plant(b,x,y,currentAge) {}
+Poison_Ivy::Poison_Ivy(Universe& b, int x, int y,float currentAge):Plant(b,x,y,currentAge) {
+    universe->board.SetEl(ch(),x,y);
+}
 
 int Poison_Ivy::power()const{return 13;}
 float Poison_Ivy::tgrow()const{return 8;}
@@ -21,7 +23,12 @@ void Poison_Ivy::grow() const {
 			place=true;
 		}
 	}
-	Poison_Ivy NewP(*universe,nj,ni,0);
+	 if( (nj < universe->board.GetW()&&nj >=0)&& (ni < universe->board.GetH()&& ni >= 0 ) )
+    {
+        Poison_Ivy* P=new Poison_Ivy(*universe,nj,ni,0);
+	    universe->add(P);
+    }
+
 }
 
 void Poison_Ivy::interact(Organism*){}

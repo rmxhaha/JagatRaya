@@ -24,7 +24,12 @@ void Grass::grow() const {
 			place=true;
 		}
 	}
-	Grass NewG(*universe,nj,ni,0);
+    if( (nj < universe->board.GetW()&&nj >=0)&& (ni < universe->board.GetH()&& ni >= 0 ) )
+    {
+	Grass* G=new Grass(*universe,nj,ni,0);
+	universe->add(G);
+    }
+
 }
 
 void Grass::update_grow()
