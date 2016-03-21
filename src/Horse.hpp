@@ -4,7 +4,7 @@
 #define HORSE_H
 
 class Horse:public Herbivore{
-	public:
+public:
 	Horse(Universe& u,int x,int y,float currentAge);
 protected:
 	void update_logic();
@@ -13,5 +13,6 @@ protected:
 	int power() const;
 	int umur() const;
 	void interact(Organism*);
+
 };
 #endif

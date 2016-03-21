@@ -1,6 +1,7 @@
 #include "Eagle.hpp"
 
-Eagle::Eagle(Universe& u, int x, int y,float currentAge):Carnivore(u,x,y,currentAge){}
+Eagle::Eagle(Universe& u, int x, int y,float currentAge):Carnivore(u,x,y,currentAge){
+}
 
 void Eagle::update_logic(){
 	//Update Eagle move
@@ -16,7 +17,7 @@ void Eagle::update_logic(){
 		}
 		else if(x==universe->board.GetW()-1){
 			move(direction_t::UP);
-		}	
+		}
 		else{
 			move(direction_t::LEFT);
 		}
@@ -24,7 +25,7 @@ void Eagle::update_logic(){
 }
 
 void Eagle::interact(Organism * O){
-	
+
 }
 char Eagle::ch() const{return 'E';}
 float Eagle::speed() const{return 3;}

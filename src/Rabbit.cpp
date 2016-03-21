@@ -17,9 +17,10 @@ float Rabbit::speed() const {
 int Rabbit::power() const {
 	return 3;
 }
-int Rabbit::umur() const {
+int Rabbit::age() const {
 	return 60;
 }
 
 void Rabbit::interact(Organism*){
 }
+
