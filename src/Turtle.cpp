@@ -19,7 +19,7 @@ float Turtle::speed() const {
 int Turtle::power() const {
 	return 3;
 }
-int Turtle::umur() const {
+int Turtle::age() const {
 	return 10;
 }
 
