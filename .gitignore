@@ -3,3 +3,4 @@ obj/
 *.depend
 *.layout
 doxygen/
+*.exe
