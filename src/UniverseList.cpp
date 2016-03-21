@@ -15,13 +15,33 @@ UniverseList::~UniverseList()
 
 void UniverseList::add(Organism* m){
     MList.push_back(m);
+    killWeakestOrganismAt(m -> getX(), m -> getY());
 }
 
 void UniverseList::notifyMovement(Organism* o){
+    killWeakestOrganismAt(o -> getX(), o -> getY());
     OrganismList pool;
     for( auto its = MList.begin(); its != MList.end(); its = its->next ){
         Organism* it = its->val;
         if( o->getX() == it->getX() && o->getY() == it->getY() ){
+            pool.push_back(it);
+        }
+    }
+
+    for( auto its = pool.begin(); its != pool.end(); its = its -> next ) {
+        Organism* it = its -> val;
+        if( it == o ) continue;
+        it->interact(o);
+        if( o->isAlive() )
+            o->interact(it);
+    }
+}
+
+void UniverseList::killWeakestOrganismAt(int x, int y) {
+    OrganismList pool;
+    for( auto its = MList.begin(); its != MList.end(); its = its->next ){
+        Organism* it = its->val;
+        if( x == it->getX() && y == it->getY() ){
             pool.push_back(it);
         }
     }
@@ -39,14 +59,6 @@ void UniverseList::notifyMovement(Organism* o){
             }
         }
         weakest->forceKill();
-    }
-
-    for( auto its = pool.begin(); its != pool.end(); its = its -> next ) {
-        Organism* it = its -> val;
-        if( it == o ) continue;
-        it->interact(o);
-        if( o->isAlive() )
-            o->interact(it);
     }
 }
 

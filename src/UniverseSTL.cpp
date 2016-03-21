@@ -14,12 +14,31 @@ UniverseSTL::~UniverseSTL()
 
 void UniverseSTL::add(Organism* m){
     MList.push_back(m);
+    killWeakestOrganismAt(m -> getX(), m -> getY());
 }
 
 void UniverseSTL::notifyMovement(Organism* o){
+    killWeakestOrganismAt(o -> getX(), o -> getY());
     vector<Organism*> pool;
     for( auto& it : MList ){
         if( o->getX() == it->getX() && o->getY() == it->getY() ){
+            pool.push_back(it);
+        }
+    }
+
+    for( auto& it: pool ){
+        if( it == o ) continue;
+        it->interact(o);
+        if( o->isAlive())
+            o->interact(it);
+    }
+
+}
+
+void UniverseSTL::killWeakestOrganismAt(int x, int y) {
+    vector<Organism*> pool;
+    for( auto& it : MList ){
+        if( x == it->getX() && y == it->getY() ){
             pool.push_back(it);
         }
     }
@@ -36,14 +55,6 @@ void UniverseSTL::notifyMovement(Organism* o){
         }
         weakest->forceKill();
     }
-
-    for( auto& it: pool ){
-        if( it == o ) continue;
-        it->interact(o);
-        if( o->isAlive())
-            o->interact(it);
-    }
-
 }
 
 void UniverseSTL::update( float dt ){
