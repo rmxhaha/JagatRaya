@@ -1,28 +1,26 @@
 #include "Turtle.hpp"
 
-Turtle::Turtle(Universe& u, int x, int y, int t_lahir):Herbivore(u,x,y,t_lahir){}
+#include "Turtle.hpp"
+
+Turtle::Turtle(Universe& u, int x, int y,float currentAge):Herbivore(u,x,y,currentAge){}
 
 void Turtle::update_logic(){
-	
-	if(x!=6||y!=5)
-	{
-	    move(goTo(6,5));
-	}
-	else
-	{
-		move(direction_t::RIGHT);
-	}
-		
+	//Update Tiger move
+	move(goRandom());
 }
 char Turtle::ch() const {
-	return 'T';
+	return 'U';
 }
 float Turtle::speed() const {
 	return 2;
 }
 int Turtle::power() const {
-	return 5;
+	return 3;
 }
 int Turtle::umur() const {
-	return 50;
+	return 10;
 }
+
+void Turtle::interact(Organism*){
+}
+

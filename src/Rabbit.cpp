@@ -1,26 +1,23 @@
 #include "Rabbit.hpp"
 
-Rabbit::Rabbit(Universe& u, int x, int y, int t_lahir):Herbivore(u,x,y,t_lahir){}
+Rabbit::Rabbit(Universe& u, int x, int y,float currentAge):Herbivore(u,x,y,currentAge){}
 
 void Rabbit::update_logic(){
-	if(x!=5||y!=5)
-	{
-	    move(goTo(5,5));
-	}
-	    else
-	{
-		move(direction_t::RIGHT);
-	}
+	//Update Tiger move
+	move(goRandom());
 }
 char Rabbit::ch() const {
 	return 'R';
 }
 float Rabbit::speed() const {
-	return 8;
+	return 7;
 }
 int Rabbit::power() const {
-	return 6;
+	return 3;
 }
 int Rabbit::umur() const {
-	return 30;
+	return 60;
+}
+
+void Rabbit::interact(Organism*){
 }
