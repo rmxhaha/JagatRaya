@@ -45,15 +45,19 @@ void UniverseList::notifyMovement(Organism* o){
         Organism* it = its -> val;
         if( it == o ) continue;
         it->interact(o);
-        o->interact(it);
+        if( o->isAlive() )
+            o->interact(it);
     }
 }
 
 void UniverseList::update( float dt ){
-    printf("%d", MList.size());
+    int count = 0;
     for( auto its = MList.begin(); its != MList.end(); its = its->next) {
         Organism* it = its->val;
-        if( it->isAlive() )
+        if( it->isAlive() ){
             it->update(dt);
+            ++ count;
+        }
     }
+    printf("%d", count);
 }
