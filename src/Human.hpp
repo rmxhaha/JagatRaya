@@ -13,8 +13,10 @@ public:
     void interact(Organism*);
 
 protected:
+    int offspringCount;
     void copulate();
     void update_logic();
+    static const int maxOffspring = 2;
 };
 
 #endif // HUMAN_H
