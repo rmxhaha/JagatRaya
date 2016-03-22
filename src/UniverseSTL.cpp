@@ -14,9 +14,20 @@ UniverseSTL::~UniverseSTL()
     //dtor
 }
 
+void startOrganismUpdate(Organism* m) {
+    while (m -> isAlive()) {
+        m -> update();
+        Sleep(200);
+    }
+}
+
 void UniverseSTL::add(Organism* m){
     MList.push_back(m);
     killWeakestOrganismAt(m -> getX(), m -> getY());
+    #if USE_THREAD
+    thread* t = new thread(startOrganismUpdate, m);
+    vt.push_back(t);
+    #endif // USE_THREAD
 }
 
 void UniverseSTL::notifyMovement(Organism* o){
