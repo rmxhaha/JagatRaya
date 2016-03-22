@@ -1,12 +1,25 @@
-#include "Herbivore.hpp"
-#include "IsA.hpp"
 #ifndef DEER_H
 #define DEER_H
 
+#include "Herbivore.hpp"
+#include "IsA.hpp"
+/**
+ * Deer class.
+ * Deer can eat plants.
+ * Deer can avoid tiger if tiger is near. Deer will look for other deer if tiger is far.
+ */
 class Deer:public Herbivore{
 	public:
-	Deer(Universe& u,int x,int y,int t_lahir);
+	/** \brief Deer Constructor
+     *
+     * \param universe Universe it belong in
+     * \return Deer
+     *
+     */
+	Deer(Universe& u,int x,int y,float currentAge);
 protected:
+	/** \brief see Animal::update_logic
+	*/ 
 	void update_logic();
     /** \brief see Organism::ch
      */
@@ -24,4 +37,4 @@ protected:
      */
     void interact(Organism*);
 };
-#endif
+#endif // DEER_H

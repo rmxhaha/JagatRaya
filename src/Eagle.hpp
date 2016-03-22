@@ -1,10 +1,20 @@
-#include "Carnivore.hpp"
-#include "IsA.hpp"
 #ifndef EAGLE_H
 #define EAGLE_H
 
+#include "Carnivore.hpp"
+#include "IsA.hpp"
+/**
+ * Eagle class.
+ * Eagle will move around in perimeter.
+ */
 class Eagle : public Carnivore {
 public:
+	/** \brief Eagle Constructor
+     *
+     * \param universe Universe it belong in
+     * \return Eagle
+     *
+     */
 	Eagle(Universe& u,int x, int y,float currentAge);
     /** \brief see Organism::ch
      */
@@ -22,6 +32,8 @@ public:
      */
     void interact(Organism*);
 protected:
+	/** \brief see Animal::update_logic
+	*/
 	void update_logic();
 };
-#endif
+#endif // EAGLE_H

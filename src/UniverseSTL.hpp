@@ -21,6 +21,7 @@ class UniverseSTL : public Universe
         #endif // USE_THREAD
     private:
         vector<Organism*> MList;
+        vector<Race*> RList;
 //        vector<Race*> MRace;
 };
 

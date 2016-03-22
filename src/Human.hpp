@@ -33,7 +33,11 @@ public:
 
 protected:
     int offspringCount;
-    void copulate();
+    /** Copulate wll generate new Human if 2 Human interact, copulate has limit to prevent overpopulation.
+    */
+	void copulate();
+    /** \brief see Animal::update_logic
+	*/
     void update_logic();
     static const int maxOffspring = 2;
 };

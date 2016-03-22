@@ -101,6 +101,8 @@ void UniverseSTL::cleanCronJob() {
 
 void UniverseSTL::notifyRace(int sx, int sy, int ex, int ey){
     // init race here
+    Race* Ra = new Race(sx,sy,ex,ey);
+
 }
 #if USE_THREAD
 void UniverseSTL::tearDown(){

@@ -9,8 +9,9 @@ class Organism {
 public:
 	Organism(Universe& u, int x, int y, float currentAge);
 
-	int getX();
-	int getY();
+	int getX() const;
+	int getY() const;
+	float getCurrentAge() const;
 
 	bool isDead() const;
 	bool isAlive() const;
@@ -26,6 +27,10 @@ public:
 
     void forceKill();
 protected:
+    void setX( int _x );
+    void setY( int _y );
+    void setCurrentAge( float age );
+
     float cAge; // current age
 	bool is_dead;
 	int x,y;

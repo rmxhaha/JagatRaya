@@ -21,6 +21,7 @@ class UniverseList : public Universe
         #endif // USE_THREAD
     private:
         OrganismList MList;
+        RaceList RList;
         //std::list<Race*> race;
 };
 
