@@ -1,4 +1,5 @@
 #include "Deer.hpp"
+#include "Grass.hpp"
 
 Deer::Deer(Universe& u, int x, int y, int t_lahir):Herbivore(u,x,y,t_lahir){}
 
@@ -32,4 +33,7 @@ int Deer::age() const {
 }
 
 void Deer::interact(Organism*){
+   /* if(isA<Grass,Organism>(O)){
+		O->forceKill();
+	}*/
 }

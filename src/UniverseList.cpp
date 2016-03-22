@@ -97,6 +97,7 @@ void UniverseList::update( float dt ){
     printf("%d", count);
 }
 
-void UniverseList::triggerRace(int sx, int sy, int ex, int ey){
+void UniverseList::notifyRace(int sx, int sy, int ex, int ey){
     // init race here
+
 }

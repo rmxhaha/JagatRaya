@@ -1,5 +1,5 @@
 #include "Herbivore.hpp"
-
+#include "IsA.hpp"
 #ifndef DEER_H
 #define DEER_H
 

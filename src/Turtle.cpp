@@ -1,6 +1,6 @@
 #include "Turtle.hpp"
+#include "Grass.hpp"
 
-#include "Turtle.hpp"
 
 Turtle::Turtle(Universe& u, int x, int y,float currentAge):Herbivore(u,x,y,currentAge){
     universe->board.SetEl(ch(),x,y);
@@ -23,6 +23,9 @@ int Turtle::age() const {
 	return 10;
 }
 
-void Turtle::interact(Organism*){
+void Turtle::interact(Organism* O){
+    if(isA<Grass,Organism>(O)){
+		O->forceKill();
+	}
 }
 

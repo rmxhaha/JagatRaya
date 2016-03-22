@@ -1,5 +1,5 @@
 #include "Herbivore.hpp"
-
+#include "IsA.hpp"
 #ifndef HORSE_H
 #define HORSE_H
 
