@@ -15,8 +15,10 @@ class UniverseList : public Universe
         void killWeakestOrganismAt(int x, int y);
         void triggerRace(int sx, int sy, int ex, int ey);
         void notifyRace(int sx, int sy, int ex, int ey);
+        void cleanCronJob();
     private:
         OrganismList MList;
+        RaceList RList;
         //std::list<Race*> race;
 };
 

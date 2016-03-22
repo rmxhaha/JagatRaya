@@ -4,6 +4,7 @@
 #include <functional>
 #include <vector>
 #include <map>
+
 #if USE_THREAD
 #include <mutex>
 #include <thread>
@@ -12,7 +13,7 @@
 
 #include "board.hpp"
 #include "Organism.hpp"
-
+#include "Race.hpp"
 using namespace std;
 
 
@@ -38,6 +39,7 @@ public:
     virtual void update(float dt) = 0;
     virtual void killWeakestOrganismAt(int x, int y) = 0;
     virtual void notifyRace(int sx, int sy, int ex, int ey) = 0;
+    virtual void cleanCronJob() = 0;
     Board board; // expose ?
     #if USE_THREAD
     vector<mutex*> vm;

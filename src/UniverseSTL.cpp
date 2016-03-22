@@ -1,6 +1,7 @@
 #include "UniverseSTL.hpp"
 #include "board.hpp"
 #include <stdexcept>
+#include <algorithm>
 #if USE_THREAD
 #include <thread>
 #endif // USE_THREAD
@@ -88,6 +89,15 @@ void UniverseSTL::update( float dt ){
     }
 }
 
+void UniverseSTL::cleanCronJob() {
+    MList.erase(remove_if(MList.begin(),
+        MList.end(),
+        [](Organism* x){return !x -> isAlive();}),
+    MList.end());
+}
+
 void UniverseSTL::notifyRace(int sx, int sy, int ex, int ey){
     // init race here
+    Race* Ra = new Race(sx,sy,ex,ey);
+
 }
