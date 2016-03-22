@@ -44,6 +44,10 @@ class Race{
     * return true if turtle already join race
     */
      bool joinTurtle(Organism*);
+     /**
+     * set state race
+     */
+     void setState(RaceState);
 
  private:
     int startX;
