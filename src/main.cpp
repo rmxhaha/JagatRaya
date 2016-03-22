@@ -37,6 +37,7 @@ int main(int argc, char **argv)
 	organismFactory.CreateDeer(2, 2);
 	organismFactory.CreateTiger(8, 7);
 	Sleep(100);
+	int asd = 0;
 	while(true){
 		if(GetAsyncKeyState(VK_ESCAPE)){
 			break;
@@ -70,6 +71,7 @@ int main(int argc, char **argv)
 		}
 	    u.update(100);
 		u.board.PrintBoard();
+
 	    Sleep(200*sleep_multiplier);
 	}
     return 0;

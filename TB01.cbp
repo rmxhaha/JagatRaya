@@ -55,14 +55,23 @@
 		<Unit filename="src/IsA.hpp" />
 		<Unit filename="src/Organism.cpp" />
 		<Unit filename="src/Organism.hpp" />
+		<Unit filename="src/OrganismFactory.cpp" />
+		<Unit filename="src/OrganismFactory.hpp" />
 		<Unit filename="src/OrganismList.cpp" />
 		<Unit filename="src/OrganismList.hpp" />
 		<Unit filename="src/Plant.cpp" />
 		<Unit filename="src/Plant.hpp" />
 		<Unit filename="src/Poison_Ivy.cpp" />
 		<Unit filename="src/Poison_Ivy.hpp" />
+		<Unit filename="src/Rabbit.cpp" />
+		<Unit filename="src/Rabbit.hpp" />
+		<Unit filename="src/Race.cpp" />
+		<Unit filename="src/Race.hpp" />
+		<Unit filename="src/RaceState.hpp" />
 		<Unit filename="src/Tiger.cpp" />
 		<Unit filename="src/Tiger.hpp" />
+		<Unit filename="src/Turtle.cpp" />
+		<Unit filename="src/Turtle.hpp" />
 		<Unit filename="src/Universe.cpp" />
 		<Unit filename="src/Universe.hpp" />
 		<Unit filename="src/UniverseList.cpp" />
@@ -72,10 +81,17 @@
 		<Unit filename="src/board.cpp" />
 		<Unit filename="src/board.hpp" />
 		<Unit filename="src/main.cpp" />
+		<Unit filename="test/alien_unittest.cpp" />
 		<Unit filename="test/board_unittest.cpp" />
-		<Unit filename="test/board_unittest.hpp" />
+		<Unit filename="test/eagle_unittest.cpp" />
+		<Unit filename="test/grass_unittest.cpp" />
 		<Unit filename="test/human_unittest.cpp" />
-		<Unit filename="test/human_unittest.hpp" />
+		<Unit filename="test/organismlist_unittest.cpp" />
+		<Unit filename="test/rabbit_unittest.cpp" />
+		<Unit filename="test/race_unittest.cpp" />
+		<Unit filename="test/turtle_unittest.cpp" />
+		<Unit filename="test/universelist_unittest.cpp" />
+		<Unit filename="test/universestl_unittest.cpp" />
 		<Extensions>
 			<code_completion />
 			<envvars />

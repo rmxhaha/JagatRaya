@@ -9,7 +9,7 @@ Universe::Universe(Board b, int m){
     maxOrganismPerCell = m;
     if( maxOrganismPerCell < 1 ) throw range_error("MaxOrganismPerCell must be more than 0");
     #if USE_THREAD
-    mu = new mutex[b.GetH()][b.GetW()];
+    mu = (mutex **)malloc(sizeof(mutex) * b.GetW() * b.GetH());
     #endif // USE_THREAD
 }
 

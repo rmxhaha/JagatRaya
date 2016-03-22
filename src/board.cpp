@@ -81,12 +81,12 @@ Board& Board::operator=(const Board& B)
 	return *this;
 }
 
-int Board::GetW()
+const int Board::GetW()
 {
 	return w;
 }
 
-int Board::GetH()
+const int Board::GetH()
 {
 	return h;
 }

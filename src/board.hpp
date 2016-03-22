@@ -13,8 +13,8 @@ public:
 	Board(const Board& B);
 	~Board();
 	Board& operator=(const Board& B);
-	int GetW();
-	int GetH();
+	const int GetW();
+	const int GetH();
 	string GetEl(int _h,int _w);
 	void SetEl(char c,int _h,int _w);
 	void DelEl(char c,int _h,int _w);

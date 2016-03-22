@@ -6,6 +6,7 @@
 #include <map>
 #if USE_THREAD
 #include <mutex>
+#include <thread>
 #endif // USE_THREAD
 
 
@@ -42,7 +43,7 @@ protected:
     int maxOrganismPerCell;
     #if USE_THREAD
     mutex **mu;
-    vector<thread*> vt;
+    vector<thread> vt;
     #endif // USE_THREAD
 
 
