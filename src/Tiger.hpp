@@ -3,11 +3,24 @@
 
 #ifndef TIGER_H
 #define TIGER_H
-
+/**
+ * Tiger class.
+ * Tiger will chase deer and horse.
+ * Tiger can eat deer and horse.
+ */
+ 
 class Tiger:public Carnivore{
 	public:
+	/** \brief Tiger Constructor
+	 *
+	 * \param universe Universe it belong in
+	 * \return Tiger
+	 *
+	 */
 	Tiger(Universe& u,int x,int y,float currentAge);
 protected:
+	/** \brief see Animal::update_logic
+	*/
 	void update_logic();
     /** \brief see Organism::ch
      */
@@ -25,4 +38,4 @@ protected:
      */
     void interact(Organism*);
 };
-#endif
+#endif // TIGER_H

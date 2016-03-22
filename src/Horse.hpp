@@ -2,11 +2,22 @@
 #include "IsA.hpp"
 #ifndef HORSE_H
 #define HORSE_H
-
+/**
+ * Horse class.
+ * Horse can eat plants.
+ */
 class Horse:public Herbivore{
 public:
+	/** \brief Horse Constructor
+	 *
+	 * \param universe Universe it belong in
+	 * \return Horse
+	 *
+	 */
 	Horse(Universe& u,int x,int y,float currentAge);
 protected:
+	/** \brief see Animal::update_logic
+	*/
 	void update_logic();
     /** \brief see Organism::ch
      */
@@ -24,4 +35,4 @@ protected:
      */
     void interact(Organism*);
 };
-#endif
+#endif // HORSE_H

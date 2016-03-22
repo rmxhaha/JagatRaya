@@ -4,17 +4,42 @@
 #include "IsA.hpp"
 #ifndef _RABBIT_H
 #define _RABBIT_H
+/**
+ * Rabbit class.
+ * Rabbit can eat plants.
+ * Rabbit can race with turtle.
+ */
 class Rabbit: public Herbivore {
     public:
+    	/** \brief Rabbit Constructor
+		 *
+		 * \param universe Universe it belong in
+		 * \return Rabbit
+		 *
+		 */
         Rabbit(Universe& u,int x,int y,float currentAge);
-        void update_logic();
-        char ch() const;
-        float speed() const;
-        int power() const;
-        int age() const;
-        void interact(Organism*);
-        void triggerRace(Race*);
+        /** \brief see Animal::update_logic
+		*/
+		void update_logic();
+        /** \brief see Organism::ch
+     	*/
+		char ch() const;
+        /** \brief see Animal::speed
+     	*/
+		float speed() const;
+        /** \brief see Organism::power
+     	*/
+		int power() const;
+        /** \brief see Organism::age
+     	*/
+		int age() const;
+        /** \brief see Organism::interact
+     	*/
+		void interact(Organism*);
+        /** Notify Rabbit about new Race.
+        */
+		void triggerRace(Race*);
     private:
         Race* Ra;
 };
-#endif // _RABBIT_H
+#endif // RABBIT_H
