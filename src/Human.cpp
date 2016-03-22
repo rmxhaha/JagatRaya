@@ -9,7 +9,7 @@ void Human::update_logic(){
     move(goRandom());
    // move(direction_t::UP);
 }
-char Human::ch() const { return 'H'; }
+char Human::ch() const { return 1; }
 
 int Human::power() const{ return 1; }
 int Human::age() const { return 500000; }

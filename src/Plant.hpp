@@ -8,6 +8,7 @@ class Plant : public Organism {
 public:
 	Plant(Universe& u, int x, int y,float currentAge);
 	void update(float dt);
+    float getTimebuffer() const;
 protected:
 	virtual void update_grow();
 	virtual void grow() const =0;

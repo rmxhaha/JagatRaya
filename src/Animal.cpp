@@ -136,6 +136,30 @@ class Target {
 };
 
 bool Animal::findPrey(char prey_ch,int & prey_x,int & prey_y,int predator_x,int predator_y){
+	Board& board = universe->board;
+    int closest_prey = 1 << 29;
+    bool prey_found = false;
+    prey_x = predator_x;
+    prey_y = predator_y;
+
+    for( int x = 0; x < board.GetW(); ++ x ){
+        for( int y = 0; y < board.GetH(); ++ y ){
+            if( board.GetEl(y,x).find(prey_ch) != string::npos){
+                prey_found = true;
+                int dx = predator_x - x;
+                int dy = predator_y - y;
+                if( closest_prey > dx*dx+dy*dy )
+                {
+                    closest_prey = dx*dx+dy*dy;
+                    prey_x = x;
+                    prey_y = y;
+                }
+            }
+        }
+    }
+    return prey_found;
+
+	/*
 	vector<Target> vec;
 	Board& board = universe->board;
 	int i = 0;
@@ -146,8 +170,8 @@ bool Animal::findPrey(char prey_ch,int & prey_x,int & prey_y,int predator_x,int 
 		j=0;
 		while(j<board.GetW()){
 			if(board.GetEl(i,j).find(prey_ch)<board.GetEl(i,j).length()){
-				T.x = i;
-				T.y = j;
+				T.x = j;
+				T.y = i;
 				T.distance = (predator_x-T.x)*(predator_x-T.x) + (predator_y-T.y)*(predator_y-T.y);
 				vec.push_back(T);
 			}
@@ -182,4 +206,9 @@ bool Animal::findPrey(char prey_ch,int & prey_x,int & prey_y,int predator_x,int 
 	else{
 		return false;
 	}
+	*/
+}
+
+float Animal::getTimebuffer() const {
+    return timebuffer;
 }
