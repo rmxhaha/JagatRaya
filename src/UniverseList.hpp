@@ -18,6 +18,7 @@ class UniverseList : public Universe
         void cleanCronJob();
     private:
         OrganismList MList;
+        RaceList RList;
         //std::list<Race*> race;
 };
 

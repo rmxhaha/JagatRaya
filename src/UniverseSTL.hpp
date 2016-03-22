@@ -18,6 +18,7 @@ class UniverseSTL : public Universe
         void cleanCronJob();
     private:
         vector<Organism*> MList;
+        vector<Race*> RList;
 //        vector<Race*> MRace;
 };
 

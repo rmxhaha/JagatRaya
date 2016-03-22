@@ -116,5 +116,6 @@ void UniverseList::cleanCronJob() {
 
 void UniverseList::notifyRace(int sx, int sy, int ex, int ey){
     // init race here
+    Race *Ra=new Race(sx,sy,ex,ey);
 
 }

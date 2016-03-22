@@ -1,7 +1,7 @@
 #include "Deer.hpp"
 #include "Grass.hpp"
 
-Deer::Deer(Universe& u, int x, int y, int t_lahir):Herbivore(u,x,y,t_lahir){}
+Deer::Deer(Universe& u, int x, int y, float currentAge):Herbivore(u,x,y,currentAge){}
 
 void Deer::update_logic(){
 	//Update Tiger move

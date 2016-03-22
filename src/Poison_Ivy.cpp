@@ -4,6 +4,7 @@ Poison_Ivy::Poison_Ivy(Universe& b, int x, int y,float currentAge):Plant(b,x,y,c
     universe->board.SetEl(ch(),x,y);
 }
 
+
 int Poison_Ivy::power()const{return 13;}
 float Poison_Ivy::tgrow()const{return 8;}
 char Poison_Ivy::ch()const{return 'P';}
