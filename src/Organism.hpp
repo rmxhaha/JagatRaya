@@ -14,26 +14,21 @@ public:
      *
      */
 	Organism(Universe& u, int x, int y, float currentAge);
-<<<<<<< HEAD
+
 	/** \brief X location of the organism
-		\return 
+		\return
 	*/
 	int getX();
 	/** \brief Y location of the organism
 		\return int
 	*/
 	int getY();
-	
+
 	/** \brief true if organism is dead
 		\return bool
 	*/
-=======
+    float getCurrentAge() const;
 
-	int getX() const;
-	int getY() const;
-	float getCurrentAge() const;
-
->>>>>>> ced3c652bf0d7c705cf792c5778f9d490610de54
 	bool isDead() const;
 	/** \brief true if organism is alive
 		\return bool
@@ -53,7 +48,7 @@ public:
      */
 	virtual int power() const = 0;
 	/** \brief do the organism behaviour if reach time.
-	 *  \param dt delta time for doing the organism behaviour 
+	 *  \param dt delta time for doing the organism behaviour
 	*/
 	virtual void update(float dt); // delta time in milliseconds
 	/** \brief interaction between organism
