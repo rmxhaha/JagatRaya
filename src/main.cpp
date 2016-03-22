@@ -2,6 +2,7 @@
 
 #include "IsA.hpp"
 #include "UniverseList.hpp"
+#include "UniverseSTL.hpp"
 #include "Human.hpp"
 #include "windows.h"
 #include "Eagle.hpp"
@@ -30,22 +31,23 @@ int main(int argc, char **argv)
 	int sleep_multiplier = 1;
     srand(444);
     Board b(10,10);
-	UniverseList u(b,2);
+	UniverseSTL u(b,2);
 	OrganismFactory organismFactory(u);
 	organismFactory.CreateDeer(5, 4);
 	organismFactory.CreateDeer(2, 2);
 	organismFactory.CreateTiger(8, 7);
 	Sleep(100);
 	#if USE_THREAD
+	bool finish = false;
     thread t([&]{
-             while (true) {
+             while (!finish) {
                 u.cleanCronJob();
                 this_thread::sleep_for(chrono::seconds(1));
              }
              });
     #endif
 	while(true){
-		if(GetAsyncKeyState(VK_ESCAPE)){
+		if(GetAsyncKeyState(VK_ESCAPE) || u.board.isEmpty()){
 			break;
 		}
 		else if(GetAsyncKeyState(VK_SPACE)){
@@ -71,12 +73,15 @@ int main(int argc, char **argv)
                     #endif // USE_THREAD
 					break;
 				}
+				#if USE_THREAD
+				#else
 				else if(GetAsyncKeyState(0x4E)){
 				//press N to continue
 					u.update(100);
 					u.board.PrintBoard();
 				    Sleep(200);
 				}
+				#endif // USE_THREAD
                 Sleep(1);
 			}
 		}
@@ -95,6 +100,12 @@ int main(int argc, char **argv)
 
 	    Sleep(200*sleep_multiplier);
 	}
+	u.board.PrintBoard();
+	#if USE_THREAD
+	finish = true;
+	t.join();
+	u.tearDown();
+	#endif // USE_THREAD
     return 0;
 }
 

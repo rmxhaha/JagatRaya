@@ -39,8 +39,10 @@ public:
     virtual void killWeakestOrganismAt(int x, int y) = 0;
     virtual void notifyRace(int sx, int sy, int ex, int ey) = 0;
     virtual void cleanCronJob() = 0;
+
     Board board; // expose ?
     #if USE_THREAD
+    virtual void tearDown() = 0;
     vector<mutex*> vm;
     #endif // USE_THREAD
 protected:

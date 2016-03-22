@@ -118,3 +118,14 @@ void UniverseList::notifyRace(int sx, int sy, int ex, int ey){
     // init race here
 
 }
+#if USE_THREAD
+void UniverseList::tearDown(){
+    for( auto its = MList.begin(); its != MList.end(); its = its->next) {
+        Organism* it = its ->val;
+        it -> forceKill();
+    }
+    for (int i = 0; i < vt.size(); ++i) {
+        vt[i].join();
+    }
+}
+#endif // USE_THREAD

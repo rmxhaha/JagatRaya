@@ -139,3 +139,15 @@ void Board::PrintBoard()
 		cout << endl;
 	}
 }
+
+bool Board::isEmpty() {
+    for(int i=0;i<h;i++)
+	{
+		for(int j=0;j<w;j++)
+		{
+		    if( data[j][i].length() > 0 )
+                return false;
+		}
+	}
+	return true;
+}

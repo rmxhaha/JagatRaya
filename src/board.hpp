@@ -19,6 +19,7 @@ public:
 	void SetEl(char c,int _h,int _w);
 	void DelEl(char c,int _h,int _w);
 	void PrintBoard();
+    bool isEmpty();
 private:
 	string **data;
 	static const int defaultsize = 10;

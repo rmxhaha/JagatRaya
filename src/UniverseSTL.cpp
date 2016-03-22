@@ -21,8 +21,10 @@ UniverseSTL::~UniverseSTL()
 
 void UniverseSTL::add(Organism* m){
     MList.push_back(m);
-    killWeakestOrganismAt(m -> getX(), m -> getY());
+
     #if USE_THREAD
+    mu.lock();
+    killWeakestOrganismAt(m -> getX(), m -> getY());
     mutex* mut = new mutex;
     vm.push_back(mut);
     vt.push_back(thread([&](Organism* m, int vmNumber) {
@@ -33,6 +35,7 @@ void UniverseSTL::add(Organism* m){
                 vm[vmNumber] -> unlock();
             }
         }, m, vt.size()));
+    mu.unlock();
     #endif // USE_THREAD
 }
 
@@ -99,3 +102,13 @@ void UniverseSTL::cleanCronJob() {
 void UniverseSTL::notifyRace(int sx, int sy, int ex, int ey){
     // init race here
 }
+#if USE_THREAD
+void UniverseSTL::tearDown(){
+    for( auto&it: MList ){
+        it -> forceKill();
+    }
+    for (int i = 0; i < vt.size(); ++i) {
+        vt[i].join();
+    }
+}
+#endif // USE_THREAD
