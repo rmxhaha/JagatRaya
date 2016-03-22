@@ -1,6 +1,6 @@
 #ifndef GRASS_H
 #define GRASS_H
-
+#include "IsA.hpp"
 #include "Plant.hpp"
 
 class Grass : public Plant {

@@ -13,12 +13,8 @@ class UniverseList : public Universe
         void notifyMovement(Organism* x);
         void update(float dt);
         void killWeakestOrganismAt(int x, int y);
-
         void triggerRace(int sx, int sy, int ex, int ey);
-        #if USE_THREAD
-        vector<mutex*> vm;
-        void startOrganismUpdate(Organism* m, int vmNumber);
-        #endif // USE_THREAD
+        void notifyRace(int sx, int sy, int ex, int ey);
     private:
         OrganismList MList;
         //std::list<Race*> race;

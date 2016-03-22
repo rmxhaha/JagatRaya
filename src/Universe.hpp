@@ -37,12 +37,15 @@ public:
     virtual void notifyMovement(Organism* x) = 0;
     virtual void update(float dt) = 0;
     virtual void killWeakestOrganismAt(int x, int y) = 0;
-    virtual void triggerRace(int sx, int sy, int ex, int ey) = 0;
+    virtual void notifyRace(int sx, int sy, int ex, int ey) = 0;
     Board board; // expose ?
+    #if USE_THREAD
+    vector<mutex*> vm;
+    #endif // USE_THREAD
 protected:
     int maxOrganismPerCell;
     #if USE_THREAD
-    mutex **mu;
+    mutex mu;
     vector<thread> vt;
     #endif // USE_THREAD
 

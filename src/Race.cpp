@@ -16,3 +16,23 @@ int Race::getStartY(){ return startY;}
 int Race::getFinishX(){ return endX;}
 int Race::getFinishY(){ return endY;}
 RaceState Race::getState(){ return state;}
+bool Race::joinRabbit(Organism* _R)
+{
+    if(Rabbit==NULL)
+    {
+        Rabbit=_R;
+        return true;
+    }
+    else
+        return false;
+}
+
+bool Race::joinTurtle(Organism* Tu)
+{
+    if(Turtle==NULL)
+    {
+        Turtle=Tu;
+    }
+    else
+        return false;
+}

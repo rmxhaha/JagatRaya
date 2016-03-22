@@ -1,5 +1,5 @@
 #include "Poison_Ivy.hpp"
-
+#include "Herbivore.hpp"
 Poison_Ivy::Poison_Ivy(Universe& b, int x, int y,float currentAge):Plant(b,x,y,currentAge) {
     universe->board.SetEl(ch(),x,y);
 }
@@ -22,6 +22,7 @@ void Poison_Ivy::grow() const {
 			nj=x+j1;
 			place=true;
 		}
+
 	}
 	 if( (nj < universe->board.GetW()&&nj >=0)&& (ni < universe->board.GetH()&& ni >= 0 ) )
     {
@@ -31,7 +32,11 @@ void Poison_Ivy::grow() const {
 
 }
 
-void Poison_Ivy::interact(Organism*){}
+void Poison_Ivy::interact(Organism* O){
+    if(isA<Herbivore,Organism>(O)){
+		O->forceKill();
+	}
+}
 
 void Poison_Ivy::update_grow()
 {

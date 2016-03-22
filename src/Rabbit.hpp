@@ -1,4 +1,7 @@
 #include "Herbivore.hpp"
+#include "Race.hpp"
+#include "RaceState.hpp"
+#include "IsA.hpp"
 #ifndef _RABBIT_H
 #define _RABBIT_H
 class Rabbit: public Herbivore {
@@ -10,6 +13,8 @@ class Rabbit: public Herbivore {
         int power() const;
         int age() const;
         void interact(Organism*);
-       // void triggerRace(Race*);
+        void triggerRace(Race*);
+    private:
+        Race* Ra;
 };
 #endif // _RABBIT_H
