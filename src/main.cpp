@@ -1,7 +1,7 @@
 #define TESTING_STATE FALSE
 
 #include "IsA.hpp"
-#include "UniverseList.hpp"
+#include "UniverseSTL.hpp"
 #include "Human.hpp"
 #include "windows.h"
 #include "Eagle.hpp"
@@ -30,7 +30,7 @@ int main(int argc, char **argv)
 	int sleep_multiplier = 1;
     srand(444);
     Board b(10,10);
-	UniverseList u(b,2);
+	UniverseSTL u(b,2);
 	OrganismFactory organismFactory(u);
 	organismFactory.CreateDeer(5, 4);
 	organismFactory.CreateDeer(2, 2);
