@@ -4,13 +4,14 @@
 #include "Organism.hpp"
 class Race{
  public:
-     Race(int SX,int SY,int EX,int EY);
+    Race(int SX,int SY,int EX,int EY);
      int getStartX();
      int getStartY();
      int getFinishX();
      int getFinishY();
      RaceState getState();
-     bool join(Organism*);
+     bool joinRabbit(Organism*);
+     bool joinTurtle(Organism*);
 
  private:
     int startX;

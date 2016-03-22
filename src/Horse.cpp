@@ -1,5 +1,5 @@
 #include "Horse.hpp"
-
+#include "Grass.hpp"
 Horse::Horse(Universe& u, int x, int y,float currentAge):Herbivore(u,x,y,currentAge){}
 
 void Horse::update_logic(){
@@ -19,5 +19,8 @@ int Horse::age() const {
 	return 60;
 }
 
-void Horse::interact(Organism*){
+void Horse::interact(Organism* O){
+    if(isA<Grass>(O)){
+		O->forceKill();
+	}
 }

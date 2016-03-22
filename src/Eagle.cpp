@@ -1,5 +1,6 @@
 #include "Eagle.hpp"
-
+#include "Rabbit.hpp"
+#include "Turtle.hpp"
 Eagle::Eagle(Universe& u, int x, int y,float currentAge):Carnivore(u,x,y,currentAge){
 }
 
@@ -25,7 +26,12 @@ void Eagle::update_logic(){
 }
 
 void Eagle::interact(Organism * O){
-
+    if(isA<Rabbit,Organism>(O)){
+		O->forceKill();
+	}
+	if(isA<Turtle,Organism>(O)){
+		O->forceKill();
+	}
 }
 char Eagle::ch() const{return 'E';}
 float Eagle::speed() const{return 3;}

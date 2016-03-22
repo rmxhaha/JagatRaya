@@ -14,7 +14,7 @@ class UniverseSTL : public Universe
         void update(float dt);
         void killWeakestOrganismAt(int x, int y);
         void triggerRace(int sx, int sy, int ex, int ey);
-
+        void notifyRace(int sx, int sy, int ex, int ey);
     private:
         vector<Organism*> MList;
 //        vector<Race*> MRace;

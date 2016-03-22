@@ -1,4 +1,5 @@
 #include "Herbivore.hpp"
+#include "IsA.hpp"
 #ifndef _TURTLE_H
 #define _TURTLE_H
 

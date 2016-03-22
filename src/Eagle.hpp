@@ -1,5 +1,5 @@
 #include "Carnivore.hpp"
-
+#include "IsA.hpp"
 #ifndef EAGLE_H
 #define EAGLE_H
 

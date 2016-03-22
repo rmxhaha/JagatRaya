@@ -88,6 +88,6 @@ void UniverseSTL::update( float dt ){
     }
 }
 
-void UniverseSTL::triggerRace(int sx, int sy, int ex, int ey){
+void UniverseSTL::notifyRace(int sx, int sy, int ex, int ey){
     // init race here
 }
