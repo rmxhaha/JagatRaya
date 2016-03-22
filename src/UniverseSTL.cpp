@@ -1,11 +1,12 @@
 #include "UniverseSTL.hpp"
 #include "board.hpp"
 #include <stdexcept>
+#if USE_THREAD
+#include <thread>
+#endif // USE_THREAD
+
 using namespace std;
-UniverseSTL::UniverseSTL(Board b, int m){
-    board = b;
-    maxOrganismPerCell = m;
-    if( maxOrganismPerCell < 1 ) throw range_error("MaxOrganismPerCell must be more than 0");
+UniverseSTL::UniverseSTL(Board b, int m) : Universe(b, m){
 }
 
 UniverseSTL::~UniverseSTL()
@@ -19,6 +20,9 @@ void UniverseSTL::add(Organism* m){
 }
 
 void UniverseSTL::notifyMovement(Organism* o){
+    #if USE_THREAD
+    mu[o -> getX()][o -> getY()].lock();
+    #endif // USE_THREAD
     killWeakestOrganismAt(o -> getX(), o -> getY());
     vector<Organism*> pool;
     for( auto& it : MList ){
@@ -33,6 +37,9 @@ void UniverseSTL::notifyMovement(Organism* o){
         if( o->isAlive())
             o->interact(it);
     }
+    #if USE_THREAD
+    mu[o -> getX()][o -> getY()].unlock();
+    #endif // USE_THREAD
 
 }
 
@@ -61,7 +68,11 @@ void UniverseSTL::killWeakestOrganismAt(int x, int y) {
 void UniverseSTL::update( float dt ){
     for( auto&it: MList ){
         if( it->isAlive() )
+            #if USE_THREAD
+            thread t(it->update, dt);
+            #else
             it->update(dt);
+            #endif // USE_THREAD
     }
 }
 

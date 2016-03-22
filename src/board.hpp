@@ -24,6 +24,6 @@ private:
 	static const int defaultsize = 10;
 	int w;
 	int h;
-	
+
 };
 #endif

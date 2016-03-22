@@ -120,7 +120,12 @@ void Animal::move(direction_t direction){
     universe->board.SetEl(ch(),tx,ty);
     x = tx;
     y = ty;
+    #if USE_THREAD
+    thread t(universe->notifyMovement, this);
+    #else
     universe->notifyMovement(this);
+    #endif // USE_THREAD
+
 }
 
 

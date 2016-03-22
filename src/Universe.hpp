@@ -4,6 +4,10 @@
 #include <functional>
 #include <vector>
 #include <map>
+#if USE_THREAD
+#include <mutex>
+#endif // USE_THREAD
+
 
 #include "board.hpp"
 #include "Organism.hpp"
@@ -15,10 +19,8 @@ using namespace std;
 class Organism;
 class Universe {
 public:
+    Universe(Board,int);
     /** \brief Universe Constructor
-     *
-     * \param w int width of map
-     * \param h int height of map
      *
      */
 
@@ -38,7 +40,9 @@ public:
     Board board; // expose ?
 protected:
     int maxOrganismPerCell;
-    Universe();
+    #if USE_THREAD
+    mutex **mu;
+    #endif // USE_THREAD
 
 
 };
