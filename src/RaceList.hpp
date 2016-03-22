@@ -7,7 +7,7 @@ public:
     ~RaceNode() {delete val;}
 
     Race* val;
-    Race* next;
+    RaceNode* next;
 };
 
 class RaceList
@@ -17,7 +17,7 @@ public:
     ~RaceList();
 
     void push_back(Race* val);
-
+    void pop_front();
     RaceNode* begin();
     RaceNode* end();
     size_t size();

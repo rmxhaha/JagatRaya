@@ -38,7 +38,7 @@ class Turtle:public Herbivore{
         void interact(Organism*);
         void triggerRace(Race*);
     private:
-        Race* R;
+        Race* Ra;
 
 };
 #endif // _TURTLE_H

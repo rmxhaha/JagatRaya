@@ -32,7 +32,13 @@ bool Race::joinTurtle(Organism* Tu)
     if(Turtle==NULL)
     {
         Turtle=Tu;
+        return true;
     }
     else
         return false;
+}
+
+void Race::setState(RaceState RS)
+{
+    state=RS;
 }

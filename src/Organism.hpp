@@ -14,6 +14,7 @@ public:
      *
      */
 	Organism(Universe& u, int x, int y, float currentAge);
+<<<<<<< HEAD
 	/** \brief X location of the organism
 		\return 
 	*/
@@ -26,6 +27,13 @@ public:
 	/** \brief true if organism is dead
 		\return bool
 	*/
+=======
+
+	int getX() const;
+	int getY() const;
+	float getCurrentAge() const;
+
+>>>>>>> ced3c652bf0d7c705cf792c5778f9d490610de54
 	bool isDead() const;
 	/** \brief true if organism is alive
 		\return bool
@@ -56,6 +64,10 @@ public:
      */
     void forceKill();
 protected:
+    void setX( int _x );
+    void setY( int _y );
+    void setCurrentAge( float age );
+
     float cAge; // current age
 	bool is_dead;
 	int x,y;

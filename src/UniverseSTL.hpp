@@ -3,6 +3,10 @@
 
 #include "Universe.hpp"
 
+/**
+ * UniverseSTL class.
+ * Universe implementation with STL vector as the storage
+ */
 
 class UniverseSTL : public Universe
 {
@@ -16,6 +20,9 @@ class UniverseSTL : public Universe
         void triggerRace(int sx, int sy, int ex, int ey);
         void notifyRace(int sx, int sy, int ex, int ey);
         void cleanCronJob();
+        #if USE_THREAD
+        void tearDown();
+        #endif // USE_THREAD
     private:
         vector<Organism*> MList;
         vector<Race*> RList;

@@ -1,5 +1,8 @@
 #include "UniverseList.hpp"
 #include "board.hpp"
+#include "isA.hpp"
+#include "Rabbit.hpp"
+#include "Turtle.hpp"
 #include <cstdio>
 #include <stdexcept>
 #if USE_THREAD
@@ -117,5 +120,30 @@ void UniverseList::cleanCronJob() {
 void UniverseList::notifyRace(int sx, int sy, int ex, int ey){
     // init race here
     Race *Ra=new Race(sx,sy,ex,ey);
+    RList.push_back(Ra);
+    for( auto its = MList.begin(); its != MList.end(); its = its->next)
+    {
+        Organism *it = its->val;
+        if( isA<Rabbit>(it) )
+        {
+            Rabbit* r = (Rabbit*)it;
+            r->triggerRace(Ra);
+        }
+        else if( isA<Turtle>(it)){
+            Turtle* t = (Turtle*)t;
+            t->triggerRace(Ra);
+        }
+    }
 
 }
+#if USE_THREAD
+void UniverseList::tearDown(){
+    for( auto its = MList.begin(); its != MList.end(); its = its->next) {
+        Organism* it = its ->val;
+        it -> forceKill();
+    }
+    for (int i = 0; i < vt.size(); ++i) {
+        vt[i].join();
+    }
+}
+#endif // USE_THREAD

@@ -3,6 +3,12 @@
 
 #include "Universe.hpp"
 #include "OrganismList.hpp"
+#include "RaceList.hpp"
+
+/**
+ * UniverseList class.
+ * Universe implementation with List as the storage data structure
+ */
 
 class UniverseList : public Universe
 {
@@ -16,6 +22,9 @@ class UniverseList : public Universe
         void triggerRace(int sx, int sy, int ex, int ey);
         void notifyRace(int sx, int sy, int ex, int ey);
         void cleanCronJob();
+        #if USE_THREAD
+        void tearDown();
+        #endif // USE_THREAD
     private:
         OrganismList MList;
         RaceList RList;
