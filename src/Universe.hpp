@@ -42,6 +42,7 @@ protected:
     int maxOrganismPerCell;
     #if USE_THREAD
     mutex **mu;
+    vector<thread*> vt;
     #endif // USE_THREAD
 
 
