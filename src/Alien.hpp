@@ -38,4 +38,4 @@ class Alien:public Carnivore{
      */
     void interact(Organism*);
 };
-#endif
+#endif // ALIEN_H
