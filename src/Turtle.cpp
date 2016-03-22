@@ -29,3 +29,13 @@ void Turtle::interact(Organism* O){
 	}
 }
 
+void Turtle::triggerRace(Race *_Ra)
+{
+    if(_Ra->getState()==RaceState::RECRUITMENT)
+    {
+        if(_Ra->joinTurtle(this))
+        {
+          Ra = _Ra;
+        }
+    }
+}

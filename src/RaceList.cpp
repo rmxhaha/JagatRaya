@@ -17,7 +17,7 @@ void RaceList::push_back(Race* val) {
         return;
     }
     RaceNode* tmp = new RaceNode(val);
-    endNode -> next = tmp;
+    endNode->next = tmp;
     endNode = tmp;
     endNode -> next = NULL;
 }
