@@ -4,6 +4,11 @@
 #include "Universe.hpp"
 #include "OrganismList.hpp"
 
+/**
+ * UniverseList class.
+ * Universe implementation with List as the storage data structure
+ */
+
 class UniverseList : public Universe
 {
     public:

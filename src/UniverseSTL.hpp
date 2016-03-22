@@ -3,6 +3,10 @@
 
 #include "Universe.hpp"
 
+/**
+ * UniverseSTL class.
+ * Universe implementation with STL vector as the storage
+ */
 
 class UniverseSTL : public Universe
 {
