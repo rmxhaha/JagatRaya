@@ -2,6 +2,7 @@
 #define _RACE_H
 #include "RaceState.hpp"
 #include "Organism.hpp"
+class Organism;
 class Race{
  public:
     Race(int SX,int SY,int EX,int EY);
