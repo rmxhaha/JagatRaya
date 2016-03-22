@@ -36,6 +36,14 @@ int main(int argc, char **argv)
 	organismFactory.CreateDeer(2, 2);
 	organismFactory.CreateTiger(8, 7);
 	Sleep(100);
+	#if USE_THREAD
+    thread t([&]{
+             while (true) {
+                u.cleanCronJob();
+                this_thread::sleep_for(chrono::seconds(1));
+             }
+             });
+    #endif
 	while(true){
 		if(GetAsyncKeyState(VK_ESCAPE)){
 			break;
@@ -80,6 +88,7 @@ int main(int argc, char **argv)
 		#if USE_THREAD
 		#else
             u.update(100);
+            u.cleanCronJob();
 		#endif // USE_THREAD
 
 		u.board.PrintBoard();
