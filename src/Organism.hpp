@@ -18,11 +18,11 @@ public:
 	/** \brief X location of the organism
 		\return
 	*/
-	int getX();
+	int getX()const ;
 	/** \brief Y location of the organism
 		\return int
 	*/
-	int getY();
+	int getY() const;
 
 	/** \brief true if organism is dead
 		\return bool
