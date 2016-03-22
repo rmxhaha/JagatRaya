@@ -9,8 +9,20 @@
  */
 class Alien:public Carnivore{
 	public:
+	/** \brief Alien Constructor
+     *
+     * \param universe Universe it belong in
+     * \return Alien
+     *
+     */
 	Alien(Universe& u,int x, int y,float currentAge);
+	/** \brief see Animal::update_logic
+	*/
 	void update_logic();
+	/** \brief find the nearest organism from the alien
+	 * 	\param prey_x, prey_y Location of the prey
+	 * 	\param predator_x,predator_y Location of the alien
+	*/
 	bool find(int & prey_x,int & prey_y,int predator_x,int predator_y);
     /** \brief see Organism::ch
      */
@@ -28,4 +40,4 @@ class Alien:public Carnivore{
      */
     void interact(Organism*);
 };
-#endif
+#endif // ALIEN_H
