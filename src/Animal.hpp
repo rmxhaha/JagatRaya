@@ -10,6 +10,7 @@ class Animal : public Organism {
 public:
 	Animal(Universe& u, int x, int y,float currentAge);
 	virtual float speed() const = 0;
+    float getTimebuffer() const;
 
     void update(float dt);
 protected:
@@ -20,7 +21,6 @@ protected:
 	void move(direction_t direction);
     virtual void update_logic();
 
-    float cAge;
     float timebuffer;
 };
 

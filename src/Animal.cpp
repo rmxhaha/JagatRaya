@@ -208,3 +208,7 @@ bool Animal::findPrey(char prey_ch,int & prey_x,int & prey_y,int predator_x,int 
 	}
 	*/
 }
+
+float Animal::getTimebuffer() const {
+    return timebuffer;
+}

@@ -14,3 +14,7 @@ void Plant::update(float dt)
 }
 
 void Plant::update_grow(){}
+
+float Plant::getTimebuffer() const{
+    return timebuffer;
+}
