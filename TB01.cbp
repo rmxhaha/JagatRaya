@@ -61,8 +61,15 @@
 		<Unit filename="src/Plant.hpp" />
 		<Unit filename="src/Poison_Ivy.cpp" />
 		<Unit filename="src/Poison_Ivy.hpp" />
+		<Unit filename="src/Rabbit.cpp" />
+		<Unit filename="src/Rabbit.hpp" />
+		<Unit filename="src/Race.cpp" />
+		<Unit filename="src/Race.hpp" />
+		<Unit filename="src/RaceState.hpp" />
 		<Unit filename="src/Tiger.cpp" />
 		<Unit filename="src/Tiger.hpp" />
+		<Unit filename="src/Turtle.cpp" />
+		<Unit filename="src/Turtle.hpp" />
 		<Unit filename="src/Universe.cpp" />
 		<Unit filename="src/Universe.hpp" />
 		<Unit filename="src/UniverseList.cpp" />
