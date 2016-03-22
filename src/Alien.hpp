@@ -19,7 +19,9 @@ class Alien:public Carnivore{
 	/** \brief see Animal::update_logic
 	*/
 	void update_logic();
-	/** find will find the nearest organism from the alien
+	/** \brief find the nearest organism from the alien
+	 * 	\param prey_x, prey_y Location of the prey
+	 * 	\param predator_x,predator_y Location of the alien
 	*/
 	bool find(int & prey_x,int & prey_y,int predator_x,int predator_y);
     /** \brief see Organism::ch
