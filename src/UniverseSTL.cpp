@@ -86,3 +86,7 @@ void UniverseSTL::update( float dt ){
             #endif // USE_THREAD
     }
 }
+
+void UniverseSTL::triggerRace(int sx, int sy, int ex, int ey){
+    // init race here
+}
