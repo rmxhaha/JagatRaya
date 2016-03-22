@@ -35,8 +35,7 @@ void Rabbit::triggerRace(Race *_Ra)
     {
         if(_Ra->joinRabbit(this))
         {
-          Ra = new Race (_Ra->getStartX(),_Ra->getStartY(),_Ra->getFinishX(),_Ra->getFinishY());
-          _Ra->setState(RaceState::WAITING_FOR_COMPETITOR);
+          Ra = _Ra;
         }
     }
 }
