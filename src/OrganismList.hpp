@@ -17,6 +17,7 @@ public:
     ~OrganismList();
 
     void push_back(Organism* val);
+    void pop_front();
 
     OrganismNode* begin();
     OrganismNode* end();

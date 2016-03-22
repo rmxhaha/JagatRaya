@@ -12,7 +12,7 @@ UniverseList::UniverseList(Board b, int m) : Universe(b, m){
 
 UniverseList::~UniverseList()
 {
-    //dtor
+    //dtorchrono::milliseconds(200)
 }
 
 #if USE_THREAD
@@ -27,7 +27,6 @@ void UniverseList::add(Organism* m){
     vm.push_back(mut);
     vt.push_back(thread([&](Organism* m, int vmNumber) {
             while (m -> isAlive()) {
-                cout << "ASD" << endl;
                 vm[vmNumber] -> lock();
                 m -> update(100);
                 this_thread::sleep_for(chrono::milliseconds(200));
@@ -39,7 +38,7 @@ void UniverseList::add(Organism* m){
 
 void UniverseList::notifyMovement(Organism* o){
     #if USE_THREAD
-    mu[o -> getX()][o -> getY()].lock();
+    mu.lock();
     #endif // USE_THREAD
     killWeakestOrganismAt(o -> getX(), o -> getY());
     OrganismList pool;
@@ -58,7 +57,7 @@ void UniverseList::notifyMovement(Organism* o){
             o->interact(it);
     }
     #if USE_THREAD
-    mu[o -> getX()][o -> getY()].unlock();
+    mu.unlock();
     #endif // USE_THREAD
 }
 
@@ -88,9 +87,6 @@ void UniverseList::killWeakestOrganismAt(int x, int y) {
 }
 
 void UniverseList::update( float dt ){
-    #if USE_THREAD
-    cout << "SADSDASDSADASDSA" << endl;
-    #endif // USE_THREAD
     int count = 0;
     for( auto its = MList.begin(); its != MList.end(); its = its->next) {
         Organism* it = its->val;
@@ -101,6 +97,22 @@ void UniverseList::update( float dt ){
     }
     printf("%d", count);
 }
+void UniverseList::cleanCronJob() {
+    while (!MList.begin()->val -> isAlive()) {
+        MList.pop_front();
+    }
+    for( auto its = MList.begin(); its != MList.end(); its = its->next) {
+        if (its -> next != MList.end())
+        {
+            Organism* it = its -> next ->val;
+            if( !it->isAlive() ){
+                its -> next = its -> next ->next;
+            }
+        }
+
+    }
+}
+
 
 void UniverseList::notifyRace(int sx, int sy, int ex, int ey){
     // init race here

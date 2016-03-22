@@ -1,6 +1,7 @@
 #include "UniverseSTL.hpp"
 #include "board.hpp"
 #include <stdexcept>
+#include <algorithm>
 #if USE_THREAD
 #include <thread>
 #endif // USE_THREAD
@@ -26,7 +27,6 @@ void UniverseSTL::add(Organism* m){
     vm.push_back(mut);
     vt.push_back(thread([&](Organism* m, int vmNumber) {
             while (m -> isAlive()) {
-                cout << "ASD" << endl;
                 vm[vmNumber] -> lock();
                 m -> update(100);
                 this_thread::sleep_for(chrono::milliseconds(200));
@@ -38,7 +38,7 @@ void UniverseSTL::add(Organism* m){
 
 void UniverseSTL::notifyMovement(Organism* o){
     #if USE_THREAD
-    mu[o -> getX()][o -> getY()].lock();
+    mu.lock();
     #endif // USE_THREAD
     killWeakestOrganismAt(o -> getX(), o -> getY());
     vector<Organism*> pool;
@@ -55,7 +55,7 @@ void UniverseSTL::notifyMovement(Organism* o){
             o->interact(it);
     }
     #if USE_THREAD
-    mu[o -> getX()][o -> getY()].unlock();
+    mu.unlock();
     #endif // USE_THREAD
 
 }
@@ -87,6 +87,13 @@ void UniverseSTL::update( float dt ){
         if( it->isAlive() )
             it->update(dt);
     }
+}
+
+void UniverseSTL::cleanCronJob() {
+    MList.erase(remove_if(MList.begin(),
+        MList.end(),
+        [](Organism* x){return !x -> isAlive();}),
+    MList.end());
 }
 
 void UniverseSTL::notifyRace(int sx, int sy, int ex, int ey){

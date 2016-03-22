@@ -1,5 +1,4 @@
 #define TESTING_STATE FALSE
-#define USE_THREAD TRUE
 
 #include "IsA.hpp"
 #include "UniverseList.hpp"
@@ -37,12 +36,24 @@ int main(int argc, char **argv)
 	organismFactory.CreateDeer(2, 2);
 	organismFactory.CreateTiger(8, 7);
 	Sleep(100);
-	int asd = 0;
+	#if USE_THREAD
+    thread t([&]{
+             while (true) {
+                u.cleanCronJob();
+                this_thread::sleep_for(chrono::seconds(1));
+             }
+             });
+    #endif
 	while(true){
 		if(GetAsyncKeyState(VK_ESCAPE)){
 			break;
 		}
 		else if(GetAsyncKeyState(VK_SPACE)){
+            #if USE_THREAD
+                for (auto it : u.vm) {
+                    it -> lock();
+                }
+            #endif // USE_THREAD
             // Save Board to out.txt
             ofstream out("out.txt");
             streambuf *coutbuf = cout.rdbuf(); //save old buf
@@ -53,6 +64,11 @@ int main(int argc, char **argv)
             Sleep(100);
 			while(true){
 				if(GetAsyncKeyState(VK_SPACE)){
+                    #if USE_THREAD
+                        for (auto it : u.vm) {
+                            it -> unlock();
+                        }
+                    #endif // USE_THREAD
 					break;
 				}
 				else if(GetAsyncKeyState(0x4E)){
@@ -69,7 +85,12 @@ int main(int argc, char **argv)
 			Sleep(100);
 			organismFactory.CreateRandom();
 		}
-	    u.update(100);
+		#if USE_THREAD
+		#else
+            u.update(100);
+            u.cleanCronJob();
+		#endif // USE_THREAD
+
 		u.board.PrintBoard();
 
 	    Sleep(200*sleep_multiplier);
