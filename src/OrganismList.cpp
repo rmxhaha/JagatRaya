@@ -22,6 +22,14 @@ void OrganismList::push_back(Organism* val) {
     endNode -> next = NULL;
 }
 
+void OrganismList::pop_front() {
+    if (nSize == 0) {
+        return;
+    }
+    nSize--;
+    beginNode = beginNode -> next;
+}
+
 OrganismNode* OrganismList::begin() { return beginNode; }
 OrganismNode* OrganismList::end() { return NULL; }
 size_t OrganismList::size() {return nSize; }
