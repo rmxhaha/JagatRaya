@@ -2,6 +2,7 @@
 #define _RACE_H
 #include "RaceState.hpp"
 #include "Organism.hpp"
+
 class Race{
  public:
     Race(int SX,int SY,int EX,int EY);
@@ -10,10 +11,10 @@ class Race{
      int getFinishX();
      int getFinishY();
      RaceState getState();
-     bool joinRabbit(Organism*);
-     bool joinTurtle(Organism*);
+     bool joinRabbit(Organism* );
+     bool joinTurtle(Organism* );
 
- private:
+private:
     int startX;
     int startY;
     int endX;
@@ -24,3 +25,4 @@ class Race{
 };
 
 #endif // _RACE_H
+

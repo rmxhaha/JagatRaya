@@ -5,7 +5,7 @@
 
 class Herbivore : public Animal {
 public:
-    Herbivore(Universe&, int x, int y, float currentAge);
+    Herbivore(Universe& u, int x, int y, float currentAge);
 
 protected:
 
