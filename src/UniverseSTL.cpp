@@ -14,19 +14,25 @@ UniverseSTL::~UniverseSTL()
     //dtor
 }
 
-void startOrganismUpdate(Organism* m) {
-    while (m -> isAlive()) {
-        m -> update();
-        Sleep(200);
-    }
-}
+#if USE_THREAD
+#include <chrono>
+#endif // USE_THREAD
 
 void UniverseSTL::add(Organism* m){
     MList.push_back(m);
     killWeakestOrganismAt(m -> getX(), m -> getY());
     #if USE_THREAD
-    thread* t = new thread(startOrganismUpdate, m);
-    vt.push_back(t);
+    mutex* mut = new mutex;
+    vm.push_back(mut);
+    vt.push_back(thread([&](Organism* m, int vmNumber) {
+            while (m -> isAlive()) {
+                cout << "ASD" << endl;
+                vm[vmNumber] -> lock();
+                m -> update(100);
+                this_thread::sleep_for(chrono::milliseconds(200));
+                vm[vmNumber] -> unlock();
+            }
+        }, m, vt.size()));
     #endif // USE_THREAD
 }
 
@@ -79,14 +85,10 @@ void UniverseSTL::killWeakestOrganismAt(int x, int y) {
 void UniverseSTL::update( float dt ){
     for( auto&it: MList ){
         if( it->isAlive() )
-            #if USE_THREAD
-            thread t(it->update, dt);
-            #else
             it->update(dt);
-            #endif // USE_THREAD
     }
 }
 
-void UniverseSTL::triggerRace(int sx, int sy, int ex, int ey){
+void UniverseSTL::notifyRace(int sx, int sy, int ex, int ey){
     // init race here
 }

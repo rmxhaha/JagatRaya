@@ -15,19 +15,25 @@ UniverseList::~UniverseList()
     //dtor
 }
 
-void startOrganismUpdate(Organism* m) {
-    while (m -> isAlive()) {
-        m -> update();
-        Sleep(200);
-    }
-}
+#if USE_THREAD
+#include <chrono>
+#endif // USE_THREAD
 
-void UniverseSTL::add(Organism* m){
+void UniverseList::add(Organism* m){
     MList.push_back(m);
     killWeakestOrganismAt(m -> getX(), m -> getY());
     #if USE_THREAD
-    thread* t = new thread(startOrganismUpdate, m);
-    vt.push_back(t);
+    mutex* mut = new mutex;
+    vm.push_back(mut);
+    vt.push_back(thread([&](Organism* m, int vmNumber) {
+            while (m -> isAlive()) {
+                cout << "ASD" << endl;
+                vm[vmNumber] -> lock();
+                m -> update(100);
+                this_thread::sleep_for(chrono::milliseconds(200));
+                vm[vmNumber] -> unlock();
+            }
+        }, m, vt.size()));
     #endif // USE_THREAD
 }
 
@@ -82,15 +88,14 @@ void UniverseList::killWeakestOrganismAt(int x, int y) {
 }
 
 void UniverseList::update( float dt ){
+    #if USE_THREAD
+    cout << "SADSDASDSADASDSA" << endl;
+    #endif // USE_THREAD
     int count = 0;
     for( auto its = MList.begin(); its != MList.end(); its = its->next) {
         Organism* it = its->val;
         if( it->isAlive() ){
-            #if USE_THREAD
-            thread t(it->update, dt);
-            #else
             it->update(dt);
-            #endif // USE_THREAD
             ++ count;
         }
     }

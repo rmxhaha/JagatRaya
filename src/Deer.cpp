@@ -32,8 +32,8 @@ int Deer::age() const {
 	return 60000000;
 }
 
-void Deer::interact(Organism*){
-   /* if(isA<Grass,Organism>(O)){
+void Deer::interact(Organism* O){
+   if(isA<Grass,Organism>(O)){
 		O->forceKill();
-	}*/
+	}
 }

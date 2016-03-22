@@ -14,6 +14,10 @@ class UniverseSTL : public Universe
         void update(float dt);
         void killWeakestOrganismAt(int x, int y);
         void notifyRace(int sx, int sy, int ex, int ey);
+        #if USE_THREAD
+        vector<mutex*> vm;
+        void startOrganismUpdate(Organism* m, int vmNumber);
+        #endif // USE_THREAD
     private:
         vector<Organism*> MList;
 //        vector<Race*> MRace;
