@@ -4,6 +4,7 @@
 #include <functional>
 #include <vector>
 #include <map>
+
 #if USE_THREAD
 #include <mutex>
 #include <thread>
@@ -12,7 +13,7 @@
 
 #include "board.hpp"
 #include "Organism.hpp"
-
+#include "Race.hpp"
 using namespace std;
 
 

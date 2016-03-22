@@ -17,6 +17,7 @@ class UniverseSTL : public Universe
         void notifyRace(int sx, int sy, int ex, int ey);
     private:
         vector<Organism*> MList;
+        vector<Race*> RList;
 //        vector<Race*> MRace;
 };
 

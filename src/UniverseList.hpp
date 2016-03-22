@@ -17,6 +17,7 @@ class UniverseList : public Universe
         void notifyRace(int sx, int sy, int ex, int ey);
     private:
         OrganismList MList;
+        RaceList RList;
         //std::list<Race*> race;
 };
 
