@@ -106,8 +106,12 @@ void UniverseSTL::cleanCronJob() {
     MList.end());
 }
 
-void UniverseSTL::notifyRace(int sx, int sy, int ex, int ey){
+void UniverseSTL::addRace(){
     // init race here
+    int sx = rand() % board.GetH();
+	int sy = rand() % board.GetW();
+	int ex= rand() % board.GetH();
+    int ey=sy;
     Race* Ra = new Race(sx,sy,ex,ey);
     RList.push_back(Ra);
     for( auto&it: MList ){
