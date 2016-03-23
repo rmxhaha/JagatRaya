@@ -11,6 +11,7 @@
 
 using namespace std;
 UniverseSTL::UniverseSTL(Board b, int m) : Universe(b, m){
+//    MList.reserve(10000);
 }
 
 UniverseSTL::~UniverseSTL()
@@ -24,6 +25,7 @@ UniverseSTL::~UniverseSTL()
 
 void UniverseSTL::add(Organism* m){
     MList.push_back(m);
+    killWeakestOrganismAt(m -> getX(), m -> getY());
 
     #if USE_THREAD
     mu.lock();
@@ -75,24 +77,28 @@ void UniverseSTL::killWeakestOrganismAt(int x, int y) {
     }
 
     // 1 for himself not counted
-    if( pool.size() > maxOrganismPerCell ){
+    while( pool.size() > maxOrganismPerCell ){
         // kill the weakest regardless of interaction
-        Organism* weakest = *pool.begin();
+        auto weakest = pool.begin();
         for( auto it = pool.begin() + 1; it != pool.end(); ++ it )
         {
-            if( (*it) -> power() < weakest->power() ){
-                weakest = *it;
+            if( (*it) -> power() < (*weakest)->power() ){
+                weakest = it;
             }
         }
-        weakest->forceKill();
+        (*weakest)->forceKill();
+        pool.erase(weakest);
     }
 }
 
 void UniverseSTL::update( float dt ){
-    for( auto&it: MList ){
-        if( it->isAlive() )
+    for( int i = 0; i < MList.size(); ++ i ){
+        Organism* it = MList[i];
+        if( it->isAlive() ){
             it->update(dt);
+        }
     }
+
     for( auto&it: RList ){
         if( it->getState()!=RaceState::RACE_END )
             it->updateRace();
@@ -100,10 +106,12 @@ void UniverseSTL::update( float dt ){
 }
 
 void UniverseSTL::cleanCronJob() {
+    /*
     MList.erase(remove_if(MList.begin(),
         MList.end(),
         [](Organism* x){return !x -> isAlive();}),
     MList.end());
+    */
 }
 
 void UniverseSTL::addRace(){
