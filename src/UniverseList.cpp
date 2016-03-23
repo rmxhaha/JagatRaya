@@ -125,8 +125,12 @@ void UniverseList::cleanCronJob() {
 }
 
 
-void UniverseList::notifyRace(int sx, int sy, int ex, int ey){
+void UniverseList::addRace(){
     // init race here
+    int sx = rand() % board.GetH();
+	int sy = rand() % board.GetW();
+	int ex= rand() % board.GetH();
+    int ey=sy;
     Race *Ra=new Race(sx,sy,ex,ey);
     RList.push_back(Ra);
     for( auto its = MList.begin(); its != MList.end(); its = its->next)

@@ -15,6 +15,11 @@ void Turtle::update_logic(){
     }
     else
     {
+        if(Ra->getState()==RaceState::RECRUITMENT)
+        {
+           move(goRandom());
+        }
+        else
         if(Ra->getState()==RaceState::WAITING_FOR_COMPETITOR)
         {
            move(goTo(Ra->getStartX(),Ra->getStartY()));
