@@ -98,6 +98,14 @@ void UniverseList::update( float dt ){
             ++ count;
         }
     }
+    for( auto its = RList.begin(); its != RList.end(); its = its->next) {
+        Race* it = its->val;
+        if( it->getState()!=RaceState::RACE_END ){
+            it->updateRace();
+            ++ count;
+        }
+    }
+
     printf("%d", count);
 }
 void UniverseList::cleanCronJob() {

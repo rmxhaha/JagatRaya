@@ -4,6 +4,8 @@
 #include "Eagle.hpp"
 #include "Grass.hpp"
 #include "Human.hpp"
+#include "Rabbit.hpp"
+#include "Turtle.hpp"
 #include "Poison_Ivy.hpp"
 #include "Tiger.hpp"
 
@@ -93,6 +95,18 @@ Organism* OrganismFactory::CreateHuman(int x,int y) {
 Organism* OrganismFactory::CreatePoisonIvy(int x,int y) {
 	Organism* ox;
 	ox = new Poison_Ivy(*u,x,y,currentAge);
+	u -> add(ox);
+	return ox;
+}
+Organism* OrganismFactory::CreateTurtle(int x,int y) {
+	Organism* ox;
+	ox = new Turtle(*u,x,y,currentAge);
+	u -> add(ox);
+	return ox;
+}
+Organism* OrganismFactory::CreateRabbit(int x,int y) {
+	Organism* ox;
+	ox = new Rabbit(*u,x,y,currentAge);
 	u -> add(ox);
 	return ox;
 }

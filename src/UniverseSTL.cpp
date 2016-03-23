@@ -1,5 +1,8 @@
 #include "UniverseSTL.hpp"
 #include "board.hpp"
+#include "isA.hpp"
+#include "Rabbit.hpp"
+#include "Turtle.hpp"
 #include <stdexcept>
 #include <algorithm>
 #if USE_THREAD
@@ -90,6 +93,10 @@ void UniverseSTL::update( float dt ){
         if( it->isAlive() )
             it->update(dt);
     }
+    for( auto&it: RList ){
+        if( it->getState()!=RaceState::RACE_END )
+            it->updateRace();
+    }
 }
 
 void UniverseSTL::cleanCronJob() {
@@ -102,6 +109,18 @@ void UniverseSTL::cleanCronJob() {
 void UniverseSTL::notifyRace(int sx, int sy, int ex, int ey){
     // init race here
     Race* Ra = new Race(sx,sy,ex,ey);
+    RList.push_back(Ra);
+    for( auto&it: MList ){
+        if( isA<Rabbit>(it) )
+        {
+            Rabbit* r = (Rabbit*)it;
+            r->triggerRace(Ra);
+        }
+        else if( isA<Turtle>(it)){
+            Turtle* t = (Turtle*)it;
+            t->triggerRace(Ra);
+        }
+    }
 
 }
 #if USE_THREAD
