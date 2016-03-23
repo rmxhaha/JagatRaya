@@ -19,7 +19,7 @@ void Alien::interact(Organism * O){
 char Alien::ch() const{return '@';}
 float Alien::speed() const{return 3;}
 int Alien::power() const{return 50;}
-int Alien::age() const{return 100000;}
+int Alien::age() const{return 50000;}
 
 class Target {
     public:

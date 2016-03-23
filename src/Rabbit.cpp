@@ -40,13 +40,13 @@ char Rabbit::ch() const {
 	return 'R';
 }
 float Rabbit::speed() const {
-	return 7;
+	return 5;
 }
 int Rabbit::power() const {
 	return 5;
 }
 int Rabbit::age() const {
-	return 100000;
+	return 20000;
 }
 
 void Rabbit::interact(Organism* O){

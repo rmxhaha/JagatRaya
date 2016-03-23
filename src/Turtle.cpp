@@ -46,7 +46,7 @@ int Turtle::power() const {
 	return 3;
 }
 int Turtle::age() const {
-	return 100000;
+	return 20000;
 }
 
 void Turtle::interact(Organism* O){

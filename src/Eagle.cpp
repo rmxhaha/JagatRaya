@@ -36,4 +36,4 @@ void Eagle::interact(Organism * O){
 char Eagle::ch() const{return 'E';}
 float Eagle::speed() const{return 3;}
 int Eagle::power() const {return 20;}
-int Eagle::age() const{return 600000;}
+int Eagle::age() const{return 30000;}

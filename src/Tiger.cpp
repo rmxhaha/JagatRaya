@@ -36,5 +36,5 @@ int Tiger::power() const {
 	return 25;
 }
 int Tiger::age() const {
-	return 7000;
+	return 30000;
 }

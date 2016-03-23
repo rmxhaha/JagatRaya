@@ -6,9 +6,9 @@ Poison_Ivy::Poison_Ivy(Universe& b, int x, int y,float currentAge):Plant(b,x,y,c
 
 
 int Poison_Ivy::power()const{return 13;}
-float Poison_Ivy::tgrow()const{return 8;}
+float Poison_Ivy::tgrow()const{return 0.5;}
 char Poison_Ivy::ch()const{return 'P';}
-int Poison_Ivy::age() const {return 40;}
+int Poison_Ivy::age() const {return 30000;}
 void Poison_Ivy::grow() const {
 	bool place=false;
 	int ni,nj;

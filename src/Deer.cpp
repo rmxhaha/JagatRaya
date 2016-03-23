@@ -29,7 +29,7 @@ int Deer::power() const {
 	return 5;
 }
 int Deer::age() const {
-	return 60000000;
+	return 30000;
 }
 
 void Deer::interact(Organism* O){
