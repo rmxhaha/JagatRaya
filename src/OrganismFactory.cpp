@@ -8,6 +8,7 @@
 #include "Turtle.hpp"
 #include "Poison_Ivy.hpp"
 #include "Tiger.hpp"
+#include "Horse.hpp"
 
 OrganismFactory::OrganismFactory(Universe& _u, float _currentAge) {
 	u = &_u;
@@ -54,6 +55,9 @@ Organism* OrganismFactory::CreateRandomAt(int x, int y) {
 			break;
         case 9 :
 			ox = new Turtle(*u,x,y,currentAge);
+			break;
+        case 10:
+            ox=  new Horse(*u,x,y,currentAge);
 			break;
 		default :
 			break;
@@ -113,6 +117,12 @@ Organism* OrganismFactory::CreateTurtle(int x,int y) {
 Organism* OrganismFactory::CreateRabbit(int x,int y) {
 	Organism* ox;
 	ox = new Rabbit(*u,x,y,currentAge);
+	u -> add(ox);
+	return ox;
+}
+Organism* OrganismFactory::CreateHorse(int x,int y) {
+	Organism* ox;
+	ox = new Horse(*u,x,y,currentAge);
 	u -> add(ox);
 	return ox;
 }

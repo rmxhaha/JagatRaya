@@ -79,6 +79,7 @@ public:
 	Organism* CreatePoisonIvy(int,int);
 	Organism* CreateRabbit(int,int);
 	Organism* CreateTurtle(int,int);
+	Organism* CreateHorse(int,int);
 private:
 	Universe *u;
 	float currentAge;

@@ -30,17 +30,20 @@ int main(int argc, char **argv)
 
 	int sleep_multiplier = 1;
     srand(444);
-    Board b(20,20);
-	UniverseSTL u(b,2);
+    int w,h,N;
+    system ("CLS");
+    cout << "Input width and height :" <<endl;
+    cin >> w>>h;
+    system ("CLS");
+    cout << "Input maximum organism in one cell :" <<endl;
+    cin >> N;
+    system ("CLS");
+    Board b(w,h);
+	UniverseSTL u(b,N);
 	OrganismFactory organismFactory(u);
-	organismFactory.CreateRabbit(6, 9);
-
-    organismFactory.CreateTurtle(2,9);
-	organismFactory.CreateDeer(10,10);
-	organismFactory.CreateGrass(6,6);
-	organismFactory.CreateTiger(8, 7);
 	organismFactory.CreateEagle(0,0);
-
+	organismFactory.CreateHorse(1,1);
+	organismFactory.CreatePoisonIvy(7,7);
 	Sleep(100);
 	#if USE_THREAD
 	bool finish = false;
@@ -52,6 +55,8 @@ int main(int argc, char **argv)
              });
     #endif
 	while(true){
+    int x = rand() % h;
+	int y = rand() % w;
 		if(GetAsyncKeyState(VK_ESCAPE) || u.board.isEmpty()){
 			break;
 		}
@@ -95,19 +100,72 @@ int main(int argc, char **argv)
 			Sleep(100);
 			organismFactory.CreateRandom();
 		}
+		else if(GetAsyncKeyState(0x70)){
+            Sleep(100);
+            organismFactory.CreateAlien(x,y);
+		}
+        else if(GetAsyncKeyState(0x71)){
+            Sleep(100);
+            int _x = rand() % h;
+	        int _y = rand() % w;
+            organismFactory.CreateRabbit(x,y);
+            organismFactory.CreateTurtle(_x,_y);
+        }
+        else if(GetAsyncKeyState(0x72)){
+            Sleep(100);
+            organismFactory.CreateTiger(x,y);
+        }
+        else if(GetAsyncKeyState(0x73)){
+            Sleep(100);
+            organismFactory.CreateDeer(x,y);
+        }
+        else if(GetAsyncKeyState(0x74)){
+            Sleep(100);
+            organismFactory.CreateHuman(x,y);
+        }
+        else if(GetAsyncKeyState(0x75)){
+            Sleep(100);
+            organismFactory.CreatePoisonIvy(x,y);
+        }
+        else if(GetAsyncKeyState(0x76)){
+            Sleep(100);
+            organismFactory.CreateGrass(x,y);
+        }
+        else if(GetAsyncKeyState(0x77)){
+            Sleep(100);
+            organismFactory.CreateHorse(x,y);
+        }
+        else if(GetAsyncKeyState(0x78)){
+            Sleep(100);
+            organismFactory.CreateEagle(x,y);
+        }
 		else if(GetAsyncKeyState(0x52)){
+        //press  R to addRace
             Sleep(100);
             u.addRace();
+		}
+		else if(GetAsyncKeyState(0x53)) {
+            //press  S to increase speed
+            Sleep(100);
+            sleep_multiplier++;
+		}
+		else if(GetAsyncKeyState(0x44)) {
+		    //press  D to decrease speed
+            Sleep(100);
+            sleep_multiplier--;
+            if(sleep_multiplier<0)
+                sleep_multiplier=0;
 		}
 		#if USE_THREAD
 		#else
             u.update(100);
             u.cleanCronJob();
 		#endif // USE_THREAD
+             u.board.PrintBoard();
+             cout<<endl;
 
-		u.board.PrintBoard();
 
-	    Sleep(200*sleep_multiplier);
+	    Sleep(200/sleep_multiplier);
 	}
 	u.board.PrintBoard();
 	#if USE_THREAD

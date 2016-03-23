@@ -5,9 +5,9 @@ Grass::Grass(Universe& b, int x, int y,float currentAge):Plant(b,x,y,currentAge)
 }
 
 int Grass::power()const{return 2;}
-float Grass::tgrow()const{return 1;}
+float Grass::tgrow()const{return 0.5;}
 char Grass::ch()const{return 'G';}
-int Grass::age() const {return 2000;}
+int Grass::age() const {return 30000;}
 
 void Grass::grow() const {
 	bool place=false;

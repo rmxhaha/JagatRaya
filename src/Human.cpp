@@ -12,7 +12,7 @@ void Human::update_logic(){
 char Human::ch() const { return 1; }
 
 int Human::power() const{ return 1; }
-int Human::age() const { return 500000; }
+int Human::age() const { return 50000; }
 float Human::speed() const { return 3; }
 void Human::interact(Organism* o){
     if( isA<Human>(o) ){
