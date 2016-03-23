@@ -69,7 +69,7 @@ public:
      *  \param ey finish coordinate
      *  \return void
      */
-    virtual void notifyRace(int sx, int sy, int ex, int ey) = 0;
+    virtual void addRace() = 0;
     /** \brief clean death animal that is still inside the Universe. This function is called periodically
      *
      *  \return void

@@ -25,7 +25,7 @@ Organism* OrganismFactory::CreateRandom() {
 }
 
 Organism* OrganismFactory::CreateRandomAt(int x, int y) {
-	int i = rand() % 7 + 1;
+	int i = rand() % 9 + 1;
 	Organism* ox;
 	switch (i){
 		case 1 :
@@ -48,6 +48,12 @@ Organism* OrganismFactory::CreateRandomAt(int x, int y) {
 			break;
 		case 7 :
 			ox = new Tiger(*u,x,y,currentAge);
+			break;
+        case 8 :
+			ox = new Rabbit(*u,x,y,currentAge);
+			break;
+        case 9 :
+			ox = new Turtle(*u,x,y,currentAge);
 			break;
 		default :
 			break;

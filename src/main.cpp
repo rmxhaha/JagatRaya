@@ -33,16 +33,14 @@ int main(int argc, char **argv)
     Board b(20,20);
 	UniverseSTL u(b,2);
 	OrganismFactory organismFactory(u);
-
-	organismFactory.CreateRabbit(1, 9);
 	organismFactory.CreateRabbit(6, 9);
-    organismFactory.CreateTurtle(3,9);
+
     organismFactory.CreateTurtle(2,9);
 	organismFactory.CreateDeer(10,10);
+	organismFactory.CreateGrass(6,6);
 	organismFactory.CreateTiger(8, 7);
 	organismFactory.CreateEagle(0,0);
-	u.notifyRace(1,1,19,1);
-	u.notifyRace(3,3,19,3);
+
 	Sleep(100);
 	#if USE_THREAD
 	bool finish = false;
@@ -96,6 +94,10 @@ int main(int argc, char **argv)
 		//press A to spawn
 			Sleep(100);
 			organismFactory.CreateRandom();
+		}
+		else if(GetAsyncKeyState(0x52)){
+            Sleep(100);
+            u.addRace();
 		}
 		#if USE_THREAD
 		#else
