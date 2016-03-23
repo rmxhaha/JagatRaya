@@ -45,10 +45,9 @@ class Race{
     */
      bool joinTurtle(Organism*);
      /**
-     * set state race
+     * update state race
      */
-     void setState(RaceState);
-
+     void updateRace();
  private:
     int startX;
     int startY;

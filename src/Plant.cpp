@@ -5,8 +5,12 @@ Plant::Plant(Universe& b, int x, int y,float currentAge):Organism(b,x,y,currentA
 
 void Plant::update(float dt)
 {
+    Organism::update(dt);
+    if( isDead() ) return;
+
 	float d = 1000/tgrow();
     timebuffer += dt;
+
     while( timebuffer > d ){
         update_grow();
         timebuffer -= d;

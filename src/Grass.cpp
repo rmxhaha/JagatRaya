@@ -4,10 +4,10 @@ Grass::Grass(Universe& b, int x, int y,float currentAge):Plant(b,x,y,currentAge)
 	 universe->board.SetEl(ch(),x,y);
 }
 
-int Grass::power()const{return 10;}
-float Grass::tgrow()const{return 2;}
+int Grass::power()const{return 2;}
+float Grass::tgrow()const{return 1;}
 char Grass::ch()const{return 'G';}
-int Grass::age() const {return 40;}
+int Grass::age() const {return 4000;}
 
 void Grass::grow() const {
 	bool place=false;

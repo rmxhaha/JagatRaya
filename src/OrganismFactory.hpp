@@ -77,6 +77,8 @@ public:
      * \return Organism*
      */
 	Organism* CreatePoisonIvy(int,int);
+	Organism* CreateRabbit(int,int);
+	Organism* CreateTurtle(int,int);
 private:
 	Universe *u;
 	float currentAge;

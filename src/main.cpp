@@ -30,12 +30,19 @@ int main(int argc, char **argv)
 
 	int sleep_multiplier = 1;
     srand(444);
-    Board b(10,10);
+    Board b(20,20);
 	UniverseSTL u(b,2);
 	OrganismFactory organismFactory(u);
-	organismFactory.CreateDeer(5, 4);
-	organismFactory.CreateDeer(2, 2);
+
+	organismFactory.CreateRabbit(1, 9);
+	organismFactory.CreateRabbit(6, 9);
+    organismFactory.CreateTurtle(3,9);
+    organismFactory.CreateTurtle(2,9);
+	organismFactory.CreateDeer(10,10);
 	organismFactory.CreateTiger(8, 7);
+	organismFactory.CreateEagle(0,0);
+	u.notifyRace(1,1,19,1);
+	u.notifyRace(3,3,19,3);
 	Sleep(100);
 	#if USE_THREAD
 	bool finish = false;

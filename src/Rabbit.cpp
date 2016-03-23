@@ -3,12 +3,33 @@
 #include "RaceState.hpp"
 Rabbit::Rabbit(Universe& u, int x, int y,float currentAge):Herbivore(u,x,y,currentAge){
     universe->board.SetEl(ch(),x,y);
+    Ra=NULL;
 }
 
 void Rabbit::update_logic(){
 	//Update Tiger move
-	if(Ra->getState()==RaceState::RECRUITMENT)
-	move(goRandom());
+
+	if(Ra==NULL)
+    {
+	  move(goRandom());
+    }
+    else
+    {
+        if(Ra->getState()==RaceState::WAITING_FOR_COMPETITOR)
+        {
+            move(goTo(Ra->getStartX(),Ra->getStartY()));
+        }
+        else
+        if(Ra->getState()==RaceState::RACING)
+        {
+            move(goTo(Ra->getFinishX(),Ra->getFinishY()));
+        }
+        else
+        if(Ra->getState()==RaceState::RACE_END)
+        {
+            Ra=NULL;
+        }
+    }
 }
 char Rabbit::ch() const {
 	return 'R';
@@ -17,10 +38,10 @@ float Rabbit::speed() const {
 	return 7;
 }
 int Rabbit::power() const {
-	return 3;
+	return 5;
 }
 int Rabbit::age() const {
-	return 60;
+	return 100000;
 }
 
 void Rabbit::interact(Organism* O){
@@ -31,7 +52,7 @@ void Rabbit::interact(Organism* O){
 
 void Rabbit::triggerRace(Race *_Ra)
 {
-    if(_Ra->getState()==RaceState::RECRUITMENT)
+    if(Ra==NULL)
     {
         if(_Ra->joinRabbit(this))
         {

@@ -4,11 +4,32 @@
 
 Turtle::Turtle(Universe& u, int x, int y,float currentAge):Herbivore(u,x,y,currentAge){
     universe->board.SetEl(ch(),x,y);
+    Ra=NULL;
 }
 
 void Turtle::update_logic(){
 	//Update Tiger move
-	move(goRandom());
+	if(Ra==NULL)
+    {
+	  move(goRandom());
+    }
+    else
+    {
+        if(Ra->getState()==RaceState::WAITING_FOR_COMPETITOR)
+        {
+           move(goTo(Ra->getStartX(),Ra->getStartY()));
+        }
+    else
+        if(Ra->getState()==RaceState::RACING)
+        {
+            move(goTo(Ra->getFinishX(),Ra->getFinishY()));
+        }
+    else
+        if(Ra->getState()==RaceState::RACE_END)
+        {
+            Ra=NULL;
+        }
+    }
 }
 char Turtle::ch() const {
 	return 'U';
@@ -20,7 +41,7 @@ int Turtle::power() const {
 	return 3;
 }
 int Turtle::age() const {
-	return 10;
+	return 100000;
 }
 
 void Turtle::interact(Organism* O){
@@ -31,11 +52,12 @@ void Turtle::interact(Organism* O){
 
 void Turtle::triggerRace(Race *_Ra)
 {
-    if(_Ra->getState()==RaceState::RECRUITMENT)
+    if(Ra==NULL)
     {
         if(_Ra->joinTurtle(this))
         {
           Ra = _Ra;
+
         }
     }
 }
