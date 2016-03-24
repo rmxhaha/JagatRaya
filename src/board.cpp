@@ -16,7 +16,7 @@ Board::Board()
 	{
 		for(int j=0;j<w;j++)
 		{
-			data[i][j]=' ';
+			data[i][j]="";
 		}
 	}
 
@@ -30,6 +30,13 @@ Board::Board(int _w, int _h)
 	for(int i=0;i<h;i++)
 	{
 		data[i]=new string[w];
+	}
+	for(int i=0;i<h;i++)
+	{
+		for(int j=0;j<w;j++)
+		{
+			data[i][j]="";
+		}
 	}
 
 }
@@ -145,7 +152,7 @@ bool Board::isEmpty() {
 	{
 		for(int j=0;j<w;j++)
 		{
-		    if( data[j][i].length() > 0 )
+		    if( GetEl(j,i).length() > 0 )
                 return false;
 		}
 	}

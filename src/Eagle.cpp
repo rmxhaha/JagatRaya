@@ -2,6 +2,7 @@
 #include "Rabbit.hpp"
 #include "Turtle.hpp"
 Eagle::Eagle(Universe& u, int x, int y,float currentAge):Carnivore(u,x,y,currentAge){
+    universe->board.SetEl(ch(),y,x);
 }
 
 void Eagle::update_logic(){
@@ -36,4 +37,4 @@ void Eagle::interact(Organism * O){
 char Eagle::ch() const{return 'E';}
 float Eagle::speed() const{return 3;}
 int Eagle::power() const {return 20;}
-int Eagle::age() const{return 30000;}
+int Eagle::age() const{return 3000;}

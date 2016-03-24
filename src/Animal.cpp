@@ -116,8 +116,8 @@ void Animal::move(direction_t direction){
 
     if( x == tx && y == ty ) return;
 
-    universe->board.DelEl(ch(),x,y);
-    universe->board.SetEl(ch(),tx,ty);
+    universe->board.DelEl(ch(),y,x);
+    universe->board.SetEl(ch(),ty,tx);
     x = tx;
     y = ty;
     universe->notifyMovement(this);
@@ -136,8 +136,9 @@ class Target {
 };
 
 bool Animal::findPrey(char prey_ch,int & prey_x,int & prey_y,int predator_x,int predator_y){
+
 	Board& board = universe->board;
-    int closest_prey = 1 << 29;
+    int closest_prey = 1000000000;
     bool prey_found = false;
     prey_x = predator_x;
     prey_y = predator_y;

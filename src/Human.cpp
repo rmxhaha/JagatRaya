@@ -2,7 +2,7 @@
 #include "IsA.hpp"
 
 Human::Human(Universe& universe, int x, int y,float currentAge) : Carnivore(universe,x,y,currentAge), offspringCount(0) {
-    universe.board.SetEl(ch(),x,y);
+    universe.board.SetEl(ch(),y,x);
 }
 
 void Human::update_logic(){

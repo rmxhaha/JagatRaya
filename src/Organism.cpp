@@ -23,7 +23,7 @@ bool Organism::isAlive() const { return !is_dead; }
 
 void Organism::forceKill(){
     is_dead = true;
-    universe->board.DelEl(ch(),x,y);
+    universe->board.DelEl(ch(),y,x);
 }
 
 void Organism::update(float dt){

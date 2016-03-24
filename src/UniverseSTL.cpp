@@ -92,12 +92,16 @@ void UniverseSTL::killWeakestOrganismAt(int x, int y) {
 }
 
 void UniverseSTL::update( float dt ){
+    int c = 0;
     for( int i = 0; i < MList.size(); ++ i ){
         Organism* it = MList[i];
         if( it->isAlive() ){
             it->update(dt);
+            ++c;
         }
     }
+
+    cout << c;
 
     for( auto&it: RList ){
         if( it->getState()!=RaceState::RACE_END )

@@ -39,12 +39,9 @@ int main(int argc, char **argv)
     cin >> N;
     system ("CLS");
     Board b(w,h);
-	UniverseSTL u(b,N);
+	UniverseList u(b,N);
 	OrganismFactory organismFactory(u);
 	organismFactory.CreateEagle(0,0);
-	organismFactory.CreateHorse(1,1);
-	organismFactory.CreatePoisonIvy(7,7);
-	Sleep(100);
 	#if USE_THREAD
 	bool finish = false;
     thread t([&]{

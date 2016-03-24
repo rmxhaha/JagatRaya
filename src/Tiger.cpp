@@ -1,8 +1,9 @@
 #include "Tiger.hpp"
 #include "Deer.hpp"
+#include "Horse.hpp"
 
 Tiger::Tiger(Universe& u, int x, int y,float currentAge):Carnivore(u,x,y,currentAge){
-    universe->board.SetEl(ch(),x,y);
+    universe->board.SetEl(ch(),y,x);
 }
 
 
@@ -10,11 +11,14 @@ void Tiger::update_logic(){
 	//Update Tiger move
 	int prey_x;
 	int prey_y;
-	if(!findPrey('D',prey_x,prey_y,x,y)&&!findPrey('H',prey_x,prey_y,x,y)){
-		move(goRandom());
-	}
-	else{
+	if( findPrey('D',prey_x,prey_y,x,y)){
 		move(goTo(prey_x,prey_y));
+	}
+	else if( findPrey('H',prey_x,prey_y,x,y)){
+		move(goTo(prey_x,prey_y));
+	}
+	else {
+        move(goRandom());
 	}
 }
 
@@ -23,6 +27,9 @@ void Tiger::update_logic(){
 void Tiger::interact(Organism * O){
 	if(isA<Deer,Organism>(O)){
 		O->forceKill();
+	}
+	else if(isA<Horse>(O)){
+        O->forceKill();
 	}
 }
 

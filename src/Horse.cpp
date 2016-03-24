@@ -1,7 +1,9 @@
 #include "Horse.hpp"
 #include "Grass.hpp"
 #include "Poison_Ivy.hpp"
-Horse::Horse(Universe& u, int x, int y,float currentAge):Herbivore(u,x,y,currentAge){}
+Horse::Horse(Universe& u, int x, int y,float currentAge):Herbivore(u,x,y,currentAge){
+    universe->board.SetEl(ch(),y,x);
+}
 
 void Horse::update_logic(){
 	//Update Tiger move

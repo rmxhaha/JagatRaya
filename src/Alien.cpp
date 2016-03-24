@@ -1,6 +1,8 @@
 #include "Alien.hpp"
 
-Alien::Alien(Universe& u, int x, int y,float currentAge):Carnivore(u,x,y,currentAge){}
+Alien::Alien(Universe& u, int x, int y,float currentAge):Carnivore(u,x,y,currentAge){
+    universe->board.SetEl(ch(),y,x);
+}
 
 void Alien::update_logic(){//Update Alien move
 	int prey_x;

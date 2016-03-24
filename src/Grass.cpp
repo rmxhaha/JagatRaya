@@ -1,7 +1,7 @@
 #include "Grass.hpp"
 
 Grass::Grass(Universe& b, int x, int y,float currentAge):Plant(b,x,y,currentAge) {
-	 universe->board.SetEl(ch(),x,y);
+	 universe->board.SetEl(ch(),y,x);
 }
 
 int Grass::power()const{return 2;}

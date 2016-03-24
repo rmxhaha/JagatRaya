@@ -1,7 +1,7 @@
 #include "Poison_Ivy.hpp"
 #include "Herbivore.hpp"
 Poison_Ivy::Poison_Ivy(Universe& b, int x, int y,float currentAge):Plant(b,x,y,currentAge) {
-    universe->board.SetEl(ch(),x,y);
+    universe->board.SetEl(ch(),y,x);
 }
 
 

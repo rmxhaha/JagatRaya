@@ -1,13 +1,16 @@
 #include "Deer.hpp"
 #include "Grass.hpp"
 
-Deer::Deer(Universe& u, int x, int y, float currentAge):Herbivore(u,x,y,currentAge){}
+Deer::Deer(Universe& u, int x, int y, float currentAge):Herbivore(u,x,y,currentAge){
+    universe->board.SetEl(ch(),y,x);
+}
 
 void Deer::update_logic(){
 	//Update Tiger move
 	int prey_x;
 	int prey_y;
 	if(findPrey('T',prey_x,prey_y,x,y)){
+            cout << prey_x << " " << prey_y;
 		move(avoid(prey_x,prey_y));
 	}
 	else{

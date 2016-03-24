@@ -106,9 +106,10 @@ void UniverseList::update( float dt ){
         }
     }
 
-    printf("%d", count);
+    printf("%d     ", count);
 }
 void UniverseList::cleanCronJob() {
+    /*
     while (!MList.begin()->val -> isAlive()) {
         MList.pop_front();
     }
@@ -122,6 +123,7 @@ void UniverseList::cleanCronJob() {
         }
 
     }
+    */
 }
 
 

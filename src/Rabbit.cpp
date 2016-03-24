@@ -2,7 +2,7 @@
 #include "Grass.hpp"
 #include "RaceState.hpp"
 Rabbit::Rabbit(Universe& u, int x, int y,float currentAge):Herbivore(u,x,y,currentAge){
-    universe->board.SetEl(ch(),x,y);
+    universe->board.SetEl(ch(),y,x);
     Ra=NULL;
 }
 
