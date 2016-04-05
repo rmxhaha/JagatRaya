@@ -3,11 +3,12 @@ public abstract class Organism {
   protected float cAge;
   protected boolean is_dead;
   protected int x,y;
-  //protected Universe universe;
+  protected Universe universe;
 
-  public Organism(int x, int y, float currentAge){
+  public Organism(Universe u, int x, int y, float currentAge){
     this.x = x;
     this.y = y;
+    universe = u;
 
     cAge = currentAge;
     is_dead = false;
