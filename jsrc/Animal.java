@@ -44,24 +44,24 @@ abstract class Animal extends Organism {
 	protected direction_t avoid(int x, int y) {
 		if( tx < x ){ // run right
 	        if( ty < y ) // run up
-	            return direction_t::UP_RIGHT;
+	            return direction_t.UP_RIGHT;
 	        if( ty > y ) // run down
-	            return direction_t::DOWN_RIGHT;
-	        return direction_t::RIGHT;
+	            return direction_t.DOWN_RIGHT;
+	        return direction_t.RIGHT;
 	    }
 	    if( x < tx ){ // run left
 	        if( ty < y ) // run up
-	            return direction_t::UP_LEFT;
+	            return direction_t.UP_LEFT;
 	        if( ty > y ) // run down
-	            return direction_t::DOWN_LEFT;
-	        return direction_t::LEFT;
+	            return direction_t.DOWN_LEFT;
+	        return direction_t.LEFT;
 	    }
 	    if( ty < y ) // run up
-	        return direction_t::UP;
+	        return direction_t.UP;
 	    if( ty > y ) // run down
-	        return direction_t::DOWN;
+	        return direction_t.DOWN;
 	    // on the same coor
-	    return direction_t::UP_LEFT;
+	    return direction_t.UP_LEFT;
 	}
 	/** \brief find the direction where animal should move to, if the animal want to go to its prey / herd.
 	 * 	\param x,y Location of the thing animal should go to.
@@ -70,23 +70,23 @@ abstract class Animal extends Organism {
 	protected direction_t goTo(int x, int y) {
 		if( tx > x ){ // run right
 	        if( ty > y ) // run up
-	            return direction_t::UP_RIGHT;
+	            return direction_t.UP_RIGHT;
 	        if( ty < y ) // run down
-	            return direction_t::DOWN_RIGHT;
-	        return direction_t::RIGHT;
+	            return direction_t.DOWN_RIGHT;
+	        return direction_t.RIGHT;
 	    }
 	    if( x > tx ){ // run left
 	        if( ty > y ) // run up
-	            return direction_t::UP_LEFT;
+	            return direction_t.UP_LEFT;
 	        if( ty < y ) // run down
-	            return direction_t::DOWN_LEFT;
-	        return direction_t::LEFT;
+	            return direction_t.DOWN_LEFT;
+	        return direction_t.LEFT;
 	    }
 	    if( ty > y ) // run up
-	        return direction_t::UP;
+	        return direction_t.UP;
 	    if( ty < y ) // run down
-	        return direction_t::DOWN;
-	    return direction_t::NO_WHERE;
+	        return direction_t.DOWN;
+	    return direction_t.NO_WHERE;
 	}
 	/** \brief return random direction.
 	 * 	\return direction_t
@@ -94,15 +94,15 @@ abstract class Animal extends Organism {
 	protected direction_t goRandom() {
 		int d = Math.rand() % 8;
 	    switch(d){
-	    case 0: return direction_t::UP;
-	    case 1: return direction_t::DOWN;
-	    case 2: return direction_t::LEFT;
-	    case 3: return direction_t::RIGHT;
-	    case 4: return direction_t::UP_LEFT;
-	    case 5: return direction_t::UP_RIGHT;
-	    case 6: return direction_t::DOWN_LEFT;
-	    case 7: return direction_t::DOWN_RIGHT;
-	    default : return direction_t::UP;
+	    case 0: return direction_t.UP;
+	    case 1: return direction_t.DOWN;
+	    case 2: return direction_t.LEFT;
+	    case 3: return direction_t.RIGHT;
+	    case 4: return direction_t.UP_LEFT;
+	    case 5: return direction_t.UP_RIGHT;
+	    case 6: return direction_t.DOWN_LEFT;
+	    case 7: return direction_t.DOWN_RIGHT;
+	    default : return direction_t.UP;
 	    }
 	}
 	/** \brief find the nearest target from the Animal
@@ -141,15 +141,15 @@ abstract class Animal extends Organism {
 		int dx = 0, dy = 0;
 
 	    switch( direction ){
-		case direction_t::NO_WHERE:      break;
-		case direction_t::UP:        dy = 1; break;
-		case direction_t::DOWN:      dy = -1; break;
-		case direction_t::LEFT:      dx = -1; break;
-		case direction_t::RIGHT:     dx = 1; break;
-		case direction_t::UP_LEFT:   dy = 1; dx = -1; break;
-		case direction_t::DOWN_LEFT: dy = -1; dx = -1; break;
-		case direction_t::UP_RIGHT:  dy = 1; dx = 1; break;
-		case direction_t::DOWN_RIGHT: dy = -1; dx = 1; break;
+		case direction_t.NO_WHERE:      break;
+		case direction_t.UP:        dy = 1; break;
+		case direction_t.DOWN:      dy = -1; break;
+		case direction_t.LEFT:      dx = -1; break;
+		case direction_t.RIGHT:     dx = 1; break;
+		case direction_t.UP_LEFT:   dy = 1; dx = -1; break;
+		case direction_t.DOWN_LEFT: dy = -1; dx = -1; break;
+		case direction_t.UP_RIGHT:  dy = 1; dx = 1; break;
+		case direction_t.DOWN_RIGHT: dy = -1; dx = 1; break;
 	    }
 
 
