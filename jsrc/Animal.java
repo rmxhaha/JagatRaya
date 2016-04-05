@@ -110,7 +110,7 @@ abstract class Animal extends Organism {
 	 * 	\param prey_x, prey_y Location of the prey
 	 * 	\param predator_x,predator_y Location of the Animal
 	*/
-	protected boolean findPrey(char prey_ch,int & prey_x,int & prey_y,int predator_x,int predator_y) {
+	protected boolean findPrey(char prey_ch,int &prey_x,int &prey_y,int predator_x,int predator_y) {
 		Board board = universe.board;
 	    int closest_prey = 1000000000;
 	    boolean prey_found = false;
