@@ -7,6 +7,7 @@ public abstract class Universe {
   public abstract void update(float dt);
   public abstract void killWeakestOrganismAt(int x, int y);
   public abstract void addRace();
+
   protected int maxOrganismPerCell;
 
 }
