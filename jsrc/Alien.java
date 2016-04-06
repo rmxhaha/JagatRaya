@@ -2,7 +2,7 @@
  * Alien class.
  * Alien will kill everything in it's way. Alien have the highest speed.
  */
-class Alien:public Carnivore{
+class Alien extends Carnivore{
 	/** \brief Alien Constructor
      *
      * \param universe Universe it belong in
@@ -14,7 +14,7 @@ class Alien:public Carnivore{
 	}
 	/** \brief see Animal::update_logic
 	*/
-	private void update_logic(){
+	protected void update_logic(){
 		int prey_x;
 		int prey_y;
 		if(!find(prey_x,prey_y,x,y)){

@@ -1,3 +1,7 @@
+import java.util.Random;
+import java.util.Vector;
+import java.util.stream.Collectors;
+
 class Universe {
     public Board board; // expose ?
 
@@ -9,10 +13,10 @@ class Universe {
      *  \param m maximum number of Organism per cell
      */
     public Universe(Board board, int m) throws Exception{
-        board = b;
+        this.board = board;
         maxOrganismPerCell = m;
-        mList = (Vector<Organism>)new Vector();
-        rList = (Vector<Race>)new Vector();
+        mList = new Vector<>();
+        rList = new Vector<>();
         if( maxOrganismPerCell < 1 ) throw new Exception("MaxOrganismPerCell must be more than 0");
     }
 
@@ -34,8 +38,8 @@ class Universe {
     public void notifyMovement(Organism o) {
         killWeakestOrganismAt(o.getX(), o.getY());
         Vector<Organism> pool = mList.stream()
-                                    .filter(it -> o.getX() == it.getX() && o.getY() == it.getY());
-                                    .collect(toVector());
+                                    .filter(it -> o.getX() == it.getX() && o.getY() == it.getY())
+                                    .collect(Collectors.toCollection(Vector::new));
 
         for( Organism it: pool ){
             if( it == o ) continue;
@@ -52,12 +56,12 @@ class Universe {
      */
     public void update(float dt) {
         mList.stream()
-            .filter(it -> it.isAlive())
+            .filter(Organism::isAlive)
             .forEach(it -> it.update(dt));
 
         rList.stream()
             .filter(it -> it.getState()!=RaceState::RACE_END)
-            .forEach(it -> it.updateRace());
+            .forEach(Race::updateRace);
     }
 
     /** \brief kill the weakest organism in x,y coordinate if that cell exceed N limits per cell
@@ -69,7 +73,7 @@ class Universe {
     public void killWeakestOrganismAt(int x, int y) {
         Vector<Organism> pool = mList.stream()
                                     .filter(it -> x == it.getX() && y == it.getY())
-                                    .collect(toVector());
+                                    .collect(Collectors.toCollection(Vector::new));
 
         // 1 for himself not counted
         while( pool.size() > maxOrganismPerCell ){
@@ -94,15 +98,23 @@ class Universe {
      *  \return void
      */
     public void addRace() {
-        int sx = Math.rand() % board.GetH();
-        int sy = Math.rand() % board.GetW();
-        int ex = Math.rand() % board.GetH();
-        int ey = sy;
-        Race Ra = new Race(sx,sy,ex,ey);
-        RList.add(Ra);
-        mList.stream()
-            .filter(it -> it instanceof Rabbit || it instanceof Turtle)
-            .forEach(it -> it.triggerRace(Ra));
+        Random rng = new Random();
+        int sx = rng.nextInt(Integer.SIZE - 1) % board.GetH();
+        int sy = rng.nextInt(Integer.SIZE - 1) % board.GetW();
+        int ex = rng.nextInt(Integer.SIZE - 1) % board.GetH();
+        Race Ra = new Race(sx,sy,ex, sy);
+        rList.add(Ra);
+        for( Organism it: mList ){
+            if( it instanceof Rabbit )
+            {
+                Rabbit r = (Rabbit)it;
+                r.triggerRace(Ra);
+            }
+            else if( it instanceof Turtle){
+                Turtle t = (Turtle)it;
+                t.triggerRace(Ra);
+            }
+        }
     }
 
 };

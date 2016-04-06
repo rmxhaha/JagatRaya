@@ -1,4 +1,4 @@
-class Eagle : public Carnivore {
+class Eagle extends Carnivore {
 	/** \brief Eagle Constructor
      *
      * \param universe Universe it belong in
@@ -6,7 +6,7 @@ class Eagle : public Carnivore {
      *
      */
 	public Eagle(Universe u,int x, int y,float currentAge){
-		super();
+		super(u,x, y, currentAge);
 	}
     /** \brief see Organism::ch
      */
@@ -32,22 +32,22 @@ class Eagle : public Carnivore {
 	}
 	/** \brief see Animal::update_logic
 	*/
-	private void update_logic(){
+	protected void update_logic(){
 		if(y==0 && x!=universe.board.GetW()-1){
-		move(direction_t::RIGHT);
+		move(Direction.RIGHT);
 		}
 		else if(y==universe.board.GetH()-1 && x!=0){
-			move(direction_t::LEFT);
+			move(Direction.LEFT);
 		}
 		else{
 			if(x==0){
-				move(direction_t::DOWN);
+				move(Direction.DOWN);
 			}
 			else if(x==universe.board.GetW()-1){
-				move(direction_t::UP);
+				move(Direction.UP);
 			}
 			else{
-				move(direction_t::LEFT);
+				move(Direction.LEFT);
 			}
 		}
 	}

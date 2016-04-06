@@ -3,7 +3,7 @@
  * Deer can eat plants.
  * Deer can avoid tiger if tiger is near. Deer will look for other deer if tiger is far.
  */
-class Deer:public Herbivore{
+class Deer extends Herbivore{
 	/** \brief Deer Constructor
      *
      * \param universe Universe it belong in
@@ -15,7 +15,7 @@ class Deer:public Herbivore{
 	}
 	/** \brief see Animal::update_logic
 	*/ 
-	private void update_logic(){
+	protected void update_logic(){
 		int prey_x;
 		int prey_y;
 		if(findPrey('T',prey_x,prey_y,x,y)){

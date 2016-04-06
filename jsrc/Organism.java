@@ -1,6 +1,6 @@
 abstract class Organism {
-    protected float cAge; // current age
-	protected bool is_dead;
+    protected float currentAge; // current age
+	protected boolean is_dead = false;
 	protected int x,y;
 	protected Universe universe;
 	/** \brief Organism Constructor
@@ -9,12 +9,11 @@ abstract class Organism {
      * \return Organism
      *
      */
-	public Organism(Universe _u, int _x, int _y, float age) {
-		universe = _u;
-		x = _x;
-		y = _y;
-		currentAge = age;
-		is_dead = false;
+	public Organism(Universe universe, int x, int y, float currentAge) {
+		this.x = x;
+		this.currentAge = currentAge;
+		this.y = y;
+		this.universe = universe;
 	}
 
 	/** \brief X location of the organism
@@ -62,16 +61,21 @@ abstract class Organism {
 	/** \brief do the organism behaviour if reach time.
 	 *  \param dt delta time for doing the organism behaviour
 	*/
-	public abstract void update(float dt); // delta time in milliseconds
+	public void update(float dt) {
+		currentAge += dt;
+
+		if( currentAge > age() )
+			forceKill();
+	} // delta time in milliseconds
 	/** \brief interaction between organism
 	 *  \param organism which this organism will interact with
      */
-	public abstract void interact(Organism);
+	public abstract void interact(Organism o);
 	/** \brief kill the organism
      */
     public void forceKill() {
 	    is_dead = true;
-	    universe.board.DelEl(ch(),x,y);
+	    universe.board.DelEl(ch(), x, y);
 	}
 
     protected void setX( int _x ) {

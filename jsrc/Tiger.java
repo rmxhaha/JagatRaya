@@ -4,7 +4,7 @@
  * Tiger can eat deer and horse.
  */
  
-class Tiger : public  Carnivore{
+class Tiger extends Carnivore{
 	/** \brief Tiger Constructor
 	 *
 	 * \param universe Universe it belong in
@@ -12,11 +12,11 @@ class Tiger : public  Carnivore{
 	 *
 	 */
 	public Tiger(Universe u,int x,int y,float currentAge){
-		super();
+		super(u, x, y, currentAge);
 	}
 	/** \brief see Animal::update_logic
 	*/
-	private void update_logic(){
+	protected void update_logic(){
 		int prey_x;
 		int prey_y;
 		if( findPrey('D',prey_x,prey_y,x,y)){

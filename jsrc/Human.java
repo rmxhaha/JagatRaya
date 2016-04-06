@@ -1,4 +1,4 @@
-class Human : public Carnivore {
+class Human extends Carnivore {
     private static int maxOffspring = 2;
 
     private int offspringCount;
@@ -9,7 +9,7 @@ class Human : public Carnivore {
      *
      */
     public Human(Universe universe, int x, int y,float currentAge) {
-        super();
+        super(universe, x, y, currentAge);
     }
     /** \brief see Organism::ch
      */
@@ -26,10 +26,11 @@ class Human : public Carnivore {
     /** \brief see Organism::interact
      */
     public void interact(Organism o) {
-        if( o instanceof Human ){
-            if( offspringCount < Human::maxOffspring && o.offspringCount < Human::maxOffspring ){
-                offspringCount ++;
-                o.offspringCount ++;
+        if( o instanceof Human){
+            Human h = (Human) o;
+            if( offspringCount < Human.maxOffspring && h.offspringCount < Human.maxOffspring ){
+                offspringCount++;
+                h.offspringCount++;
                 copulate();
             }
         }
@@ -44,7 +45,7 @@ class Human : public Carnivore {
     }
     /** \brief see Animal::update_logic
     */
-    private void update_logic() {
+    protected void update_logic() {
         move(goRandom());
     }
-};
+}

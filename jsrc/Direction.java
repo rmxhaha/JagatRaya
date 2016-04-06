@@ -1,4 +1,4 @@
-enum class direction_t {
+enum Direction {
 	NO_WHERE,
 	UP,
 	DOWN,
@@ -8,4 +8,4 @@ enum class direction_t {
 	DOWN_LEFT,
 	UP_RIGHT,
 	DOWN_RIGHT
-};
+}
