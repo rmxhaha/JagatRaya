@@ -7,7 +7,7 @@ class Turtle extends Herbivore {
 		race = null;
 	}
 	
-	public void update_logic(){
+	protected void update_logic(){
 		if( race == null ){
 			move(goRandom());
 		}
