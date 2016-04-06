@@ -10,7 +10,7 @@ class Alien extends Carnivore {
      * \return Alien
      */
     public Alien(Universe u, int x, int y, float currentAge) {
-        super();
+        super(u, x, y, currentAge);
     }
 
     /**

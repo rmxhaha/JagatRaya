@@ -14,8 +14,8 @@ class Poison_Ivy extends Plant {
      * \return Poison_Ivy
      *
      */
-    public Poison_Ivy(Universe& b, int x, int y,float currentAge){
-        super(b,x,y,currentAge);1
+    public Poison_Ivy(Universe b, int x, int y,float currentAge){
+        super(b,x,y,currentAge);
         universe.board.SetEl(ch(),y,x);
     }
      /** \brief see Organism::ch
@@ -37,21 +37,20 @@ class Poison_Ivy extends Plant {
      */
     public void grow(){
         boolean place=false;
-	int ni,nj;
-	srand((unsigned)time(NULL));
-	while(!place)
-	{
-            Random randomG = new Random();
-            int i1=randomG.nextInt(3)-1;
-            int j1=randomG.nextInt(3)%3-1;
-            if(i1!=0||j1!=0)
-            {
-                ni=y+i1;
-                nj=x+j1;
-                place=true;
-            }
-	}
-	if( (nj < universe.board.GetW()&&nj >=0)&& (ni < universe.board.GetH()&& ni >= 0 ) )
+        int ni = x ,nj = y;
+        while(!place)
+        {
+                Random randomG = new Random();
+                int i1=randomG.nextInt(3)-1;
+                int j1=randomG.nextInt(3)-1;
+                if(i1!=0||j1!=0)
+                {
+                    ni=y+i1;
+                    nj=x+j1;
+                    place=true;
+                }
+        }
+        if( (nj < universe.board.GetW()&&nj >=0)&& (ni < universe.board.GetH()&& ni >= 0 ) )
         {
             Poison_Ivy P=new Poison_Ivy(universe,nj,ni,0);
             universe.add(P);

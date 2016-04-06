@@ -1,7 +1,7 @@
 class Rabbit extends Herbivore {
 	private Race race;
 	
-	public Rabbit( Universe universe, int x, int y, int currentAge ){
+	public Rabbit( Universe universe, int x, int y, float currentAge ){
 		super(universe,x,y,currentAge);
 		universe.board.SetEl(ch(),y,x);
 		race = null;
