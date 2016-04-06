@@ -5,8 +5,8 @@ public class OrganismFactory {
 	private Universe universe;
 	private Random randomGenerator;
 	
-	OrganismFactory(Universe u, float currentAge){
-		this.universe = u;
+	OrganismFactory(Universe universe, float currentAge){
+		this.universe = universe;
 		this.currentAge = currentAge;
 		this.randomGenerator = new Random();
 	}
@@ -61,52 +61,52 @@ public class OrganismFactory {
 	
 	Organism CreateDeer(int x,int y) {
 		Organism ox = new Deer(universe,x,y,currentAge);
-		u.add(ox);
+		universe.add(ox);
 		return ox;
 	}
 	Organism CreateTiger(int x,int y) {
 		Organism ox = new Tiger(universe,x,y,currentAge);
-		u.add(ox);
+		universe.add(ox);
 		return ox;
 	}
 	Organism CreateAlien(int x,int y) {
 		Organism ox = new Alien(universe,x,y,currentAge);
-		u.add(ox);
+		universe.add(ox);
 		return ox;
 	}
 	Organism CreateEagle(int x,int y) {
 		Organism ox = new Eagle(universe,x,y,currentAge);
-		u.add(ox);
+		universe.add(ox);
 		return ox;
 	}
 	Organism CreateGrass(int x,int y) {
 		Organism ox = new Grass(universe,x,y,currentAge);
-		u.add(ox);
+		universe.add(ox);
 		return ox;
 	}
 	Organism CreateHuman(int x,int y) {
 		Organism ox = new Human(universe,x,y,currentAge);
-		u.add(ox);
+		universe.add(ox);
 		return ox;
 	}
 	Organism CreatePoisonIvy(int x,int y) {
 		Organism ox = new Poison_Ivy(universe,x,y,currentAge);
-		u.add(ox);
+		universe.add(ox);
 		return ox;
 	}
 	Organism CreateTurtle(int x,int y) {
 		Organism ox = new Turtle(universe,x,y,currentAge);
-		u.add(ox);
+		universe.add(ox);
 		return ox;
 	}
 	Organism CreateRabbit(int x,int y) {
 		Organism ox = new Rabbit(universe,x,y,currentAge);
-		u.add(ox);
+		universe.add(ox);
 		return ox;
 	}
 	Organism CreateHorse(int x,int y) {
 		Organism ox = new Horse(universe,x,y,currentAge);
-		u.add(ox);
+		universe.add(ox);
 		return ox;
 	}
 }
