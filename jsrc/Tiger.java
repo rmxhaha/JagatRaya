@@ -68,4 +68,4 @@ class Tiger extends Carnivore {
             O.forceKill();
         }
     }
-};
+}

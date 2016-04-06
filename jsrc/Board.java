@@ -1,19 +1,19 @@
 class Board {
     private static final int defaultsize = 10;
-    private String[][] data;
+    private StringBuffer[][] data;
     private int w;
     private int h;
 
     public Board() {
         w = defaultsize;
         h = defaultsize;
-        data = new String[h][w];
+        data = new StringBuffer[h][w];
     }
 
     public Board(int _w, int _h) {
         w = _w;
         h = _h;
-        data = new String[h][w];
+        data = new StringBuffer[h][w];
     }
 
     public int GetW() {
@@ -24,23 +24,21 @@ class Board {
         return h;
     }
 
-    public String GetEl(int _h, int _w) {
+    public StringBuffer GetEl(int _h, int _w) {
         return data[_h][_w];
     }
 
     public void SetEl(char c, int _h, int _w) {
-        data[_h][_w] += c;
+        data[_h][_w].append(c);
     }
 
     public void DelEl(char c, int _h, int _w) {
-        StringBuilder sb = new StringBuilder(data[_h][_w]);
-        for (int i = 0; i < sb.length(); i++) {
-            if (sb.charAt(i) == c) {
-                sb.deleteCharAt(i);
+        for (int i = 0; i < data[_h][_w].length(); i++) {
+            if (data[_h][_w].charAt(i) == c) {
+                data[_h][_w].deleteCharAt(i);
                 break;
             }
         }
-        data[_h][_w] = sb.toString();
     }
 
     public void PrintBoard() {

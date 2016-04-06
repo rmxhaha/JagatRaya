@@ -89,4 +89,4 @@ class Alien extends Carnivore {
     public void interact(Organism O) {
         O.forceKill();
     }
-};
+}

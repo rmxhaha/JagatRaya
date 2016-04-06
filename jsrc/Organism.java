@@ -112,4 +112,4 @@ abstract class Organism {
         universe.board.DelEl(ch(), x, y);
     }
 
-};
+}

@@ -1,22 +1,4 @@
 public abstract class Plant extends Organism {
-  /** \brief do the logic of plant growing
-    *
-    * \return void
-    *
-    */
-       protected void update_grow(){}
-   /** \brief grow new plant of the same class to the cell beside
-    *
-    * \return void
-    *
-    */
-       protected abstract void grow();
-   /** \brief time between producing another plant
-    *
-    * \return float the time between
-    *
-    */
-       protected abstract float tgrow();
        protected float timebuffer;
    /** \brief Plant Constructor
     *
@@ -27,6 +9,28 @@ public abstract class Plant extends Organism {
            super(u,x,y,currentAge);
            timebuffer = 0;
        }
+
+  /** \brief do the logic of plant growing
+    *
+    * \return void
+    *
+    */
+       protected void update_grow(){}
+
+   /** \brief grow new plant of the same class to the cell beside
+    *
+    * \return void
+    *
+    */
+       protected abstract void grow();
+
+   /** \brief time between producing another plant
+    *
+    * \return float the time between
+    *
+    */
+       protected abstract float tgrow();
+
    /** \brief update the plant
     *
     * \param see Organism::update
@@ -54,4 +58,4 @@ public abstract class Plant extends Organism {
        public float getTimebuffer(){
             return timebuffer;
        }
-};
+}

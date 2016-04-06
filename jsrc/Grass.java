@@ -1,4 +1,3 @@
-import java.util.Random;
 /**
  * Grass class.
  * Grass can grow or make a new grass object around this object.
@@ -70,4 +69,4 @@ public class Grass extends Plant {
 
     }
 
-};
+}

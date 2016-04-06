@@ -67,4 +67,4 @@ class Deer extends Herbivore {
             O.forceKill();
         }
     }
-};
+}

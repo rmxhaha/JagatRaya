@@ -67,4 +67,4 @@ class Eagle extends Carnivore {
             }
         }
     }
-};
+}

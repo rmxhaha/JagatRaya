@@ -1,5 +1,3 @@
-import java.util.Random;
-
 abstract class Animal extends Organism {
     protected float timebuffer;
 
@@ -144,7 +142,7 @@ abstract class Animal extends Organism {
 
         for (int x = 0; x < board.GetH(); ++x) {
             for (int y = 0; y < board.GetW(); ++y) {
-                if (board.GetEl(x, y).indexOf(prey_ch) != -1) {
+                if (board.GetEl(x, y).indexOf(prey_ch + "") != -1) {
                     prey_found = true;
                     int dx = predatorCoordinate.getFirst() - x;
                     int dy = predatorCoordinate.getSecond() - y;

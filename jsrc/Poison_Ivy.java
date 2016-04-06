@@ -73,4 +73,4 @@ class Poison_Ivy extends Plant {
             O.forceKill();
 	}
     }
-};
+}

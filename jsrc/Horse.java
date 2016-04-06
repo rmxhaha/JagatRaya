@@ -53,4 +53,4 @@ public class Horse extends Herbivore{
             O.forceKill();
 		}
     }
-};
+}

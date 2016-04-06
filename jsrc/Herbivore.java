@@ -8,4 +8,4 @@ abstract class Herbivore extends Animal {
     Herbivore(Universe u, int x, int y, float currentAge) {
         super(u, x, y, currentAge);
     }
-};
+}
