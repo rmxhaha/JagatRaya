@@ -1,4 +1,8 @@
+import java.util.Random;
+
 abstract class Organism {
+	protected static Random randomGenerator = new Random();
+
     protected float currentAge; // current age
     protected boolean is_dead = false;
     protected int x, y;

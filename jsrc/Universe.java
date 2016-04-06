@@ -65,7 +65,7 @@ class Universe {
                 .forEach(it -> it.update(dt));
 
         rList.stream()
-                .filter(it -> it.getState() != RaceState::RACE_END)
+                .filter(it -> it.getState() != Race.State.RACE_END)
                 .forEach(Race::updateRace);
     }
 

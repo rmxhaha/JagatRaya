@@ -1,7 +1,7 @@
-class Turtle extends Herbivore {
+class Rabbit extends Herbivore {
 	private Race race;
 	
-	public Turtle( Universe universe, int x, int y, int currentAge ){
+	public Rabbit( Universe universe, int x, int y, int currentAge ){
 		super(universe,x,y,currentAge);
 		universe.board.SetEl(ch(),y,x);
 		race = null;
@@ -27,13 +27,13 @@ class Turtle extends Herbivore {
 		}
 	}
 	public char ch(){
-		return 'U';
+		return 'R';
 	}
 	public float speed(){
-		return 2;
+		return 5;
 	}
 	public int power(){
-		return 3;
+		return 5;
 	}
 	public int age(){
 		return 20000;
@@ -47,7 +47,7 @@ class Turtle extends Herbivore {
 	
 	public void triggerRace(Race _race){
 		if( race == null ){
-			if( _race.joinTurtle(this)){
+			if( _race.joinRabbit(this)){
 				race = _race;
 			}
 		}

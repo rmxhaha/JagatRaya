@@ -106,8 +106,7 @@ abstract class Animal extends Organism {
      * \return Direction
      */
     protected Direction goRandom() {
-        Random rng = new Random();
-        int d = rng.nextInt(Integer.SIZE - 1) % 8;
+        int d = randomGenerator.nextInt(Integer.SIZE - 1) % 8;
         switch (d) {
             case 0:
                 return Direction.UP;

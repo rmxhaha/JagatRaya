@@ -12,7 +12,7 @@ public class Grass extends Plant {
      *
      */
     public Grass(Universe u, int x, int y,float currentAge){
-        super(b,x,y,currentAge);
+        super(u,x,y,currentAge);
         universe.board.SetEl(ch(),y,x);
     }
      /** \brief see Organism::ch
@@ -35,11 +35,12 @@ public class Grass extends Plant {
     public void grow(){
         boolean place=false;
         int ni,nj;
-        srand((unsigned)time(NULL));
+		ni = 0;
+		nj = 0;
+
         while(!place){
-            Random randomG = new Random();
-            int i1=randomG.nextInt(3)-1;
-            int j1=randomG.nextInt(3)-1;
+            int i1=randomGenerator.nextInt(3)-1;
+            int j1=randomGenerator.nextInt(3)-1;
             if(i1!=0||j1!=0)
             {
                 ni=y+i1;
