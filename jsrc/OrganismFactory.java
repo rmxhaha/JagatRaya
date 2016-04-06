@@ -5,7 +5,7 @@ public class OrganismFactory {
     private Universe universe;
     private Random randomGenerator;
 
-    OrganismFactory(Universe universe, float currentAge) {
+	public OrganismFactory(Universe universe, float currentAge) {
         this.universe = universe;
         this.currentAge = currentAge;
         this.randomGenerator = new Random();

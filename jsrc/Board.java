@@ -43,7 +43,7 @@ class Board {
         data[_h][_w] = sb.toString();
     }
 
-    public void printBoard() {
+    public void PrintBoard() {
         for (int i = 0; i < h; i++) {
             for (int j = 0; j < w; j++) {
                 if (data[j][i].length() > 0)
