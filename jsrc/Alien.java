@@ -17,12 +17,12 @@ class Alien extends Carnivore {
      * \brief see Animal::update_logic
      */
     protected void update_logic() {
-        int prey_x;
-        int prey_y;
-        if (!find(prey_x, prey_y, x, y)) {
+        IntPair preyCoordinate = new IntPair(0, 0);
+        IntPair predatorCoordinate = new IntPair(x, y);
+        if (!find(preyCoordinate, predatorCoordinate)) {
             move(goRandom());
         } else {
-            move(goTo(prey_x, prey_y));
+            move(goTo(preyCoordinate.getFirst(), predatorCoordinate.getSecond()));
         }
     }
 
@@ -31,50 +31,28 @@ class Alien extends Carnivore {
      * \param prey_x, prey_y Location of the prey
      * \param predator_x,predator_y Location of the alien
      */
-    public bool find(int prey_x, int prey_y, int predator_x, int predator_y) {
-        Vector<Target> vec;
-        Board board = universe -> board;
-        int i = 0;
-        int j;
-        Target T;
+    public boolean find(IntPair preyCoordinate, IntPair predatorCoordinate) {
+        Board board = universe.board;
+        int closest_prey = 1000000000;
+        boolean prey_found = false;
+        preyCoordinate.setFirst(predatorCoordinate.getFirst());
+        preyCoordinate.setSecond(predatorCoordinate.getSecond());
 
-        while (i < board.GetH()) {
-            j = 0;
-            while (j < board.GetW()) {
-                if (board.GetEl(i, j).length() > 0) {
-                    T.x = i;
-                    T.y = j;
-                    T.distance = (predator_x - T.x) * (predator_x - T.x) + (predator_y - T.y) * (predator_y - T.y);
-                    vec.push_back(T);
+        for (int x = 0; x < board.GetH(); ++x) {
+            for (int y = 0; y < board.GetW(); ++y) {
+                if (board.GetEl(x, y).length() != 0) {
+                    prey_found = true;
+                    int dx = predatorCoordinate.getFirst() - x;
+                    int dy = predatorCoordinate.getSecond() - y;
+                    if (closest_prey > dx * dx + dy * dy) {
+                        closest_prey = dx * dx + dy * dy;
+                        predatorCoordinate.setFirst(x);
+                        predatorCoordinate.setSecond(y);
+                    }
                 }
-                j++;
             }
-            i++;
         }
-        if (vec.size() > 0) {
-            int min;
-            if (vec[0].x != x && vec[0].y) {
-                min = vec[0].distance;
-                prey_x = vec[0].x;
-                prey_y = vec[0].y;
-                i = 1;
-            } else {
-                min = vec[1].distance;
-                prey_x = vec[1].x;
-                prey_y = vec[1].y;
-                i = 2;
-            }
-            while (i < vec.size()) {
-                if (vec[i].distance < min && vec[i].x != x && vec[i].y != y) {
-                    prey_x = vec[i].x;
-                    prey_y = vec[i].y;
-                }
-                i++;
-            }
-            return true;
-        } else {
-            return false;
-        }
+        return prey_found;
     }
 
     /**

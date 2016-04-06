@@ -17,13 +17,13 @@ public class Horse extends Herbivore{
     */
     protected void update_logic(){
         //Update Horse move
-        int prey_x = 0;
-		int prey_y = 0;
-		if(!findPrey('G',prey_x,prey_y,x,y)&&!findPrey('P',prey_x,prey_y,x,y)){
+        IntPair preyCoordinate = new IntPair(0, 0);
+        IntPair predatorCoordinate = new IntPair(x, y);
+		if(!findPrey('G',preyCoordinate, predatorCoordinate)&&!findPrey('P',preyCoordinate, predatorCoordinate)){
 			move(goRandom());
 		}
 		else{
-			move(goTo(prey_x,prey_y));
+			move(goTo(preyCoordinate.getFirst(), predatorCoordinate.getSecond()));
 		}
     }
     /** \brief see Organism::ch

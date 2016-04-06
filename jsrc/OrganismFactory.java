@@ -19,7 +19,7 @@ public class OrganismFactory {
     }
 
     Organism CreateRandomAt(int x, int y) {
-        Organism ox;
+        Organism ox = null;
         switch (randomGenerator.nextInt(9) + 1) {
             case 1:
                 ox = new Deer(universe, x, y, currentAge);
