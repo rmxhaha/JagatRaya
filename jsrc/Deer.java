@@ -18,13 +18,13 @@ class Deer extends Herbivore {
      * \brief see Animal::update_logic
      */
     protected void update_logic() {
-        int prey_x;
-        int prey_y;
-        if (findPrey('T', prey_x, prey_y, x, y)) {
-            move(avoid(prey_x, prey_y));
+        IntPair preyCoordinate = new IntPair(0, 0);
+        IntPair predatorCoordinate = new IntPair(x, y);
+        if (findPrey('T', preyCoordinate, predatorCoordinate)) {
+            move(avoid(preyCoordinate.getFirst(), predatorCoordinate.getSecond()));
         } else {
-            if (findPrey('D', prey_x, prey_y, x, y)) {
-                move(goTo(prey_x, prey_y));
+            if (findPrey('D', preyCoordinate, predatorCoordinate)) {
+                move(goTo(preyCoordinate.getFirst(), predatorCoordinate.getSecond()));
             } else {
                 move(goRandom());
             }
