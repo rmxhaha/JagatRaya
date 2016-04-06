@@ -9,7 +9,7 @@ public class Horse extends Herbivore{
      * \return Horse
      *
      */
-    public Horse(Universe& u,int x,int y,float currentAge){
+    public Horse(Universe u,int x,int y,float currentAge){
         super(u,x,y,currentAge);
         universe.board.SetEl(ch(),y,x);
     }
@@ -17,40 +17,40 @@ public class Horse extends Herbivore{
     */
     protected void update_logic(){
         //Update Horse move
-        int prey_x;
-	int prey_y;
-	if(!findPrey('G',prey_x,prey_y,x,y)&&!findPrey('P',prey_x,prey_y,x,y)){
-		move(goRandom());
-	}
-	else{
-		move(goTo(prey_x,prey_y));
-	}
+        int prey_x = 0;
+		int prey_y = 0;
+		if(!findPrey('G',prey_x,prey_y,x,y)&&!findPrey('P',prey_x,prey_y,x,y)){
+			move(goRandom());
+		}
+		else{
+			move(goTo(prey_x,prey_y));
+		}
     }
     /** \brief see Organism::ch
      */
-    protected char ch(){
+    public char ch(){
         return 'H';
     }
     /** \brief see Organism::age
      */
-    protected int age(){
+    public int age(){
         return 30000;
     }
     /** \brief see Organism::power
      */
-    protected int power(){
+    public int power(){
         return 5;
     }
     /** \brief see Animal::speed
      */
-    protected float speed(){
-        return 5;
+    public float speed(){
+        return 5.0f;
     }
     /** \brief see Organism::interact
      */
-    protected void interact(Organism O){
+    public void interact(Organism O){
         if(O instanceof Grass){
             O.forceKill();
-	}
+		}
     }
 };
