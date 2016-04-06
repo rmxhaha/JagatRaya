@@ -12,7 +12,7 @@ public class Grass extends Plant {
      *
      */
     public Grass(Universe u, int x, int y,float currentAge){
-        super(b,x,y,currentAge);1
+        super(b,x,y,currentAge);
         universe.board.SetEl(ch(),y,x);
     }
      /** \brief see Organism::ch
