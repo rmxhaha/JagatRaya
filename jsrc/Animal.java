@@ -135,23 +135,23 @@ abstract class Animal extends Organism {
      * \param prey_x, prey_y Location of the prey
      * \param predator_x,predator_y Location of the Animal
      */
-    protected boolean findPrey(char prey_ch, int[] prey_x, int[] prey_y, int predator_x, int predator_y) {
+    protected boolean findPrey(char prey_ch, IntPair preyCoordinate, IntPair predatorCoordinate) {
         Board board = universe.board;
         int closest_prey = 1000000000;
         boolean prey_found = false;
-        prey_x[0] = predator_x;
-        prey_y[0] = predator_y;
+        preyCoordinate.setFirst(predatorCoordinate.getFirst());
+        preyCoordinate.setSecond(predatorCoordinate.getSecond());
 
         for (int x = 0; x < board.GetH(); ++x) {
             for (int y = 0; y < board.GetW(); ++y) {
                 if (board.GetEl(x, y).indexOf(prey_ch) != -1) {
                     prey_found = true;
-                    int dx = predator_x - x;
-                    int dy = predator_y - y;
+                    int dx = predatorCoordinate.getFirst() - x;
+                    int dy = predatorCoordinate.getSecond() - y;
                     if (closest_prey > dx * dx + dy * dy) {
                         closest_prey = dx * dx + dy * dy;
-                        prey_x[0] = x;
-                        prey_y[0] = y;
+                        predatorCoordinate.setFirst(x);
+                        predatorCoordinate.setSecond(y);
                     }
                 }
             }
